@@ -16,3 +16,10 @@ function squareDigits(num){
     return Number(squaredNums);
     
   }
+
+//   another option for the same problem
+
+function squareDigits(num){
+    return Number(('' + num).split('').map(function (val) { return val * val;}).join(''));
+    
+  }
