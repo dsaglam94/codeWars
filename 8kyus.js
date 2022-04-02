@@ -83,3 +83,37 @@ function betterThanAverage(classPoints, yourPoints) {
 // Refactored version
 const min = (list) => Math.min(...list);
 const max = (list) => Math.max(...list);
+
+// You take your son to the forest to see the monkeys. You know that there are a certain number there (n), but your son is too young to just appreciate the full number, he has to start counting them from 1.
+
+// As a good parent, you will sit and count with him. Given the number (n), populate an array with all numbers up to and including that number, but excluding zero.
+
+// For example:
+
+// monkeyCount(10) // --> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+// monkeyCount(1) // --> [1]
+
+function monkeyCount(n) {
+    let count = [];
+     for (let i = 1; i <= n; i++) {
+       count.push(i);
+     }
+     return count;
+   }
+
+
+//    Create a function which answers the question "Are you playing banjo?".
+// If your name starts with the letter "R" or lower case "r", you are playing banjo!
+
+// The function takes a name as its only argument, and returns one of the following strings:
+
+// name + " plays banjo" 
+// name + " does not play banjo"
+
+function areYouPlayingBanjo(name) {
+    if ( name[0] === 'R' || name[0] === 'r' ) {
+      return `${name} plays banjo`;
+    } else {
+      return `${name} does not play banjo`;
+    }
+  }
