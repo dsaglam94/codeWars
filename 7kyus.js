@@ -65,3 +65,26 @@ function highAndLow(numbers){
     numbers = numbers.split(' ');
     return `${Math.max(...numbers)} ${Math.min(...numbers)}`;
   }
+
+//   Your task is to make a function that can take any non-negative integer as an argument and return it with its digits in descending order. Essentially, rearrange the digits to create the highest possible number.
+
+// Examples:
+// Input: 42145 Output: 54421
+
+  function descendingOrder(n){
+
+    let newArr = [...''+n].sort((a,b) => b - a).join('');
+    console.log(newArr)
+    return Number(newArr.toString());
+ 
+  }
+
+//   This time no story, no theory. The examples below show you how to write function accum:
+
+// Examples:
+// accum("abcd") -> "A-Bb-Ccc-Dddd"
+// accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+
+  function accum(s) {
+    return s.split('').map((c, i) => (c.toUpperCase() + c.toLowerCase().repeat(i))).join('-');
+  }
