@@ -23,3 +23,45 @@ function squareDigits(num){
     return Number(('' + num).split('').map(function (val) { return val * val;}).join(''));
     
   }
+
+//   Trolls are attacking your comment section!
+
+// A common way to deal with this situation is to remove all of the vowels from the trolls' comments, neutralizing the threat.
+
+// Your task is to write a function that takes a string and return a new string with all vowels removed.
+
+// For example, the string "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!".
+
+// Note: for this kata y isn't considered a vowel.
+
+const disemvowel = (str) => {
+    const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+    let newStr = '';
+    for (let i = 0; i <= str.length; i++) {
+      let char = str.charAt(i);
+      if (vowels.indexOf(char) == -1) {
+        newStr += char;
+      }
+    }
+      return newStr;
+  };
+
+//   In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
+
+//   Examples
+//   highAndLow("1 2 3 4 5");  // return "5 1"
+
+  function highAndLow(numbers){
+    let numsArr = numbers.split(' ').sort((a,b) => a - b);
+    let highestNum = numsArr[numsArr.length - 1];
+    let lowestNum = numsArr[0];
+    let finalValue = highestNum.concat(' ',lowestNum);
+    return finalValue;
+  }
+
+//   diff solution
+
+function highAndLow(numbers){
+    numbers = numbers.split(' ');
+    return `${Math.max(...numbers)} ${Math.min(...numbers)}`;
+  }
