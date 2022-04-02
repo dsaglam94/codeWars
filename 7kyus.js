@@ -88,3 +88,50 @@ function highAndLow(numbers){
   function accum(s) {
     return s.split('').map((c, i) => (c.toUpperCase() + c.toLowerCase().repeat(i))).join('-');
   }
+
+//   ou are going to be given a word. Your job is to return the middle character of the word. If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters.
+
+// #Examples:
+
+// Kata.getMiddle("test") should return "es"
+
+// Kata.getMiddle("testing") should return "t"
+
+// Kata.getMiddle("middle") should return "dd"
+
+// Kata.getMiddle("A") should return "A"
+
+
+  function getMiddle(s)
+  {
+   let position;
+   let length;
+    if (s.length % 2 === 0) {
+       position = s.length / 2 - 1 ;
+       length = 2;
+    } else {
+       position = Math.floor(s.length / 2 );
+       length = 1;
+    }
+    return s.substring(position, position + length)
+  }
+
+console.log(  getMiddle('namesxnames'))
+
+
+// An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram. Ignore letter case.
+
+// Example: (Input --> Output)
+
+// "Dermatoglyphics" --> true
+// "aba" --> false
+// "moOse" --> false (ignore letter case)
+
+function isIsogram(str){
+    let newStrArr = [...str.toLowerCase()];
+    let filteredNewStr = newStrArr.filter((item, index) => newStrArr.indexOf(item) == index);
+ 
+   if ( filteredNewStr.length === newStrArr.length) {
+       return true;
+   } else { return false ; }
+ }
