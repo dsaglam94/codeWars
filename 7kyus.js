@@ -135,3 +135,49 @@ function isIsogram(str){
        return true;
    } else { return false ; }
  }
+
+//  Simple, given a string of words, return the length of the shortest word(s).
+
+//  String will never be empty and you do not need to account for different data types.
+
+ function findShort(s){
+    let newArr = s.split(' ').map(x => x.length).sort((a,b) => a - b);
+    return newArr[0];
+  }
+
+
+//   Your task is to convert strings to how they would be written by Jaden Smith. The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
+
+//   Example:
+  
+//   Not Jaden-Cased: "How can mirrors be real if our eyes aren't real"
+//   Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real"
+
+  String.prototype.toJadenCase = function () {
+    return this.split(' ').map(x => x[0].toUpperCase() + x.slice(1)).join(' ');
+  };
+
+//   Example: (input --> output)
+
+// "ATTGC" --> "TAACG"
+// "GTAT" --> "CATA"
+// dnaStrand []        `shouldBe` []
+// dnaStrand [A,T,G,C] `shouldBe` [T,A,C,G]
+// dnaStrand [G,T,A,T] `shouldBe` [C,A,T,A]
+// dnaStrand [A,A,A,A] `shouldBe` [T,T,T,T]
+
+  function DNAStrand(dna){
+    let newStr = dna.split('').map(letter => {
+      if ( letter === "A") {
+        return "T"
+      } else if ( letter === "T") {
+        return "A"
+      } else if ( letter === "G") {
+        return "C"
+      } else if ( letter === "C") {
+        return "G"
+      }
+    })
+    
+    return newStr.join('');
+  }
