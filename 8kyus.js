@@ -51,3 +51,17 @@ function sumArray(array) {
 // This kata is about multiplying a given number by eight if it is an even number and by nine otherwise.
 
 const simpleMultiplication = number => (number % 2 === 0) ? (number * 8) : (number * 9)
+
+// ou receive an array with your peers' test scores. Now calculate the average and compare your score!
+
+// Return True if you're better, else False!
+
+// Note:
+// Your points are not included in the array of your class's points. For calculating the average point you may add your point to the given array!
+
+function betterThanAverage(classPoints, yourPoints) {
+    let avaragePoint = classPoints.reduce((a,b) => a+b,1) / (classPoints.length + 1)
+    if ( yourPoints >= avaragePoint ) {
+      return true;
+    } else { return false; }
+  }
