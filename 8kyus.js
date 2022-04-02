@@ -71,12 +71,15 @@ function betterThanAverage(classPoints, yourPoints) {
 // Examples (Input -> Output)
 // * [4,6,2,1,9,63,-134,566]         -> max = 566, min = -134
 
-  var min = function(list){
+//   const min = function(list){
     
-    return list.sort((a,b) => a - b)[0];
-}
+//     return list.sort((a,b) => a - b)[0];
+// }
 
-var max = function(list){
+// const max = function(list){
     
-    return list.sort((a,b) => b - a)[0];
-}
+//     return list.sort((a,b) => b - a)[0];
+// }
+// Refactored version
+const min = (list) => Math.min(...list);
+const max = (list) => Math.max(...list);
