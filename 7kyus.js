@@ -269,3 +269,13 @@ function sumTwoSmallestNumbers(numbers) {
 
     // diff solution
     const longest = (s1, s2) => [...new Set(s1+s2)].sort().join('')
+
+// If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise, you can be sure he's not...
+
+// Ex: Input = ["Ryan", "Kieran", "Jason", "Yous"], Output = ["Ryan", "Yous"]
+
+// friend ["Ryan", "Kieran", "Mark"] `shouldBe` ["Ryan", "Mark"]
+
+    function friend(friends){
+      return friends.filter(friend => friend.length === 4)
+    }
