@@ -277,5 +277,5 @@ function sumTwoSmallestNumbers(numbers) {
 // friend ["Ryan", "Kieran", "Mark"] `shouldBe` ["Ryan", "Mark"]
 
     function friend(friends){
-      return friends.filter(friend => friend.length === 4)
+      return friends.filter(friend => friend.length === 4) 
     }
