@@ -181,3 +181,25 @@ function isIsogram(str){
     
     return newStr.join('');
   }
+
+
+  // Your task is to write a function maskify, which changes all but the last four characters into '#'.
+
+  // Examples
+  // maskify("4556364607935616") == "############5616"
+  // maskify(     "64607935616") ==      "#######5616"
+  // maskify(               "1") ==                "1"
+  // maskify(                "") ==                 ""
+
+function maskify(cc) {
+  let len = cc.length - 4;
+  
+  if ( cc.length < 4) {
+    return cc;
+  } else {
+     let hashed = cc.split('').slice(0, len).fill('#').join('');
+     let visiblePart = cc.slice(-4);
+  
+     return hashed + visiblePart
+  } 
+}
