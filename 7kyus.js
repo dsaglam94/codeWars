@@ -244,3 +244,25 @@ function sumTwoSmallestNumbers(numbers) {
   }
 
   sumTwoSmallestNumbers([5, 8, 12, 19, 22])
+
+//   Take 2 strings s1 and s2 including only letters from ato z. Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.
+
+// Examples:
+// a = "xyaabbbccccdefww"
+// b = "xxxxyyyyabklmopq"
+// longest(a, b) -> "abcdefklmopqwxy"
+
+// a = "abcdefghijklmnopqrstuvwxyz"
+// longest(a, a) -> "abcdefghijklmnopqrstuvwxyz"
+
+  function longest(s1, s2) {
+    let computedArr = [...s1, ...s2]
+    let filteredArr = computedArr.filter((item,index) => computedArr.indexOf(item) === index);
+    return filteredArr.sort().join('')
+    }
+
+    // diff solution to same problem
+
+    function longest(s1, s2) {
+      return Array.from(new Set(s1 + s2)).sort().join('');
+    }
