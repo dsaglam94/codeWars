@@ -339,6 +339,7 @@ function printerError(s) {
   return `${count}/${s.length}`;
 }
 
+// 04.04.2022 
 
 // Given the triangle of consecutive odd numbers:
 
@@ -359,3 +360,22 @@ function rowSumOddNumbers(n) {
 
 // diff solution 
 // return n*n*n
+
+// You are provided with a list (or array) of integer pairs. Elements of each pair represent number of people get into bus (The first item) and number of people get off the bus (The second item) in a bus stop.
+
+// Your task is to return number of people who are still in the bus after the last bus station (after the last array). Even though it is the last bus stop, the bus is not empty and some people are still in the bus, and they are probably sleeping there :D
+
+
+var number = function(busStops){
+
+  let peopleGetInto = 0;
+  let peopleGetOff = 0;
+  
+  for (let i = 0; i < busStops.length; i++) {
+    peopleGetInto += busStops[i][0];
+    peopleGetOff += busStops[i][1];
+  }
+  
+  return peopleGetInto - peopleGetOff;
+  
+}
