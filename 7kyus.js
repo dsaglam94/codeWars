@@ -538,3 +538,29 @@ function minMax(arr){
 function minMax(arr){
   return [Math.min(...arr), Math.max(...arr)];
 }
+
+// Write a function which takes a list of strings and returns each line prepended by the correct number.
+
+// The numbering starts at 1. The format is n: string. Notice the colon and space in between.
+
+// Examples:
+
+// number([]) // => []
+// number(["a", "b", "c"]) // => ["1: a", "2: b", "3: c"]
+
+const number = function(array){
+
+  let res = [];
+  
+  for (let i = 0; i < array.length; i++) {
+    res.push(`${i+1}: ${array[i]}`)
+  }
+  return res;
+}
+
+// diff solution with map
+var number = function(array) {
+  return array.map(function (line, index) {
+    return (index + 1) + ": " + line;
+  });
+}
