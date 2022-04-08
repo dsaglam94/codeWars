@@ -583,3 +583,81 @@ function dontGiveMeFive(start, end) {
 
   return count;
 }
+
+// You are given an odd-length array of integers, in which all of them are the same, except for one single number.
+
+// Complete the method which accepts such an array, and returns that single different number.
+
+// The input array will always be valid! (odd-length >= 3)
+
+// Examples
+// [1, 1, 2] ==> 2
+// [17, 17, 3, 17, 17, 17, 17] ==> 3
+
+function stray(numbers) {
+
+  let sortedNums = numbers.sort((a,b) => a - b)
+  
+  if (sortedNums[0] !== sortedNums[1]) {
+  return sortedNums[0]
+  } else {
+  return sortedNums[sortedNums.length - 1]
+  }
+
+}
+
+// or example if you are given a chocolate bar of size 2 x 1 you can split it to single squares in just one break, but for size 3 x 1 you must do two breaks.
+
+// If input data is invalid you should return 0 (as in no breaks are needed if we do not have any chocolate to split). Input will always be a non-negative integer.
+
+
+function breakChocolate(n,m) {
+  if ((n * m) === 0) {
+    return 0;
+  } else {
+  return (n * m) - 1;    
+  }
+}
+
+// Count the number of divisors of a positive integer n.
+
+// Random tests go up to n = 500000.
+
+// Examples (input --> output)
+// 4 --> 3 (1, 2, 4)
+// 5 --> 2 (1, 5)
+// 12 --> 6 (1, 2, 3, 4, 6, 12)
+// 30 --> 8 (1, 2, 3, 5, 6, 10, 15, 30)
+
+function getDivisorsCnt(n){
+  let res = [];
+  for (let i = 1; i <= n; i++) {
+    if (n % i === 0) {
+      res.push(i)
+    }
+  }
+  return res.length;
+}
+
+// As a part of this Kata, you need to create a function that when provided with a triplet, returns the index of the numerical element that lies between the other two elements.
+
+// The input to the function will be an array of three distinct numbers (Haskell: a tuple).
+
+// For example:
+
+// gimme([2, 3, 1]) => 0
+// 2 is the number that fits between 1 and 3 and the index of 2 in the input array is 0.
+
+// Another example (just to make sure it is clear):
+
+// gimme([5, 10, 14]) => 1
+// 10 is the number that fits between 5 and 14 and the index of 10 in the input array is 1.
+
+function gimme (triplet) {
+
+  let duplicateTriplet = [...triplet];
+  let sortedTriplet = duplicateTriplet.sort((a,b) => a - b)
+
+  return triplet.indexOf(sortedTriplet[1])
+
+}
