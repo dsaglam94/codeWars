@@ -770,3 +770,64 @@ function findSum(n) {
   }
   return sum;
 }
+
+// The parameters (divisor, bound) passed to the function are only positive values .
+// It's guaranteed that a divisor is Found .
+// Input >> Output Examples
+// maxMultiple (2,7) ==> return (6)
+// Explanation:
+// (6) is divisible by (2) , (6) is less than or equal to bound (7) , and (6) is > 0 .
+
+function maxMultiple(divisor, bound){
+
+  let divisors = [];
+
+  for (let i = 1; i <= bound; i++) {
+    if ( i % divisor === 0 ) {
+      divisors.push(i);
+    }
+  }
+  return divisors[divisors.length - 1]
+}
+
+// Note: anagrams are case insensitive
+
+// Complete the function to return true if the two arguments given are anagrams of each other; return false otherwise.
+
+// Examples
+// "foefet" is an anagram of "toffee"
+
+// "Buckethead" is an anagram of "DeathCubeK"
+
+// write the function isAnagram
+
+var isAnagram = function(test, original) {
+  
+  return test.toLowerCase().split('').sort().join('') === original.toLowerCase().split('').sort().join('');
+    
+  };
+
+//   In mathematics, the factorial of a non-negative integer n, denoted by n!, is the product of all positive integers less than or equal to n. For example: 5! = 5 * 4 * 3 * 2 * 1 = 120. By convention the value of 0! is 1.
+
+// Write a function to calculate factorial for a given input. If input is below 0 or above 12 throw an exception of type ArgumentOutOfRangeException (C#) or IllegalArgumentException (Java) or RangeException (PHP) or throw a RangeError (JavaScript) or ValueError (Python) or return -1 (C).
+
+  function factorial(n) {
+  let result = 1;
+  
+  if ( n > 12 || n < 0 ) {
+    throw new RangeError();
+  } else {
+    for (let i = 1; i <= n; i++) {
+    result *= i;  
+  }   
+     return result;
+  }
+}
+
+// refactored version
+function factorial(n) {
+  if (n < 0 || n > 12)
+    throw new RangeError();
+  return n <= 1 ? 1 : n * factorial(n - 1);
+}
+  
