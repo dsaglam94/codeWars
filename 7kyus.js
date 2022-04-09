@@ -934,3 +934,44 @@ function minValue(values){
   let arr = Array.from(new Set(values))
   return parseInt(arr.sort().join(''))
 }
+
+// In this Kata, you will be given a string that may have mixed uppercase and lowercase letters and your task is to convert that string to either lowercase only or uppercase only based on:
+
+// make as few changes as possible.
+// if the string contains equal number of uppercase and lowercase letters, convert the string to lowercase.
+// For example:
+
+// solve("coDe") = "code". Lowercase characters > uppercase. Change only the "D" to lowercase.
+// solve("CODe") = "CODE". Uppercase characters > lowecase. Change only the "e" to uppercase.
+// solve("coDE") = "code". Upper == lowercase. Change all to lowercase.
+
+function solve(s){
+  let sArr = s.split('')
+  let count = 0;
+  for (let i = 0; i < s.length; i++) {
+    if (s[i].toUpperCase() === s[i]) {
+      count ++
+    }
+  }
+  
+  if ( count <= (s.length / 2)) { return s.toLowerCase()}
+  else { return s.toUpperCase()}
+  
+}
+
+// Remove the duplicates from a list of integers, keeping the last ( rightmost ) occurrence of each element.
+
+// Example:
+// For input: [3, 4, 4, 3, 6, 3]
+
+// remove the 3 at index 0
+// remove the 4 at index 1
+// remove the 3 at index 3
+// Expected output: [4, 6, 3]
+
+
+function solve(arr) {
+
+  return arr.filter((num, index) => arr.lastIndexOf(num) === index) 
+  
+}
