@@ -1052,3 +1052,35 @@ function mxdiflg(a1, a2) {
   let l2 = a2.map(str => str.length)
   return Math.max(Math.max(...l1) - Math.min(...l2), Math.max(...l2) - Math.min(...l1))
 }
+
+// Finish the solution so that it sorts the passed in array of numbers. If the function passes in an empty array or null/nil value then it should return an empty array.
+
+// For example:
+
+// solution([1, 2, 10, 50, 5]); // should return [1,2,5,10,50]
+// solution(null); // should return []
+
+function solution(nums){
+  if ( nums === null ) {
+    return [];
+  } else {
+    return nums.sort((a,b) => a - b)
+  }
+}
+
+// our task is to remove all duplicate words from a string, leaving only single (first) words entries.
+
+// Input:
+// 'alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'
+
+// Output:
+// 'alpha beta gamma delta'
+
+// const removeDuplicateWords = s => [...new Set(s.split(' '))].join(' ')
+
+function removeDuplicateWords (s) {
+  
+  let str = [...new Set(s.split(' '))].join(' ')
+  return str;
+
+}
