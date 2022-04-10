@@ -975,3 +975,21 @@ function solve(arr) {
   return arr.filter((num, index) => arr.lastIndexOf(num) === index) 
   
 }
+
+// 10.04.2022
+
+// Complete the function/method so that it returns the url with anything after the anchor (#) removed.
+
+// Examples
+// "www.codewars.com#about" --> "www.codewars.com"
+// "www.codewars.com?page=1" -->"www.codewars.com?page=1"
+
+function removeUrlAnchor(url){
+  let hashIndex = url.indexOf('#')
+  
+  if (hashIndex > 0) {
+     return url.split('').slice(0, hashIndex).join('')
+  } else {
+     return url
+  }
+ }
