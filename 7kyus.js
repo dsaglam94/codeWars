@@ -993,3 +993,44 @@ function removeUrlAnchor(url){
      return url
   }
  }
+
+//  definitely smarter solution
+function removeUrlAnchor(url){
+  return url.split('#')[0];
+}
+
+// Given a string, capitalize the letters that occupy even indexes and odd indexes separately, and return as shown below. Index 0 will be considered even.
+
+// For example, capitalize("abcdef") = ['AbCdEf', 'aBcDeF']. See test cases for more examples.
+
+// The input will be a lowercase string with no spaces.
+
+function capitalize(s){
+  let evenIndexArr = []
+  let oddIndexArr = []
+
+  for ( let i = 0; i < s.length; i++) {
+    if (i % 2 === 0) {
+      evenIndexArr.push(s[i].toUpperCase())
+      evenIndexArr.push(s[i+1])
+    } else if (i % 1 === 0) {
+      oddIndexArr.push(s[i].toUpperCase())
+      oddIndexArr.push(s[i+1])
+      
+    }
+  }
+  
+  let evenStr = evenIndexArr.join("");
+  let oddStr = s[0] + oddIndexArr.join("");
+
+  
+  return [evenStr, oddStr]
+};
+
+// different solution
+
+function capitalize(s){
+  const odd = s.split("").map((l, i) => i % 2 !== 0 ? l.toUpperCase() : l).join("");
+  const even = s.split("").map((l, i) => i % 2 === 0 ? l.toUpperCase() : l).join("");
+  return [even, odd];
+};
