@@ -1130,3 +1130,30 @@ const sumOfMinimums = arr => {
   
   return sum;
 }
+
+// diff solution
+function sumOfMinimums(arr) {
+  return arr.reduce((p, c) => p + Math.min(...c), 0);
+}
+
+// Input >> Output Examples
+// rowWeights([13, 27, 49])  ==>  return (62, 27)
+// Explanation:
+// The first element 62 is the total weight of team 1, and the second element 27 is the total weight of team 2.
+
+function rowWeights(array){
+  let t1 = array.filter((x, i)=>i%2==0).reduce((a,item)=>a+item,0);
+  let t2 = array.filter((x, i)=>i%2!=0).reduce((a,item)=>a+item,0);
+  
+  return [t1, t2]
+}
+
+// diff solution
+
+function rowWeights(array){
+  let arr = [0, 0];
+  for (let i = 0; i < array.length; i++) {
+    i % 2 == 0 ? arr[0] += array[i] : arr[1] += array[i];
+  }
+  return arr;
+}
