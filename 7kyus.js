@@ -1234,3 +1234,24 @@ function isSortedAndHow(array){
   }
   return ans;
 }
+
+// Create a function that takes an array of letters, and combines them into words in a sentence.
+
+// Examples:
+// arrAdder([
+// ['J','L','L','M'],
+// ['u','i','i','a'],
+// ['s','v','f','n'],
+// ['t','e','e','']
+// ]) // => "Just Live Life Man"
+
+function arrAdder(arr) {
+  let result = [];
+  for ( let i = 0; i < arr[0].length; i++) {
+    for( let j = 0; j <arr.length; j++) {
+      result.push(arr[j][i]);
+    }
+    result.push(' ')
+  }
+  return result.join('').trim();
+}
