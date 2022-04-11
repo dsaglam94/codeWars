@@ -1200,3 +1200,37 @@ function factorial(n){
 }
 // diff solution
 const factorial = n => n ? factorial(n - 1) * n : 1;
+
+// Find the total sum of internal angles (in degrees) in an n-sided simple polygon. N will be greater than 2.
+
+const sumAngle = n => (n - 2) * 180;
+
+// Complete the method which accepts an array of integers, and returns one of the following:
+
+// "yes, ascending" - if the numbers in the array are sorted in an ascending order
+// "yes, descending" - if the numbers in the array are sorted in a descending order
+// "no" - otherwise
+// You can assume the array will always be valid, and there will always be one correct answer.
+
+function isSortedAndHow(array){
+  let ans;
+  if (array[1] > array[0]){
+    ans = "yes, ascending";
+  }
+
+  if (ans==="yes, ascending"){
+      for (let i = 1; i<array.length; i++){
+      if(array[i]>= array[i-1]){
+        ans = "yes, ascending";
+      } else return ans = "no";
+    }
+  }
+  if (ans!=="yes, ascending"){
+      for (let i = 1; i<array.length; i++){
+      if(array[i]<= array[i-1]){
+        ans = "yes, descending";
+      } else return ans = "no";
+    }   
+  }
+  return ans;
+}
