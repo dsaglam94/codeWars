@@ -1174,3 +1174,29 @@ function flattenAndSort(array) {
     return [];
   }
 }
+
+// diff solution
+function flattenAndSort(array) {
+  return [].concat(...array).sort((a,b) => a - b);
+}
+
+// diff solution
+function flattenAndSort(array) {
+  return array
+    .reduce((result, current) => [...result, ...current],[])
+    .sort((a, b) => a - b)
+    ;
+}
+
+// Your task is to write function factorial.
+function factorial(n){
+  let result = 1;
+  for (let i = 1; i <= n; i++) {
+    
+    result *= i
+    
+  }
+  return result;
+}
+// diff solution
+const factorial = n => n ? factorial(n - 1) * n : 1;
