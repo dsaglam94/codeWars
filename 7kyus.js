@@ -245,7 +245,7 @@
 
 //   sumTwoSmallestNumbers([5, 8, 12, 19, 22])
 
-// //   Take 2 strings s1 and s2 including only letters from ato z. Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.
+// //   Take 2 strings s1 and s2 including only letters from a to z. Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.
 
 // // Examples:
 // // a = "xyaabbbccccdefww"
@@ -1255,3 +1255,10 @@ function arrAdder(arr) {
   }
   return result.join('').trim();
 }
+// 12.04.2022
+
+// Write a small function that returns the values of an array that are not odd.
+
+// All values in the array will be integers. Return the good values in the order they are given.
+
+const noOdds = values => values.filter(num => num % 2 === 0)
