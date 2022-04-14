@@ -1379,3 +1379,13 @@ function add(n) {
     return n+m;
   }
 }
+
+// 14.04.2022
+
+// Find the number with the most digits.
+
+// If two numbers in the argument array have the same number of digits, return the first one in the array.
+
+function findLongest(array){
+  return array.sort((a,b) => (b + '').length - (a + '').length)[0]
+}
