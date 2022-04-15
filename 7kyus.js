@@ -1724,3 +1724,8 @@ function inviteMoreWomen(L) {
     return false;
   }
 }
+
+// smarter solution
+function inviteMoreWomen(L) {
+  return L.reduce((a,b) => a+b) > 0;
+}
