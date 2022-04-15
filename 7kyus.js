@@ -1781,3 +1781,8 @@ function isLeapYear(year) {
   } 
 //   console.log(2000%400)
 }
+
+// diff solution 
+function isLeapYear(year) {
+  return (year % 100 !== 0 && year % 4 === 0) || year % 400 === 0;
+}
