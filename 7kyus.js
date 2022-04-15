@@ -1692,3 +1692,35 @@ var findDigit = function(num, nth){
   return +numArr.reverse()[nth-1]
   
 }
+
+// Arthur needs you to return true if he needs to invite more women or false if he is all set.
+
+// Input/Output
+// [input] integer array L ($a in PHP)
+// An array (guaranteed non-associative in PHP) representing the genders of the attendees, where -1 represents women and 1 represents men.
+
+// 2 <= L.length <= 50
+
+// [output] a boolean value
+
+// true if Arthur need to invite more women, false otherwise.
+
+function inviteMoreWomen(L) {
+
+  let countMen = 0;
+  let countWomen = 0;
+  
+  for (let i = 0; i < L.length; i++) {
+      if ( L[i] === -1 ) {
+        countWomen++;
+      } else {
+        countMen++;
+      }
+  }
+  
+  if ( countWomen < countMen ) {
+    return true;
+  } else {
+    return false;
+  }
+}
