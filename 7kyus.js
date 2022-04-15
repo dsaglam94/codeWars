@@ -1645,3 +1645,21 @@ const greet = function(name) {
 
 const minSum = arr =>
   arr.sort((a, b) => a - b).reduce((pre, val) => pre + val * arr.pop(), 0);
+
+//   Write a function that takes a positive integer n, sums all the cubed values from 1 to n, and returns that sum.
+
+// Assume that the input n will always be a positive integer.
+
+// Examples: (Input --> output)
+
+// 2 --> 9 (sum of the cubes of 1 and 2 is 1 + 8)
+// 3 --> 36 (sum of the cubes of 1, 2, and 3 is 1 + 8 + 27)
+
+  function sumCubes(n){
+    if (n === 1) return 1;
+    let sum = 0;
+    for (let i = 1; i <= n; i++) {
+      sum += Math.pow(i,3);
+    }
+    return sum;
+  } 
