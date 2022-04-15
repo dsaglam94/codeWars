@@ -1637,3 +1637,11 @@ const greet = function(name) {
   let remainingLetters = name.slice(1).toLowerCase();
   return `Hello ${firstLetterCap}${remainingLetters}!`
 };
+
+// Input >> Output Examples
+// minSum({5,4,2,3}) ==> return (22) 
+// Explanation:
+// The minimum sum obtained from summing each two integers product , 5*2 + 3*4 = 22
+
+const minSum = arr =>
+  arr.sort((a, b) => a - b).reduce((pre, val) => pre + val * arr.pop(), 0);
