@@ -1937,7 +1937,16 @@ function balancedNum(number) {
     } else {
       return Number(nStrReversed.join(''))
     }
-    
-    
-  
   }
+
+  // smarter solutions
+  function reverseNumber(n) {
+    let isNegative = n < 0;  
+    let reverseAsString = Math.abs(n).toString().split('').reverse().join('');
+    let result = Number(reverseAsString);
+    
+    return isNegative ? -result : result;
+  }
+
+  // another one
+  reverseNumber = n => (n > 0 ? 1 : -1) * Math.abs(n).toString().split('').reverse().join('')
