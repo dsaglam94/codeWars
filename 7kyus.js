@@ -1868,6 +1868,29 @@ function balancedNum(number) {
 
 // The string may contain any of the 128 ASCII characters. Characters are case-sensitive, e.g. 'a' and 'A' are considered different characters.
 
-
-
   let hasUniqueChars = (str) => new Set(str).size === str.length;
+
+//   menFromBoys ({49 , 818 , -282 , 900 , 928 , 281 , -282 , -1 }) ==> return ({-282 , 818 , 900 , 928 , 281 , 49 , -1})
+// Explanation:
+// Since , {-282 , 818 , 900 , 928 } is the even numbers here , So it came first in ascending order , then the odds in descending order { 281 , 49 , -1 }
+
+// Since , (Duplications are not included when separating) , then you can see only one (-282) was appeared in the final array/list .
+
+  function menFromBoys(arr){
+    let filteredArr = [...new Set(arr)].sort((a,b) => a - b);
+  //   console.log(filteredArr)
+    let sortedArr = [];
+    
+    for ( let i = 0; i < filteredArr.length; i++ ) {
+      if ( filteredArr[i] % 2 === 0 ) {
+        sortedArr.push(filteredArr[i])
+      }
+    }
+    
+    for ( let j = filteredArr.length-1; j >= 0; j-- ) {
+      if ( filteredArr[j] % 2 !== 0 ) {
+        sortedArr.push(filteredArr[j])
+      }
+    }
+    return sortedArr;
+  }
