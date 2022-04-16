@@ -1818,3 +1818,29 @@ function balancedNum(number) {
   let righttotal = rightside.split("").reduce((a,b)=>parseInt(a)+parseInt(b));
   return (lefttotal === righttotal) ? "Balanced" : "Not Balanced";
   }
+
+//   I will give you an integer. Give me back a shape that is as long and wide as the integer. The integer will be a whole number between 1 and 50.
+
+// Example
+// n = 3, so I expect a 3x3 square back just like below as a string:
+
+// +++
+// +++
+// +++
+
+  function generateShape(integer){
+    let sum = '';
+    
+    for ( let i = 1; i <= integer; i++ ){
+      for ( let j = 1; j <= integer; j++ ){
+        sum += '+'
+      }
+      sum += '\n'
+    }
+    return sum.slice(0,-1);
+  }
+
+  // diff solution
+  function generateShape(n){
+    return ("+".repeat(n)+"\n").repeat(n).trim()
+  }
