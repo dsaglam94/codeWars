@@ -1906,3 +1906,38 @@ function balancedNum(number) {
       return stack[value] ? stack[value]++ : stack[value] = 1, stack;
     }, {});
   }
+
+//   Given a number, write a function to output its reverse digits. (e.g. given 123 the answer is 321)
+
+// Numbers should preserve their sign; i.e. a negative number should still be negative when reversed.
+
+// Examples
+//  123 ->  321
+// -456 -> -654
+// 1000 ->    1
+
+  function reverseNumber(n) {
+  
+    let nStr = String(n);
+    let nStrReversed = String(n).split('').reverse();
+    if ( n < 0 ) {
+    let nStr = String(n).split('');
+    let negativeSign = nStr.slice(0,1);
+    let remainingReversed = nStr.slice(1).reverse();
+    let result = negativeSign.concat(remainingReversed)
+    
+      return Number(result.join(''))   
+      
+    } else if (nStr.length < 2) {
+    
+      return n;
+      
+    } else if (nStrReversed[0] === '0') {
+      return Number(nStrReversed[nStrReversed.length -1])
+    } else {
+      return Number(nStrReversed.join(''))
+    }
+    
+    
+  
+  }
