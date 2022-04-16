@@ -1786,3 +1786,35 @@ function isLeapYear(year) {
 function isLeapYear(year) {
   return (year % 100 !== 0 && year % 4 === 0) || year % 400 === 0;
 }
+
+// 16.04.2022
+
+// If the number has an odd number of digits then there is only one middle digit, e.g. 92645 has middle digit 6; otherwise, there are two middle digits , e.g. 1301 has middle digits 3 and 0
+
+// The middle digit(s) should not be considered when determining whether a number is balanced or not, e.g 413023 is a balanced number because the left sum and right sum are both 5.
+
+// Number passed is always Positive .
+
+// Return the result as String
+
+// Input >> Output Examples
+// (balanced-num 7) ==> return "Balanced"
+
+function balancedNum(number) {
+  let numstr = number.toString();
+  let leftside = "";
+  let rightside = "";
+  if (numstr.length/2 < 1 || numstr.length === 2) { 
+    return "Balanced";
+  }
+  if (numstr.length % 2 === 0) {
+    leftside = numstr.slice(0,numstr.length/2-1);
+  } else {
+    leftside = numstr.slice(0,numstr.length/2);
+  }
+  rightside = numstr.slice(numstr.length/2+1);
+  
+  let lefttotal = leftside.split("").reduce((a,b)=>parseInt(a)+parseInt(b));
+  let righttotal = rightside.split("").reduce((a,b)=>parseInt(a)+parseInt(b));
+  return (lefttotal === righttotal) ? "Balanced" : "Not Balanced";
+  }
