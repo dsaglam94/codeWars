@@ -2051,3 +2051,9 @@ function averages(numbers) {
   
   return r.map(number => number / 2)
 }
+
+// diff solution with map
+// v = current value / i = index / a = array
+function averages(numbers) {
+  return numbers ? numbers.map((v, i, a) => (v + a[i + 1]) / 2).slice(0, -1) : [];
+}
