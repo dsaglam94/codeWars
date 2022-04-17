@@ -2010,3 +2010,20 @@ function vowelIndices(word){
   });
   return answer;
 }
+
+// assigned him the problem of adding up all the whole numbers from 1 through a given number n.
+
+// Your task is to help the young Carl Friedrich to solve this problem as quickly as you can; so, he can astonish his teacher and rescue his recreation interval.
+
+// Here's, an example:
+
+// f(n=100) // returns 5050 
+
+function f(n){
+  /* This problem can be solved using the summation function in math "n * (n + 1) / 2"
+   * Number must be greater than 0 and NOT a decimal hence n % 1 must equal to 0
+   * Wrapped up in a beautiful ternary expression you get:
+   */
+    
+  return (n % 1 !== 0 || n <= 0)? false : (((n + 1) * n) / 2) ;
+};
