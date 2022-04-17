@@ -2072,3 +2072,6 @@ function automorphic(n){
   let num = (n * n).toString().slice(-len)
   return (n == num) ? 'Automorphic' : 'Not!!'
 }
+
+// different solution
+const automorphic = n => String(n*n).endsWith(String(n)) ? "Automorphic" : "Not!!" ;
