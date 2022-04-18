@@ -2188,3 +2188,19 @@ function repeats(arr){
   // Array.from(map) returns array of key value pairs ([[k1,v1],[k2,v2],..]) in the order that was inserted. This is similar to Object.entries(obj), but that doesn't guarantee the order.
   
   // Instead of Array.from(map), you can also use the spread operator like [...map].
+
+  var orderedCount1 = function (text) {
+
+    const map = new Map();
+    for ( const k of text.split('') ) {
+      if ( map.has(k) ) {
+        map.set(k, map.get(k) + 1);
+      } else {
+        map.set(k, 1);
+      }
+    }
+   return [...map];
+    
+    
+  }
+    
