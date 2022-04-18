@@ -2142,3 +2142,49 @@ function repeats(arr){
             .reduce((a,b) => a + b, 0);
 
 };
+
+// Count the number of occurrences of each character and return it as a list of tuples in order of appearance. For empty output return an empty list.
+
+// Example:
+
+// orderedCount("abracadabra") == [['a', 5], ['b', 2], ['r', 2], ['c', 1], ['d', 1]]
+
+// const orderedCount = s =>
+//   Array.from(s.split('').reduce((m, k) => m.set(k, m.has(k) ? m.get(k) + 1 : 1), new Map()));
+
+  // Explanation for the code above
+
+  const orderedCount = s => {
+    const map = s.split('').reduce((m, k) => m.set(k, m.has(k) ? m.get(k) + 1 : 1), new Map());
+    return Array.from(map);
+  };
+
+  // The first part creates a Map that keeps track of the count of each character.
+  
+  const map1 = s
+    .split('')                      // string to array of characters
+    .reduce((m, k) =>
+      m.set(
+        k,                          // update or set the count
+        m.has(k) ? m.get(k) + 1 : 1 // increment the value or set to 1
+      ),
+      new Map()                     // create a new Map `m`
+    );
+
+  // without reduce, this can be written as the following:
+  
+  const map2 = new Map();
+  for (const k of s.split('')) {
+    map.set(k, map.has(k) ? map.get(k) + 1 : 1);
+    /* // or
+    if (map.has(k)) {
+      map.set(k, map.get(k) + 1); // increment
+    } else {
+      map.set(k, 1);              // first one
+    }
+    */
+  }
+  
+  // Array.from(map) returns array of key value pairs ([[k1,v1],[k2,v2],..]) in the order that was inserted. This is similar to Object.entries(obj), but that doesn't guarantee the order.
+  
+  // Instead of Array.from(map), you can also use the spread operator like [...map].
