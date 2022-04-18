@@ -2127,3 +2127,8 @@ function maxDiff(list) {
   
   return sortedArr[sortedArr.length-1] - sortedArr[0]
 };
+
+// diff solution
+function maxDiff(list) {
+  return list.length ? Math.max(...list) - Math.min(...list) : 0;
+};
