@@ -2323,3 +2323,56 @@ const myLanguages = results => Object.entries(results)
 
     return s == parseFloat(s)
 }
+
+// Sort the Gift Code
+// Write a function called sortGiftCode/sort_gift_code/SortGiftCode that accepts a string containing up to 26 unique alphabetical characters, and returns a string containing the same characters in alphabetical order.
+
+// Examples (Input -- => Output):
+// "abcdef"                      -- => "abcdef"
+// "pqksuvy"                     -- => "kpqsuvy"
+// "zyxwvutsrqponmlkjihgfedcba"  -- => "abcdefghijklmnopqrstuvwxyz"
+
+function sortGiftCode(code){
+  return code.split('').sort().join('');
+}
+
+// Given a string made up of letters a, b, and/or c, switch the position of letters a and b (change a to b and vice versa). Leave any incidence of c untouched.
+
+// Example:
+
+// 'acb' --> 'bca'
+// 'aabacbaa' --> 'bbabcabb'
+
+function switcheroo(x){
+  return x.split('').map(letter => {
+    if (letter === 'a') {
+      return letter = 'b';
+    } else if (letter === 'b') {
+      return letter = 'a';
+    } else {
+      return letter;
+    }
+  }).join('');
+}
+
+// Complete the function that takes a sequence of numbers as single parameter. Your function must return the sum of the even values of this sequence.
+
+// Only numbers without decimals like 4 or 4.0 can be even.
+
+// The input is a sequence of numbers: integers and/or floats.
+
+// Examples
+// [4, 3, 1, 2, 5, 10, 6, 7, 9, 8]  -->  30   # because 4 + 2 + 10 + 6 + 8 = 30
+// []                               -->  0
+
+function sumEvenNumbers(input) {
+  let res = 0;
+  
+  for (let i = 0; i < input.length; i++) {
+    if ( input[i] % 2 === 0 ) {
+      res += input[i];
+    }
+  }
+  
+  return res;
+}
