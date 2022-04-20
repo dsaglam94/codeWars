@@ -2393,3 +2393,10 @@ sumEvenNumbers = input => input.filter(x => x % 2 == 0).reduce((x, y) => x + y, 
 function cookingTime(eggs) {
   return 5 * Math.ceil(eggs / 8);
 }
+
+// Write function alternateCase which switch every letter in string from upper to 
+// lower and from lower to upper. E.g: Hello World -> hELLO wORLD
+
+function alternateCase(s) {
+  return [...s].map(letter => letter.toUpperCase() === letter ? letter.toLowerCase() : letter.toUpperCase()).join('')
+}
