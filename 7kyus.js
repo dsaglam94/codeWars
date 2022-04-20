@@ -2466,3 +2466,6 @@ function isRubyComing(list) {
 // (the only-positive or only-negative integer may appear more than once)
 
 const solve = arr => [...new Set(arr)].reduce((a, c) => a + c);
+
+// different one
+const solve = array => array.find(value => !array.includes(-value))
