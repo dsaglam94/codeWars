@@ -2531,3 +2531,24 @@ function squares(x, n) {
   }
   return ret;
 }
+
+// Number passed is always Positive .
+// Return the result as String
+// Input >> Output Examples
+// disariumNumber(89) ==> return "Disarium !!"
+// Explanation:
+// Since , 81 + 92 = 89 , thus output is "Disarium !!"
+// disariumNumber(564) ==> return "Not !!"
+// Explanation:
+// Since , 51 + 62 + 43 = 105 != 564 , thus output is "Not !!"
+
+function disariumNumber(n){
+  let numArr = String(n).split('')
+  let sum = 0;
+  
+  for (let i = 0; i < numArr.length; i++) {
+    sum += Math.pow(numArr[i], (i+1))
+  }
+  
+  return sum === n ? 'Disarium !!' : 'Not !!';
+}
