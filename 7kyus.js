@@ -2552,3 +2552,41 @@ function disariumNumber(n){
   
   return sum === n ? 'Disarium !!' : 'Not !!';
 }
+
+// Number passed is always Positive .
+
+// Return the result as String .
+
+// The difference between ‘9’ and ‘0’ is not considered as 1 .
+
+// All single digit numbers are considered as Jumping numbers.
+
+// Input >> Output Examples
+// jumpingNumber(9) ==> return "Jumping!!"
+// Explanation:
+// It's single-digit number
+// jumpingNumber(79) ==> return "Not!!"
+// Explanation:
+// Adjacent digits don't differ by 1
+// jumpingNumber(23) ==> return "Jumping!!"
+
+function jumpingNumber(n){
+  
+  let numArr = String(n).split('');
+  let bool = [];
+  
+  if ( numArr.length <= 1 ) {
+    return 'Jumping!!';
+  }
+
+  for ( let i =0; i < numArr.length-1; i++ ) {
+    if ( numArr[i+1] - numArr[i] === 1 ) {
+        bool.push(true)
+    } else if (numArr[i] - numArr[i+1] === 1) {
+      bool.push(true)
+    } else {
+      bool.push(false)
+    }
+  }
+  return bool.every(el =>  el === true) ? 'Jumping!!' : 'Not!!'
+}
