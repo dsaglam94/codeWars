@@ -2590,3 +2590,17 @@ function jumpingNumber(n){
   }
   return bool.every(el =>  el === true) ? 'Jumping!!' : 'Not!!'
 }
+
+// dif solution
+const jumpingNumber = n => n.toString().split``.every((e, i, a) => i < 1 || Math.abs(e - a[i - 1]) === 1) ? 'Jumping!!' : 'Not!!';
+
+// diff solution refactored
+function jumpingNumber(n){
+  let arr = n.toString().split('')
+  for(i=0; i < arr.length-1; i++){
+    if(Math.abs(arr[i] - arr[i+1]) !== 1 ){
+      return 'Not!!'
+    }
+  }
+  return 'Jumping!!'
+}
