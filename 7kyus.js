@@ -2470,4 +2470,31 @@ const solve = arr => [...new Set(arr)].reduce((a, c) => a + c);
 // different one
 const solve = array => array.find(value => !array.includes(-value))
 
-// 21.04.2022
+// 22.04.2022
+
+// Strong number is the number that the sum of the factorial of its digits is equal to number itself.
+
+// For example: 145, since
+// 1! + 4! + 5! = 1 + 24 + 120 = 145
+// So, 145 is a Strong number.
+
+function strong(n) {
+  let sum = 0;
+  let arr = String(n).split('');
+  
+  
+  function factorial(n) {
+    if ( n <= 1) {
+      return 1;
+    } else {
+      return n * factorial(n - 1);
+    }
+  }
+  
+  arr.forEach(num => {
+    sum += factorial(num);
+  });
+  
+  return n == sum ? "STRONG!!!!" : "Not Strong !!"; 
+  
+}
