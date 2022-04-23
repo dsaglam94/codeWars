@@ -2723,3 +2723,8 @@ let dummyArr = ['rottenBanana', 'apple', 'orange', 'rottenApple']
     
     return (nums.reduce((a,b) => a + b,0)) - (numsStr.reduce((a,b) => Number(a) + Number(b),0 ));
   }
+
+  // diff
+  function divCon(x){
+    return x.reduce((acc, cur) => typeof cur === 'number'? acc + cur : acc - Number(cur),0)
+  }
