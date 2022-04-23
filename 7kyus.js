@@ -2646,3 +2646,41 @@ function sevenAte9(str){
   }
   return res;
 }
+
+// Input >> Output Examples
+// tidyNumber (12) ==> return (true)
+// Explanation:
+// The number's digits { 1 , 2 } are in non-Decreasing Order (i.e) 1 <= 2 .
+
+// tidyNumber (32) ==> return (false)
+// Explanation:
+// The Number's Digits { 3, 2} are not in non-Decreasing Order (i.e) 3 > 2 .
+
+function tidyNumber(n){
+  let myArr = [...new Set(String(n).split(''))];
+
+  let boolArr = [];
+  for ( let i = 0; i < myArr.length-1; i++ ){
+    if ( myArr[i] < myArr[i+1]) {
+        boolArr.push(true);
+    } else {
+        boolArr.push(false);
+    }
+  }
+  return boolArr.every(bool => bool === true);
+}
+
+// better shorter solution
+const tidyNumber = n => {
+  let s = n.toString();
+  for (let i = 0; i < s.length-1; i++) {
+    if (s[i] > s[i+1]) return false;
+  }
+  return true;
+}
+
+// diff 
+function tidyNumber(n){
+  let arr = [...n.toString()];
+  return arr.every((el, ind, arr) => !ind || el >= arr[ind - 1]);
+}
