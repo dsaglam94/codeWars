@@ -2728,3 +2728,24 @@ let dummyArr = ['rottenBanana', 'apple', 'orange', 'rottenApple']
   function divCon(x){
     return x.reduce((acc, cur) => typeof cur === 'number'? acc + cur : acc - Number(cur),0)
   }
+
+//   Array/list size is at least 3 .
+
+// Array/list's numbers could be a mixture of positives , negatives and zeros .
+
+// Repetition in array/list's numbers could occur , so don't Remove Duplications .
+
+// Input >> Output Examples
+// nthSmallest({3,1,2} ,2) ==> return (2) 
+// Explanation:
+// Since the passed number is 2 , Then * the second smallest element in this array/list is 2*
+
+// nthSmallest({15,20,7,10,4,3} ,3) ==> return (7) 
+// Explanation:
+// Since the passed number is 3 , Then * the third smallest element in this array/list is 7*
+
+  function nthSmallest(arr, pos){
+    arr = arr.sort((a,b) => a - b);
+    
+    return arr[pos-1];
+  }
