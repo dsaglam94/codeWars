@@ -2625,3 +2625,24 @@ function getFirstPython(list) {
   const dev = list.find(x => x.language === "Python")
   return dev ? `${dev.firstName}, ${dev.country}` : "There will be no Python developers"
 }
+
+// 23.04.2022
+
+// Write a function that removes every lone 9 that is inbetween 7s.
+
+// "79712312" --> "7712312"
+// "79797"    --> "777"
+
+function sevenAte9(str){
+  let myArr = str.split('');
+  let res = '';
+  for ( let i = 0; i < myArr.length; i++ ){
+    if ( Number(myArr[i]) === 9 && Number(myArr[i-1]) === 7 && Number(myArr[i+1]) === 7 ) {
+      myArr[i] = '';
+     res += myArr[i]; 
+    } else {
+      res += myArr[i];
+    }
+  }
+  return res;
+}
