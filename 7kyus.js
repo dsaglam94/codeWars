@@ -2710,3 +2710,16 @@ let dummyArr = ['rottenBanana', 'apple', 'orange', 'rottenApple']
   })
 
   console.log(myArr)
+
+//   Given a mixed array of number and string representations of integers, add up the string integers and subtract this from the total of the non-string integers.
+
+// Return as a number.
+
+  function divCon(x){
+    const isNum = int => typeof(int) === 'number';
+  
+    let nums = x.filter(num => isNum(num));
+    let numsStr = x.filter(num => !isNum(num));
+    
+    return (nums.reduce((a,b) => a + b,0)) - (numsStr.reduce((a,b) => Number(a) + Number(b),0 ));
+  }
