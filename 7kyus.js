@@ -2808,4 +2808,7 @@ function hydrate(s) {
   } else {
         return `${filteredStr} glasses of water`
   }
+  // or
+  // return answer > 1 ? `${answer} glasses of water`: '1 glass of water'
+
 }
