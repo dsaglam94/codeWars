@@ -2849,3 +2849,24 @@ var filterLucky=x=>{
   let myArr = x.map(String).filter(num => num.includes(7))
   return myArr.map(Number);
 }
+// just use filter cuz it doesnt mutate the arr (no need to parse it)
+const filterLucky = xs => xs.filter(x => x.toString().includes('7'));
+
+// Input >> Output Examples
+// maxGap ({13,10,5,2,9}) ==> return (4)
+// Explanation:
+// The Maximum Gap after sorting the array is 4 , The difference between 9 - 5 = 4 .
+// maxGap ({-3,-27,-4,-2}) ==> return (23)
+// Explanation:
+// The Maximum Gap after sorting the array is 23 , The difference between |-4- (-27) | = 23 .
+
+// Note : Regardless the sign of negativity .
+
+function maxGap (numbers){
+  numbers = numbers.sort((a,b) => a - b);
+  let diff = numbers.map((number,index) => number - numbers[index+1])
+  diff.pop();
+  diff = diff.map(num => Math.abs(num))
+  return Math.max(...diff)
+
+}
