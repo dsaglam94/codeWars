@@ -2790,3 +2790,22 @@ let dummyArr = ['rottenBanana', 'apple', 'orange', 'rottenApple']
  function isSameLanguage(list) {
   return list.every(e => e.language === list[0].language);
 }
+
+// 25.04.2022
+// Examples
+// "1 beer"  -->  "1 glass of water"
+// because you drank one standard drink
+
+// "1 shot, 5 beers, 2 shots, 1 glass of wine, 1 beer"  -->  "10 glasses of water"
+// because you drank ten standard drinks
+
+function hydrate(s) {
+  let filteredStr = s.split('')
+                      .filter(x => !isNaN(Number(x)))
+                      .reduce((a,b) => Number(a) + Number(b) , 0)
+  if ( filteredStr === 1 ) {
+        return `${filteredStr} glass of water`
+  } else {
+        return `${filteredStr} glasses of water`
+  }
+}
