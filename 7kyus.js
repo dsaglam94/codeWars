@@ -2942,3 +2942,10 @@ function lastSurvivor(string, indices) {
   for (const i of indices) arr.splice(i, 1)
   return arr[0];
 }
+
+// diff solution
+function lastSurvivor(letters, coords) {
+  const arr = [...letters]
+  coords.map((el, i, ar) => arr.splice(el, 1) )
+  return arr[0]
+}
