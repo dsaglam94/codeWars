@@ -2963,3 +2963,16 @@ function lastSurvivor(letters, coords) {
 function getAverageAge(list) {
   return Math.round(list.reduce((sum,obj) => sum + obj.age, 0) / list.length);
 }
+
+// diff solution
+function getAverageAge(list) {
+  let count = 0;
+  let sum = 0;
+  
+  for (let dev of list) {
+    count++;
+    sum += dev.age;
+  }
+  
+  return Math.round( sum / count );
+}
