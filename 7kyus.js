@@ -3164,3 +3164,12 @@ function pattern(n){
     }
   return output.slice(0,-1);
  }
+
+//  diff solution
+const pattern = n => {
+  let out=[];
+  for (let i = 1; i <= n; i++){
+    out.push(i.toString().repeat(i))
+  }
+  return out.join('\n');
+ }
