@@ -3012,3 +3012,9 @@ function countChar(string, char) {
   }
   return count;
 }
+
+// diff solution
+function countChar(s, c) {
+  c = c.toLowerCase();
+  return s.toLowerCase().split('').filter(x => x == c).length;
+}
