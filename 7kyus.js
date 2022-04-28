@@ -3263,3 +3263,9 @@ function maxTriSum(numbers){
                                   .slice(-3)
                                   .reduce((x,y) => x + y,0);
 }
+
+// diff one
+const maxTriSum = numbers => {
+  const [a,b,c] = [...new Set([...numbers])].sort((a,b)=>b-a)
+  return a+b+c
+}
