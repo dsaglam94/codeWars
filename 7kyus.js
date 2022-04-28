@@ -3269,3 +3269,35 @@ const maxTriSum = numbers => {
   const [a,b,c] = [...new Set([...numbers])].sort((a,b)=>b-a)
   return a+b+c
 }
+
+// Input >> Output Examples
+// arrayLeaders ({1, 2, 3, 4, 0}) ==> return {4}
+// Explanation:
+// 4 is greater than the sum all the elements to its right side
+
+// Note : The last element 0 is equal to right sum of its elements (abstract zero).
+
+// arrayLeaders ({16, 17, 4, 3, 5, 2}) ==> return {17, 5, 2}
+// Explanation:
+// 17 is greater than the sum all the elements to its right side
+
+// 5 is greater than the sum all the elements to its right side
+
+// Note : The last element 2 is greater than the sum of its right elements (abstract zero).
+
+function arrayLeaders(numbers){
+  let output = [];
+  
+  for (let i = 0; i < numbers.length; i++) {
+  let sum = 0;
+    
+    for (let j = i+1; j < numbers.length; j++) {
+        sum += numbers[j]
+    }
+    if ( numbers[i] > sum ) {
+      output.push(numbers[i]);
+    }
+  }
+  
+  return output;
+}
