@@ -3336,3 +3336,17 @@ const arrayLeaders = numbers => {
     let score = names.reduce((s,v) => s + meet[v], 0) + meet[boss]
     return score / names.length > 5 ? 'Nice Work Champ!' : 'Get Out Now!'
   }
+
+//  Write a function reverse which reverses a list (or in clojure's case, any list-like data structure)
+
+// (the dedicated builtin(s) functionalities are deactivated)
+
+  reverse = function(array) {
+    let reversed = [];
+    
+    for (let i = array.length-1; i >= 0; i--) {
+        reversed.push(array[i]);
+    }
+    
+    return reversed;
+  }
