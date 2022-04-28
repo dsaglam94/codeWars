@@ -3365,6 +3365,17 @@ const arrayLeaders = numbers => {
     
   }
 
+// The number passed will be positive (N > 0) .
+
+// All single-digit numbers within the interval [1:5] are considered as special number.
+
+// Input >> Output Examples
+// specialNumber(2) ==> return "Special!!"
+// Explanation:
+// It's a single-digit number within the interval [1:5] .
+
+// specialNumber(9) ==> return "NOT!!"
+
   function specialNumber(n){
     return n = n.toString().split('').every(num  => num < 6) ? 'Special!!' : 'NOT!!'; 
   }
