@@ -3305,3 +3305,34 @@ function arrayLeaders(numbers){
 // diff and smarter solution
 const arrayLeaders = numbers => {
   return numbers.filter((a, i) => numbers.slice(i + 1).reduce((sum, b) => sum + b, 0) < a)}
+
+//   Given an object (meet) containing team member names as keys, and their happiness rating out of 10 as the value, you need to assess the overall happiness rating of the group. If <= 5, return 'Get Out Now!'. Else return 'Nice Work Champ!'.
+
+// Happiness rating will be total score / number of people in the room.
+
+// Note that your boss is in the room (boss), their score is worth double it's face value (but they are still just one person!).
+
+  function outed(meet, boss){
+    let sum = 0;
+    let count = 0;
+    for ( k in meet) {
+      if ( k === boss ) {
+            meet[k] *= 2;
+            sum += meet[k];
+            count++;
+      } else {
+        sum += meet[k];
+        count++;
+      }
+    }
+      
+    return sum / count > 5 ? 'Nice Work Champ!' : 'Get Out Now!'
+  
+  }
+
+  // diff solution
+  function outed(meet, boss) {
+    let names = Object.keys(meet)
+    let score = names.reduce((s,v) => s + meet[v], 0) + meet[boss]
+    return score / names.length > 5 ? 'Nice Work Champ!' : 'Get Out Now!'
+  }
