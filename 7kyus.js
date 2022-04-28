@@ -3364,3 +3364,7 @@ const arrayLeaders = numbers => {
     return numbers.reduce((x,y) => x * y, 1)
     
   }
+
+  function specialNumber(n){
+    return n = n.toString().split('').every(num  => num < 6) ? 'Special!!' : 'NOT!!'; 
+  }
