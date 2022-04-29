@@ -3483,3 +3483,17 @@ const findAll = (nums, find) => nums
     }
     return output;
    }
+
+//    Input >> Output Examples:
+// nextHappyYear (7712) ==> return (7801)
+// Explanation:
+// As the Next closest year with only distinct digits is 7801 .
+
+// nextHappyYear (8989) ==> return (9012)
+// Explanation:
+// As the Next closest year with only distinct digits is 9012 .
+
+   function nextHappyYear(a){
+    while(new Set([...++a+'']).size<4);
+    return a;
+  }
