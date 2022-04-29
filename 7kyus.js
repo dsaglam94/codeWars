@@ -3411,3 +3411,9 @@ findAll([6, 9, 3, 4, 3, 82, 11], 3) => [2, 4]
     
     return output;
   }
+
+//  diff solution
+const findAll = (array, n) => {
+  let a = []; array.forEach((v,i)=>{if(v===n){a.push(i)}})
+  return a
+}
