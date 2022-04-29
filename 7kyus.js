@@ -3417,3 +3417,10 @@ const findAll = (array, n) => {
   let a = []; array.forEach((v,i)=>{if(v===n){a.push(i)}})
   return a
 }
+
+// Diff one
+const findAll = (arr, n) => arr.map((el, i) => el === n ? i : 'str').filter(e => e !== 'str')
+
+// Another solution
+const findAll = (nums, find) => nums
+  .reduce((acc, num, index) => num === find ? [...acc, index] : acc, [])
