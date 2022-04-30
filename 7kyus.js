@@ -3527,7 +3527,7 @@ const findAll = (nums, find) => nums
   function makeBackronym(string){
     return string.toUpperCase().split('').map(s => dict[s]).join(' ');
   }
-  
+
   // Complete the function that takes one argument, a list of words, and returns the length of the longest word in the list.
 
   // For example:
@@ -3537,3 +3537,8 @@ const findAll = (nums, find) => nums
   function longest(words) {
     return words.sort((a,b) => b.length - a.length)[0].length
   }
+
+  // Diff solution
+  const longest = words => words.reduce((a, word) => Math.max(a, word.length), 0);
+  // Diff solution
+  const longest = words => Math.max(...words.map(x => x.length))
