@@ -3561,3 +3561,57 @@ const findAll = (nums, find) => nums
     // return [...new Set(lst)].reduce((a,b)=>a+b,null);
     
   }
+
+//   Complete the function to find the count of the most frequent item of an array. You can assume that input is an array of integers. For an empty array return 0
+
+// Example
+// input array: [3, -1, -1, -1, 2, 3, -1, 3, -1, 2, 4, 9, 3]
+// ouptut: 5 
+
+  function mostFrequentItemCount(c) {
+    return c.length ? Math.max(...c.map(x=>c.filter(y=>y==x).length)) : 0;
+  }
+
+// Different solution with more explanation
+  function mostFrequentItemCount(collection) {
+    var count = 0,
+    frequentCount = 0;
+//At the start of the process this FOR loop starts at index 0 (var i)
+   
+   for (var i = 0; i < collection.length; i++) {
+
+//This FOR loop also starts at index 0 (var j)
+        for (var j = 0; j < collection.length; j++) {
+
+//Var i remains on index 0 as var j cycles through the entire array comparing each number in the array to that first index (var i).
+//if var i and var j are ever the same count gets incremented.
+            
+            if (collection[i] == collection[j]) { 
+                count++; 
+            }
+//IF after cycling through the array a new more frequent number is found, that count is stored in frequentCount.
+            if (frequentCount < count) {
+                frequentCount = count; 
+            }
+
+        }
+//Count then gets reset. Process starts again
+        count = 0;  
+        
+    }
+//A final count gets returned from function
+    return frequentCount; 
+}
+
+// Diff one
+function mostFrequentItemCount(collection) {
+  if (collection.length === 0) return 0;
+  
+  var count = Object.create(null);
+  
+  collection.forEach( item => {
+    count[item] = (count[item] || 0) + 1;
+  });
+  
+  return Math.max(...Object.values(count));
+}
