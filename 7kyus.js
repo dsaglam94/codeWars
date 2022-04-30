@@ -3557,5 +3557,7 @@ const findAll = (nums, find) => nums
 
   function uniqueSum(list){
     return [...new Set(list)].reduce((acc,curr) => acc + curr, 0 ? acc : null);
+
+    // return [...new Set(lst)].reduce((a,b)=>a+b,null);
     
   }
