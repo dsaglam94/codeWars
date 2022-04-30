@@ -3514,3 +3514,16 @@ const findAll = (nums, find) => nums
 
   // diff solution
   Array.prototype.remove_ = (x, y) => x.filter(e => !y.includes(e));
+
+  // 30.04.2022
+  // The keys of the preloaded dictionary are uppercase letters A-Z and the values are predetermined words, for example:
+
+  // dict["P"] == "perfect"
+  // Examples
+  // "dgm" ==> "disturbing gregarious mustache"
+  
+  // "lkj" ==> "literal klingon joke"
+
+  function makeBackronym(string){
+    return string.toUpperCase().split('').map(s => dict[s]).join(' ');
+  }
