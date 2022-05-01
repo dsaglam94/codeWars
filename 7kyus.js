@@ -2400,3 +2400,1514 @@ function cookingTime(eggs) {
 function alternateCase(s) {
   return [...s].map(letter => letter.toUpperCase() === letter ? letter.toLowerCase() : letter.toUpperCase()).join('')
 }
+
+// The code provided is supposed return a person's Full Name given their first and last names.
+
+// But it's not working properly.
+
+// Notes
+// The first and/or last names are never null, but may be empty.
+
+// Task
+// Fix the bug so we can all go home early.
+
+
+class Dinglemouse{
+
+  constructor( firstName, lastName ){
+    
+  this.firstName = firstName;
+  this.lastName = lastName;
+    
+  }
+  
+  getFullName(){
+    return (this.firstName+" "+this.lastName).trim()
+  }
+  
+}
+
+// true if at least one Ruby developer has signed up; or
+// false if there will be no Ruby developers.
+// For example, given the following input array:
+
+// var list1 = [
+//   { firstName: 'Emma', lastName: 'Z.', country: 'Netherlands', continent: 'Europe', age: 29, language: 'Ruby' },
+//   { firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'Javascript' },
+//   { firstName: 'Jayden', lastName: 'P.', country: 'Jamaica', continent: 'Americas', age: 42, language: 'JavaScript' }
+// ];
+// your function should return true.
+
+function isRubyComing(list) {
+
+  return list.filter(el => el.language === 'Ruby').length > 0 ? true : false;
+  
+}
+
+// diff solution
+function isRubyComing(list) {
+  return list.some(e => e.language === 'Ruby');
+}
+
+// In this Kata, you will be given an array of integers whose elements have both a negative and a positive value, except for one integer that is either only negative or only positive. Your task will be to find that integer.
+
+// Examples:
+
+// [1, -1, 2, -2, 3] => 3
+
+// 3 has no matching negative appearance
+
+// [-3, 1, 2, 3, -1, -4, -2] => -4
+
+// -4 has no matching positive appearance
+
+// [1, -1, 2, -2, 3, 3] => 3
+
+// (the only-positive or only-negative integer may appear more than once)
+
+const solve = arr => [...new Set(arr)].reduce((a, c) => a + c);
+
+// different one
+const solve = array => array.find(value => !array.includes(-value))
+
+// 22.04.2022
+
+// Strong number is the number that the sum of the factorial of its digits is equal to number itself.
+
+// For example: 145, since
+// 1! + 4! + 5! = 1 + 24 + 120 = 145
+// So, 145 is a Strong number.
+
+function strong(n) {
+  let sum = 0;
+  let arr = String(n).split('');
+  
+  
+  function factorial(n) {
+    if ( n <= 1) {
+      return 1;
+    } else {
+      return n * factorial(n - 1);
+    }
+  }
+  
+  arr.forEach(num => {
+    sum += factorial(num);
+  });
+  
+  return n == sum ? "STRONG!!!!" : "Not Strong !!"; 
+  
+}
+
+// To complete this Kata you need to make a function multiplyAll/multiply_all which takes an array of integers as an argument. This function must return another function, which takes a single integer as an argument and returns a new array.
+
+// The returned array should consist of each of the elements from the first array multiplied by the integer.
+
+// Example:
+
+// multiplyAll([1, 2, 3])(2) = [2, 4, 6];
+// You must not mutate the original array.
+
+
+const multiplyAll = arr => n => arr.map(x => n * x);
+// diff one
+function multiplyAll(arr) {
+  return function(n) {
+    return arr.map(x => x * n);
+  }
+}
+
+// Complete the function that returns an array of length n, starting with the given number x and the squares of the previous number. If n is negative or zero, return an empty array/list.
+
+// Examples
+// 2, 5  -->  [2, 4, 16, 256, 65536]
+// 3, 3  -->  [3, 9, 81]
+
+function squares(x, n) {
+  var ret = [];
+  for(var i=0; i<n; i++){
+    ret.push(x);
+    x*= x;
+  }
+  return ret;
+}
+
+// Number passed is always Positive .
+// Return the result as String
+// Input >> Output Examples
+// disariumNumber(89) ==> return "Disarium !!"
+// Explanation:
+// Since , 81 + 92 = 89 , thus output is "Disarium !!"
+// disariumNumber(564) ==> return "Not !!"
+// Explanation:
+// Since , 51 + 62 + 43 = 105 != 564 , thus output is "Not !!"
+
+function disariumNumber(n){
+  let numArr = String(n).split('')
+  let sum = 0;
+  
+  for (let i = 0; i < numArr.length; i++) {
+    sum += Math.pow(numArr[i], (i+1))
+  }
+  
+  return sum === n ? 'Disarium !!' : 'Not !!';
+}
+
+// Number passed is always Positive .
+
+// Return the result as String .
+
+// The difference between ‘9’ and ‘0’ is not considered as 1 .
+
+// All single digit numbers are considered as Jumping numbers.
+
+// Input >> Output Examples
+// jumpingNumber(9) ==> return "Jumping!!"
+// Explanation:
+// It's single-digit number
+// jumpingNumber(79) ==> return "Not!!"
+// Explanation:
+// Adjacent digits don't differ by 1
+// jumpingNumber(23) ==> return "Jumping!!"
+
+function jumpingNumber(n){
+  
+  let numArr = String(n).split('');
+  let bool = [];
+  
+  if ( numArr.length <= 1 ) {
+    return 'Jumping!!';
+  }
+
+  for ( let i =0; i < numArr.length-1; i++ ) {
+    if ( numArr[i+1] - numArr[i] === 1 ) {
+        bool.push(true)
+    } else if (numArr[i] - numArr[i+1] === 1) {
+      bool.push(true)
+    } else {
+      bool.push(false)
+    }
+  }
+  return bool.every(el =>  el === true) ? 'Jumping!!' : 'Not!!'
+}
+
+// dif solution
+const jumpingNumber = n => n.toString().split``.every((e, i, a) => i < 1 || Math.abs(e - a[i - 1]) === 1) ? 'Jumping!!' : 'Not!!';
+
+// diff solution refactored
+function jumpingNumber(n){
+  let arr = n.toString().split('')
+  for(i=0; i < arr.length-1; i++){
+    if(Math.abs(arr[i] - arr[i+1]) !== 1 ){
+      return 'Not!!'
+    }
+  }
+  return 'Jumping!!'
+}
+
+// You will be given an array of objects (associative arrays in PHP) representing data about developers who have signed up to attend the next coding meetup that you are organising. The list is ordered according to who signed up first.
+
+// Your task is to return one of the following strings:
+
+// < firstName here >, < country here > of the first Python developer who has signed up; or
+// There will be no Python developers if no Python developer has signed up.
+// For example, given the following input array:
+
+// var list1 = [
+//   { firstName: 'Mark', lastName: 'G.', country: 'Scotland', continent: 'Europe', age: 22, language: 'JavaScript' },
+//   { firstName: 'Victoria', lastName: 'T.', country: 'Puerto Rico', continent: 'Americas', age: 30, language: 'Python' },
+//   { firstName: 'Emma', lastName: 'B.', country: 'Norway', continent: 'Europe', age: 19, language: 'Clojure' }
+// ];
+
+// your function should return Victoria, Puerto Rico.
+
+function getFirstPython(list) {
+  const dev = list.find(x => x.language === "Python")
+  return dev ? `${dev.firstName}, ${dev.country}` : "There will be no Python developers"
+}
+
+// 23.04.2022
+
+// Write a function that removes every lone 9 that is inbetween 7s.
+
+// "79712312" --> "7712312"
+// "79797"    --> "777"
+
+function sevenAte9(str){
+  let myArr = str.split('');
+  let res = '';
+  for ( let i = 0; i < myArr.length; i++ ){
+    if ( Number(myArr[i]) === 9 && Number(myArr[i-1]) === 7 && Number(myArr[i+1]) === 7 ) {
+      myArr[i] = '';
+     res += myArr[i]; 
+    } else {
+      res += myArr[i];
+    }
+  }
+  return res;
+}
+
+// Input >> Output Examples
+// tidyNumber (12) ==> return (true)
+// Explanation:
+// The number's digits { 1 , 2 } are in non-Decreasing Order (i.e) 1 <= 2 .
+
+// tidyNumber (32) ==> return (false)
+// Explanation:
+// The Number's Digits { 3, 2} are not in non-Decreasing Order (i.e) 3 > 2 .
+
+function tidyNumber(n){
+  let myArr = [...new Set(String(n).split(''))];
+
+  let boolArr = [];
+  for ( let i = 0; i < myArr.length-1; i++ ){
+    if ( myArr[i] < myArr[i+1]) {
+        boolArr.push(true);
+    } else {
+        boolArr.push(false);
+    }
+  }
+  return boolArr.every(bool => bool === true);
+}
+
+// better shorter solution
+const tidyNumber = n => {
+  let s = n.toString();
+  for (let i = 0; i < s.length-1; i++) {
+    if (s[i] > s[i+1]) return false;
+  }
+  return true;
+}
+
+// diff 
+function tidyNumber(n){
+  let arr = [...n.toString()];
+  return arr.every((el, ind, arr) => !ind || el >= arr[ind - 1]);
+}
+
+// Our fruit guy has a bag of fruit (represented as an array of strings) where some fruits are rotten. He wants to replace all the rotten pieces of fruit with fresh ones. For example, given ["apple","rottenBanana","apple"] the replaced array should be ["apple","banana","apple"]. Your task is to implement a method that accepts an array of strings containing fruits should returns an array of strings where all the rotten fruits are replaced by good ones.
+
+// Notes
+// If the array is null/nil/None or empty you should return empty array ([]).
+// The rotten fruit name will be in this camelcase (rottenFruit).
+// The returned array should be in lowercase.
+
+function removeRotten(arr){
+  return arr ? arr.map(x=>x.replace('rotten', '').toLowerCase()) : [] ;
+}
+
+// my solution but didn't work on the page
+let dummyArr = ['rottenBanana', 'apple', 'orange', 'rottenApple']
+
+// // if (dummyArr === []) { return [] }
+
+  let myArr = dummyArr.map(fruit => {
+    if ( fruit.includes('rotten') ) {
+      return fruit.slice(6).toLowerCase()
+    } else {
+      return fruit
+    }
+  })
+
+  console.log(myArr)
+
+//   Given a mixed array of number and string representations of integers, add up the string integers and subtract this from the total of the non-string integers.
+
+// Return as a number.
+
+  function divCon(x){
+    const isNum = int => typeof(int) === 'number';
+  
+    let nums = x.filter(num => isNum(num));
+    let numsStr = x.filter(num => !isNum(num));
+    
+    return (nums.reduce((a,b) => a + b,0)) - (numsStr.reduce((a,b) => Number(a) + Number(b),0 ));
+  }
+
+  // diff
+  function divCon(x){
+    return x.reduce((acc, cur) => typeof cur === 'number'? acc + cur : acc - Number(cur),0)
+  }
+
+//   Array/list size is at least 3 .
+
+// Array/list's numbers could be a mixture of positives , negatives and zeros .
+
+// Repetition in array/list's numbers could occur , so don't Remove Duplications .
+
+// Input >> Output Examples
+// nthSmallest({3,1,2} ,2) ==> return (2) 
+// Explanation:
+// Since the passed number is 2 , Then * the second smallest element in this array/list is 2*
+
+// nthSmallest({15,20,7,10,4,3} ,3) ==> return (7) 
+// Explanation:
+// Since the passed number is 3 , Then * the third smallest element in this array/list is 7*
+
+  function nthSmallest(arr, pos){
+    arr = arr.sort((a,b) => a - b);
+    
+    return arr[pos-1];
+  }
+
+//   List size is at least 3.
+
+// All numbers will be positive.
+
+// Numbers could occur more than once , (Duplications may exist).
+
+// Threshold K will always be reachable.
+
+// Input >> Output Examples
+// minimumSteps({1, 10, 12, 9, 2, 3}, 6)  ==>  return (2)
+
+  function minimumSteps(numbers, value) {
+    const nums = numbers.slice().sort((a, b) => a - b);
+    for (let i = 0, sum = 0; i < nums.length; i++) {
+      sum += nums[i];
+      if (sum >= value) {
+        return i;
+      }
+    }
+  }
+
+  // diff solution
+  function minimumSteps(numbers, value){
+    return numbers.sort((a,b)=>a-b).filter((e,i)=> (value=value-e) > 0).length;
+ }
+
+// true if all developers in the list code in the same language; or
+// false otherwise.
+// For example, given the following input array:
+
+// var list1 = [
+//   { firstName: 'Daniel', lastName: 'J.', country: 'Aruba', continent: 'Americas', age: 42, language: 'JavaScript' },
+//   { firstName: 'Kseniya', lastName: 'T.', country: 'Belarus', continent: 'Europe', age: 22, language: 'JavaScript' },
+//   { firstName: 'Hanna', lastName: 'L.', country: 'Hungary', continent: 'Europe', age: 65, language: 'JavaScript' },
+// ];
+// your function should return true.
+
+ function isSameLanguage(list) {
+  return list.every(e => e.language === list[0].language);
+}
+
+// 25.04.2022
+// Examples
+// "1 beer"  -->  "1 glass of water"
+// because you drank one standard drink
+
+// "1 shot, 5 beers, 2 shots, 1 glass of wine, 1 beer"  -->  "10 glasses of water"
+// because you drank ten standard drinks
+
+function hydrate(s) {
+  let filteredStr = s.split('')
+                      .filter(x => !isNaN(Number(x)))
+                      .reduce((a,b) => Number(a) + Number(b) , 0)
+  if ( filteredStr === 1 ) {
+        return `${filteredStr} glass of water`
+  } else {
+        return `${filteredStr} glasses of water`
+  }
+  // or
+  // return answer > 1 ? `${answer} glasses of water`: '1 glass of water'
+
+}
+
+// Compare two strings by comparing the sum of their values (ASCII character code).
+
+// For comparing treat all letters as UpperCase
+// null/NULL/Nil/None should be treated as empty strings
+// If the string contains other characters than letters, treat the whole string as it would be empty
+// Your method should return true, if the strings are equal and false if they are not equal.
+
+// Examples:
+// "AD", "BC"  -> equal
+// "AD", "DD"  -> not equal
+// "gf", "FG"  -> equal
+// "zz1", ""   -> equal (both are considered empty)
+// "ZzZz", "ffPFF" -> equal
+// "kl", "lz"  -> not equal
+// null, ""    -> equal
+
+function compare(s1, s2) {
+  function sum(s) {
+    let a = (s||'').toUpperCase().split('');
+    return a.every( (v) => /[A-Z]/.test(v) ) ? a.reduce( (r, v) => r + v.codePointAt(0),0) : 0;
+  }
+  return sum(s1) === sum(s2);
+}
+
+// Write a function filterLucky/filter_lucky() that accepts a list of integers and filters the list to only include the elements that contain the digit 7.
+
+// For example,
+
+// ghci> filterLucky [1,2,3,4,5,6,7,68,69,70,15,17]
+// [7,70,17]
+// Don't worry about bad input, you will always receive a finite list of integers.
+
+var filterLucky=x=>{
+  let myArr = x.map(String).filter(num => num.includes(7))
+  return myArr.map(Number);
+}
+// just use filter cuz it doesnt mutate the arr (no need to parse it)
+const filterLucky = xs => xs.filter(x => x.toString().includes('7'));
+
+// Input >> Output Examples
+// maxGap ({13,10,5,2,9}) ==> return (4)
+// Explanation:
+// The Maximum Gap after sorting the array is 4 , The difference between 9 - 5 = 4 .
+// maxGap ({-3,-27,-4,-2}) ==> return (23)
+// Explanation:
+// The Maximum Gap after sorting the array is 23 , The difference between |-4- (-27) | = 23 .
+
+// Note : Regardless the sign of negativity .
+
+function maxGap (numbers){
+  numbers = numbers.sort((a,b) => a - b);
+  let diff = numbers.map((number,index) => number - numbers[index+1])
+  diff.pop();
+  diff = diff.map(num => Math.abs(num))
+  return Math.max(...diff)
+
+}
+
+// 26.04.2022
+
+// The constructor should take an array as an argument, this will contain 3 integers of the form [width, length, height] from which the Block should be created.
+
+// Define these methods:
+
+// `getWidth()` return the width of the `Block`
+
+// `getLength()` return the length of the `Block`
+
+// `getHeight()` return the height of the `Block`
+
+// `getVolume()` return the volume of the `Block`
+
+// `getSurfaceArea()` return the surface area of the `Block`
+// ##Examples
+
+//     let b = new Block([2,4,6]) -> creates a `Block` object with a width of `2` a length of `4` and a height of `6`
+//     b.getWidth() // -> 2
+    
+//     b.getLength() // -> 4
+    
+//     b.getHeight() // -> 6
+    
+//     b.getVolume() // -> 48
+    
+//     b.getSurfaceArea() // -> 88
+
+class Block {
+  constructor(data){
+    [this.w, this.l, this.h] = data;
+  }
+  getWidth(){ return this.w }
+  getLength(){ return this.l }
+  getHeight(){ return this.h }
+  getVolume(){
+    let {l, w, h} = this;
+    return w*l*h;
+  }
+  getSurfaceArea(){
+    let {l, w, h} = this;
+    return 2 * (l*w + l*h + w*h);
+  }
+}
+
+// You are given a string of letters and an array of numbers.
+// The numbers indicate positions of letters that must be removed, in order, starting from the beginning of the array.
+// After each removal the size of the string decreases (there is no empty space).
+// Return the only letter left.
+
+// Example:
+
+// let str = "zbk", arr = [0, 1]
+//     str = "bk", arr = [1]
+//     str = "b", arr = []
+//     return 'b'
+
+function lastSurvivor(letters, coords) {
+  letters = letters.split('');
+  for (let i = 0; i < coords.length; i++) {
+     letters.splice(coords[i], 1)
+  }
+  return letters.join('')
+}
+
+// diff solution
+function lastSurvivor(string, indices) {
+  const arr = [...string];
+  for (const i of indices) arr.splice(i, 1)
+  return arr[0];
+}
+
+// diff solution
+function lastSurvivor(letters, coords) {
+  const arr = [...letters]
+  coords.map((el, i, ar) => arr.splice(el, 1) )
+  return arr[0]
+}
+
+// ou will be given a sequence of objects representing data about developers who have signed up to attend the next coding meetup that you are organising.
+
+// Given the following input array:
+
+// var list1 = [
+//   { firstName: 'Maria', lastName: 'Y.', country: 'Cyprus', continent: 'Europe', age: 30, language: 'Java' },
+//   { firstName: 'Victoria', lastName: 'T.', country: 'Puerto Rico', continent: 'Americas', age: 70, language: 'Python' },
+// ];
+// write a function that returns the average age of developers (rounded to the nearest integer). In the example above your function should return 50 (number).
+
+function getAverageAge(list) {
+  return Math.round(list.reduce((sum,obj) => sum + obj.age, 0) / list.length);
+}
+
+// diff solution
+function getAverageAge(list) {
+  let count = 0;
+  let sum = 0;
+  
+  for (let dev of list) {
+    count++;
+    sum += dev.age;
+  }
+  
+  return Math.round( sum / count );
+}
+
+// 27.04.2022
+
+// A trick I learned in elementary school to determine whether or not a number was divisible by three is to add all of the integers in the number together and to divide the resulting sum by three. If there is no remainder from dividing the sum by three, then the original number is divisible by three as well.
+
+// Given a series of digits as a string, determine if the number represented by the string is divisible by three.
+
+// Example:
+
+// "123"      -> true
+// "8409"     -> true
+// "100853"   -> false
+// "33333333" -> true
+// "7"        -> false
+
+function divisibleByThree(str){
+  return str.split('').reduce((a,b) => Number(a) + Number(b),0) % 3 === 0 ? true : false;
+}
+
+// The goal of this kata is to write a function that takes two inputs: a string and a character. The function will count the number of times that character appears in the string. The count is case insensitive.
+
+// For example:
+
+// countChar("fizzbuzz","z") => 4
+// countChar("Fancy fifth fly aloof","f") => 5
+
+function countChar(string, char) {
+
+  let count = 0;
+  for (let i = 0; i < string.length; i++) {
+    if ( string[i].toLowerCase() === char.toLowerCase() ){
+      count++
+    }
+  }
+  return count;
+}
+
+// diff solution
+function countChar(s, c) {
+  c = c.toLowerCase();
+  return s.toLowerCase().split('').filter(x => x == c).length;
+}
+
+// productArray ({10,3,5,6,2}) return ==> {180,600,360,300,900}
+// Explanation:
+// The first element 180 is the product of all array's elements except the first element 10
+
+// The second element 600 is the product of all array's elements except the second element 3
+
+// The Third element 360 is the product of all array's elements except the third element 5
+
+// The Fourth element 300 is the product of all array's elements except the fourth element 6
+
+// Finally ,The Fifth element 900 is the product of all array's elements except the fifth element 2
+
+function productArray(numbers){
+  return numbers.map(x => numbers.reduce((a,b) => a * b) / x)
+}
+
+// "Chicago"  -->  "c:**,h:*,i:*,a:*,g:*,o:*"
+// As you can see, the letter c is shown only once, but with 2 asterisks.
+
+// The return string should include only the letters (not the dashes, spaces, apostrophes, etc). There should be no spaces in the output, and the different letters are separated by a comma (,) as seen in the example above.
+
+// Note that the return string must list the letters in order of their first appearance in the original string.
+
+// More examples:
+
+// "Bangkok"    -->  "b:*,a:*,n:*,g:*,k:**,o:*"
+// "Las Vegas"  -->  "l:*,a:**,s:**,v:*,e:*,g:*"
+
+function getStrings(city) {
+  city = city.toLowerCase();
+  let obj = {};
+  let str = '';
+
+  for (let elem of city) {
+      if (!(elem in obj)) {
+          obj[elem] = '*';
+      } else {
+          obj[elem] += '*';
+      }
+  }
+
+  for (let key in obj) {
+      if (key !== ' ') {
+          str += key + ':' + obj[key] + ',';
+      }
+  }
+
+  return str.substring(0, str.length - 1);
+}
+
+// Given a string, return true if the first instance of "x" in the string is immediately followed by the string "xx".
+
+// tripleX("abraxxxas") → true
+// tripleX("xoxotrololololololoxxx") → false
+// tripleX("softX kitty, warm kitty, xxxxx") → true
+// tripleX("softx kitty, warm kitty, xxxxx") → false
+// Note :
+
+// capital X's do not count as an occurrence of "x".
+// if there are no "x"'s then return false
+
+const tripleX = str => { 
+  let x = str.indexOf('x')
+  return x > -1 && x === str.indexOf('xxx') 
+}
+
+// diff solution
+function tripleX(str){
+  return str.substr(str.indexOf('x')+1,2) === 'xx';
+}
+
+// Write a function called calculate that takes 3 values. The first and third values are numbers. The second value is a character. If the character is "+" , "-", "*", or "/", the function will return the result of the corresponding mathematical function on the two numbers. If the string is not one of the specified characters, the function should return null (throw an ArgumentException in C#).
+
+// calculate(2,"+", 4); //Should return 6
+// calculate(6,"-", 1.5); //Should return 4.5
+// calculate(-4,"*", 8); //Should return -32
+// calculate(49,"/", -7); //Should return -7
+// calculate(8,"m", 2); //Should return null
+// calculate(4,"/",0) //should return null
+// Keep in mind, you cannot divide by zero. If an attempt to divide by zero is made, return null
+
+function calculate(num1, operation, num2) {
+  switch(operation) {
+    case '+':
+      return num1 + num2;
+      break;
+    case '-':
+      return num1 - num2;
+      break;
+    case '/':
+      return num2 === 0 ? null : num1 / num2;
+      break;
+    case '*':
+      return num1 * num2;
+      break;
+    default:
+      return null;
+  }
+}
+
+// Rules/Note:
+// If n < 1 then it should return "" i.e. empty string.
+// There are no whitespaces in the pattern.
+// Pattern:
+// 1
+// 22
+// 333
+// ....
+// .....
+// nnnnnn
+// Examples:
+// pattern(5):
+
+// 1
+// 22
+// 333
+// 4444
+// 55555
+// pattern(11):
+
+// 1
+// 22
+// 333
+// 4444
+// 55555
+// 666666
+// 7777777
+// 88888888
+// 999999999
+// 10101010101010101010
+// 1111111111111111111111
+// Hint: Use \n in string to jump to next line
+
+function pattern(n){
+  let output="";
+  for(let i = 1; i <= n; i++)
+   {
+     for(let j = 1; j <= i; j++)
+      {  
+        output += i;
+       }
+     output += "\n";
+    }
+  return output.slice(0,-1);
+ }
+
+//  diff solution
+const pattern = n => {
+  let out=[];
+  for (let i = 1; i <= n; i++){
+    out.push(i.toString().repeat(i))
+  }
+  return out.join('\n');
+ }
+
+//  28.04.2022
+
+// If begin value is greater than the end, function should returns 0
+
+// Examples
+
+// 2,2,2 --> 2
+// 2,6,2 --> 12 (2 + 4 + 6)
+// 1,5,1 --> 15 (1 + 2 + 3 + 4 + 5)
+// 1,5,3  --> 5 (1 + 4)
+
+const sequenceSum = (begin, end, step) => {
+  let sum = 0;
+  if (begin > end) {
+    return 0;
+  }
+  
+  for (let i = begin; i <= end; i += step) {
+    sum += i
+  }
+  return sum;
+};
+
+// Write a function that accepts fight string consists of only small letters and return who wins the fight. When the left side wins return Left side wins!, when the right side wins return Right side wins!, in other case return Let's fight again!.
+
+// The left side letters and their power:
+
+//  w - 4
+//  p - 3
+//  b - 2
+//  s - 1
+// The right side letters and their power:
+
+//  m - 4
+//  q - 3
+//  d - 2
+//  z - 1
+// The other letters don't have power and are only victims.
+
+// Example
+// alphabetWar("z");        //=> Right side wins!
+// alphabetWar("zdqmwpbs"); //=> Let's fight again!
+// alphabetWar("zzzzs");    //=> Right side wins!
+// alphabetWar("wwwwwwz");  //=> Left side wins!
+
+function alphabetWar(fight) {
+  let map = { w: -4, p: -3, b: -2, s: -1, m: 4, q: 3, d: 2, z: 1 };
+  let result = fight.split('').reduce((a, b) => a + (map[b] || 0), 0);
+  return result ? (result < 0 ? "Left" : "Right") + " side wins!" : "Let's fight again!";
+}
+
+// diff one
+function alphabetWar(fight){
+  var right = {}
+  right['m'] = 4
+  right['q'] = 3
+  right['d'] = 2
+  right['z'] = 1
+  var left = {}
+  left['w'] = 4
+  left['p'] = 3
+  left['b'] = 2
+  left['s'] = 1
+
+  var sumRight = 0
+  var sumLeft = 0
+
+  for(i in fight){
+    if(right[fight[i]]){sumRight += right[fight[i]]}
+    if(left[fight[i]]){sumLeft += left[fight[i]]}
+  }
+  if(sumRight>sumLeft){return 'Right side wins!'}
+  if(sumRight<sumLeft){return 'Left side wins!'}
+  return "Let's fight again!";
+}
+
+// Input >> Output Examples
+// 1- maxTriSum ({3,2,6,8,2,3}) ==> return (17)
+// Explanation:
+// As the triplet that maximize the sum {6,8,3} in order , their sum is (17)
+
+// Note : duplications are not included when summing , (i.e) the numbers added only once .
+
+function maxTriSum(numbers){
+      return [...new Set(numbers)]
+                                  .sort((a,b) => a - b)
+                                  .slice(-3)
+                                  .reduce((x,y) => x + y,0);
+}
+
+// diff one
+const maxTriSum = numbers => {
+  const [a,b,c] = [...new Set([...numbers])].sort((a,b)=>b-a)
+  return a+b+c
+}
+
+// Input >> Output Examples
+// arrayLeaders ({1, 2, 3, 4, 0}) ==> return {4}
+// Explanation:
+// 4 is greater than the sum all the elements to its right side
+
+// Note : The last element 0 is equal to right sum of its elements (abstract zero).
+
+// arrayLeaders ({16, 17, 4, 3, 5, 2}) ==> return {17, 5, 2}
+// Explanation:
+// 17 is greater than the sum all the elements to its right side
+
+// 5 is greater than the sum all the elements to its right side
+
+// Note : The last element 2 is greater than the sum of its right elements (abstract zero).
+
+function arrayLeaders(numbers){
+  let output = [];
+  
+  for (let i = 0; i < numbers.length; i++) {
+  let sum = 0;
+    
+    for (let j = i+1; j < numbers.length; j++) {
+        sum += numbers[j]
+    }
+    if ( numbers[i] > sum ) {
+      output.push(numbers[i]);
+    }
+  }
+  
+  return output;
+}
+
+// diff and smarter solution
+const arrayLeaders = numbers => {
+  return numbers.filter((a, i) => numbers.slice(i + 1).reduce((sum, b) => sum + b, 0) < a)}
+
+//   Given an object (meet) containing team member names as keys, and their happiness rating out of 10 as the value, you need to assess the overall happiness rating of the group. If <= 5, return 'Get Out Now!'. Else return 'Nice Work Champ!'.
+
+// Happiness rating will be total score / number of people in the room.
+
+// Note that your boss is in the room (boss), their score is worth double it's face value (but they are still just one person!).
+
+  function outed(meet, boss){
+    let sum = 0;
+    let count = 0;
+    for ( k in meet) {
+      if ( k === boss ) {
+            meet[k] *= 2;
+            sum += meet[k];
+            count++;
+      } else {
+        sum += meet[k];
+        count++;
+      }
+    }
+      
+    return sum / count > 5 ? 'Nice Work Champ!' : 'Get Out Now!'
+  
+  }
+
+  // diff solution
+  function outed(meet, boss) {
+    let names = Object.keys(meet)
+    let score = names.reduce((s,v) => s + meet[v], 0) + meet[boss]
+    return score / names.length > 5 ? 'Nice Work Champ!' : 'Get Out Now!'
+  }
+
+//  Write a function reverse which reverses a list (or in clojure's case, any list-like data structure)
+
+// (the dedicated builtin(s) functionalities are deactivated)
+
+  reverse = function(array) {
+    let reversed = [];
+    
+    for (let i = array.length-1; i >= 0; i--) {
+        reversed.push(array[i]);
+    }
+    
+    return reversed;
+  }
+
+//   Input >> Output Examples
+// maxProduct ({4, 3, 5}, 2) ==>  return (20)
+// Explanation:
+// Since the size (k) equal 2 , then the subsequence of size 2 whose gives product of maxima is 5 * 4 = 20 .
+// maxProduct ({8, 10 , 9, 7}, 3) ==>  return (720)
+// Explanation:
+// Since the size (k) equal 3 , then the subsequence of size 3 whose gives product of maxima is 8 * 9 * 10 = 720 .
+
+  function maxProduct(numbers, size){
+    numbers = numbers.sort((a,b) => a - b).slice(-size);
+    return numbers.reduce((x,y) => x * y, 1)
+    
+  }
+
+// The number passed will be positive (N > 0) .
+
+// All single-digit numbers within the interval [1:5] are considered as special number.
+
+// Input >> Output Examples
+// specialNumber(2) ==> return "Special!!"
+// Explanation:
+// It's a single-digit number within the interval [1:5] .
+
+// specialNumber(9) ==> return "NOT!!"
+
+  function specialNumber(n){
+    return n = n.toString().split('').every(num  => num < 6) ? 'Special!!' : 'NOT!!'; 
+  }
+
+  // 29.04.2022 
+
+  // Given a string of words (x), you need to return an array of the words, sorted alphabetically by the final character in each.
+
+  // If two words have the same last letter, they returned array should show them in the order they appeared in the given string.
+
+  function last(x){
+    return x.split(' ').sort((a, b) => a.charCodeAt(a.length - 1) - b.charCodeAt(b.length - 1));
+  }
+
+//   Given an array (a list in Python) of integers and an integer n, find all occurrences of n in the given array and return another array containing all the index positions of n in the given array.
+
+// If n is not in the given array, return an empty array [].
+
+// Assume that n and all values in the given array will always be integers.
+
+// Example:
+
+findAll([6, 9, 3, 4, 3, 82, 11], 3) => [2, 4]
+
+  const findAll = (array, n) => {
+    let output = [];
+    
+    for (let i = 0; i < array.length; i++) {
+        if ( array[i] === n) {
+          output.push(i);
+        }
+    }
+    
+    return output;
+  }
+
+//  diff solution
+const findAll = (array, n) => {
+  let a = []; array.forEach((v,i)=>{if(v===n){a.push(i)}})
+  return a
+}
+
+// Diff one
+const findAll = (arr, n) => arr.map((el, i) => el === n ? i : 'str').filter(e => e !== 'str')
+
+// Another solution
+const findAll = (nums, find) => nums
+  .reduce((acc, num, index) => num === find ? [...acc, index] : acc, [])
+
+//   Rules/Note:
+// If n < 1 then it should return "" i.e. empty string.
+// There are no whitespaces in the pattern.
+// Pattern:
+// (n)(n-1)(n-2)...4321
+// (n)(n-1)(n-2)...432
+// (n)(n-1)(n-2)...43
+// (n)(n-1)(n-2)...4
+// ...............
+// ..............
+// (n)(n-1)(n-2)
+// (n)(n-1)
+// (n)
+// Examples:
+// pattern(4):
+
+// 4321
+// 432
+// 43
+// 4
+// pattern(11):
+
+// 1110987654321
+// 111098765432
+// 11109876543
+// 1110987654
+// 111098765
+// 11109876
+// 1110987
+// 111098
+// 11109
+// 1110
+// 11
+// Hint: Use \n in string to jump to next line
+
+  function pattern(n){
+    let output="";
+     for(let i = 1; i <= n; i++)
+      {
+        for(let j = n; j >= i; j--)
+         {  
+           output += j;
+          }
+        output += "\n";
+       }
+     return output.slice(0,-1);
+   }
+
+  //  diff solution
+   function pattern(n) {
+    var number = "", output = "";
+    while (n > 0) {
+      number = number + n;
+      output = number + (output ? "\n" : "") + output;
+      n--;
+    }
+    return output;
+   }
+
+//    Input >> Output Examples:
+// nextHappyYear (7712) ==> return (7801)
+// Explanation:
+// As the Next closest year with only distinct digits is 7801 .
+
+// nextHappyYear (8989) ==> return (9012)
+// Explanation:
+// As the Next closest year with only distinct digits is 9012 .
+
+   function nextHappyYear(a){
+    while(new Set([...++a+'']).size<4);
+    return a;
+  }
+
+// Define a method/function that removes from a given array of integers all the values contained in a second array.
+
+// Examples (input -> output):
+// * [1, 1, 2 ,3 ,1 ,2 ,3 ,4], [1, 3] -> [2, 2, 4]
+// * [1, 1, 2 ,3 ,1 ,2 ,3 ,4, 4, 3 ,5, 6, 7, 2, 8], [1, 3, 4, 2] -> [5, 6 ,7 ,8]
+// * [8, 2, 7, 2, 3, 4, 6, 5, 4, 4, 1, 2 , 3], [2, 4, 3] -> [8, 7, 6, 5, 1]
+
+
+  Array.prototype.remove_ = function(integer_list, values_list){
+    return integer_list.filter(function (element) {
+      return values_list.indexOf(element) === -1;
+    });
+  }
+
+  // diff solution
+  Array.prototype.remove_ = (x, y) => x.filter(e => !y.includes(e));
+
+  // 30.04.2022
+  // The keys of the preloaded dictionary are uppercase letters A-Z and the values are predetermined words, for example:
+
+  // dict["P"] == "perfect"
+  // Examples
+  // "dgm" ==> "disturbing gregarious mustache"
+  
+  // "lkj" ==> "literal klingon joke"
+
+  function makeBackronym(string){
+    return string.toUpperCase().split('').map(s => dict[s]).join(' ');
+  }
+
+  // Complete the function that takes one argument, a list of words, and returns the length of the longest word in the list.
+
+  // For example:
+  
+  // ['simple', 'is', 'better', 'than', 'complex'] ==> 7
+
+  function longest(words) {
+    return words.sort((a,b) => b.length - a.length)[0].length
+  }
+
+  // Diff solution
+  const longest = words => words.reduce((a, word) => Math.max(a, word.length), 0);
+  // Diff solution
+  const longest = words => Math.max(...words.map(x => x.length))
+
+  // Given a list of integers values, your job is to return the sum of the values; however, if the same integer value appears multiple times in the list, you can only count it once in your sum.
+
+  // For example:
+  
+  // [ 1, 2, 3] ==> 6
+  
+  // [ 1, 3, 8, 1, 8] ==> 12
+  
+  // [ -1, -1, 5, 2, -7] ==> -1
+  
+  // [] ==> null
+
+  function uniqueSum(list){
+    return [...new Set(list)].reduce((acc,curr) => acc + curr, 0 ? acc : null);
+
+    // return [...new Set(lst)].reduce((a,b)=>a+b,null);
+    
+  }
+
+//   Complete the function to find the count of the most frequent item of an array. You can assume that input is an array of integers. For an empty array return 0
+
+// Example
+// input array: [3, -1, -1, -1, 2, 3, -1, 3, -1, 2, 4, 9, 3]
+// ouptut: 5 
+
+  function mostFrequentItemCount(c) {
+    return c.length ? Math.max(...c.map(x=>c.filter(y=>y==x).length)) : 0;
+  }
+
+// Different solution with more explanation
+  function mostFrequentItemCount(collection) {
+    var count = 0,
+    frequentCount = 0;
+//At the start of the process this FOR loop starts at index 0 (var i)
+   
+   for (var i = 0; i < collection.length; i++) {
+
+//This FOR loop also starts at index 0 (var j)
+        for (var j = 0; j < collection.length; j++) {
+
+//Var i remains on index 0 as var j cycles through the entire array comparing each number in the array to that first index (var i).
+//if var i and var j are ever the same count gets incremented.
+            
+            if (collection[i] == collection[j]) { 
+                count++; 
+            }
+//IF after cycling through the array a new more frequent number is found, that count is stored in frequentCount.
+            if (frequentCount < count) {
+                frequentCount = count; 
+            }
+
+        }
+//Count then gets reset. Process starts again
+        count = 0;  
+        
+    }
+//A final count gets returned from function
+    return frequentCount; 
+}
+
+// Diff one
+function mostFrequentItemCount(collection) {
+  if (collection.length === 0) return 0;
+  
+  var count = Object.create(null);
+  
+  collection.forEach( item => {
+    count[item] = (count[item] || 0) + 1;
+  });
+  
+  return Math.max(...Object.values(count));
+}
+
+// | HEAD | <----------- TAIL ------------> |
+// [  1,  2,  3,  4,  5,  6,  7,  8,  9,  10]
+// | <----------- INIT ------------> | LAST |
+
+// head [x] = x
+// tail [x] = []
+// init [x] = []
+// last [x] = x
+// Here's how I expect the functions to be called in your language:
+
+// head([1,2,3,4,5]); => 1
+// tail([1,2,3,4,5]); => [2,3,4,5]
+
+function head(array) {
+  return array[0];
+}
+function tail(array) {
+  return array.slice(1);
+}
+function init(array) {
+  return array.slice(0, -1);
+}
+function last(array) {
+  return array[array.length-1];
+}
+
+// Write a method, that replaces every nth char oldValue with char newValue.
+
+// Method:
+
+// replaceNth(text, n, oldValue, newValue)
+// Example:
+// n:         2
+// oldValue: 'a'
+// newValue: 'o'
+// "Vader said: No, I am your father!" -> "Vader soid: No, I am your fother!"
+//   1     2          3        4       -> 2nd and 4th occurence are replaced
+// Your method has to be case sensitive!
+
+// As you can see in the example: The first changed is the 2nd 'a'. So the start is always at the nth suitable char and not at the first!
+
+// If n is 0 or negative or if it is larger than the count of the oldValue, return the original text without a change.
+
+// The text and the chars will never be null.
+
+function replaceNth(text, n, oldValue, newValue) {  
+  var count = 0;
+  if(n <= 0){
+    return text;
+  }
+  console.log(n);
+  return text.split("").map(function(item, index){
+    if(item === oldValue){
+      count++;
+    }
+    if(item === oldValue && count % n === 0){
+      console.log(item, count, index);
+      return newValue;
+    }else{
+      return item;
+    }
+  }).join("");
+}
+
+// Diff solution
+const replaceNth = (text, n, oldValue, newValue) => n <= 0 || n > text.split(oldValue).length ? text : text.split(oldValue).map((v,i) => (i+1) % n ? v += oldValue : v += newValue).join('').slice(0, -1);
+
+// Given the following input array:
+
+// var list1 = [
+//   { firstName: 'Harry', lastName: 'K.', country: 'Brazil', continent: 'Americas', age: 22, language: 'JavaScript', githubAdmin: 'yes' },
+//   { firstName: 'Kseniya', lastName: 'T.', country: 'Belarus', continent: 'Europe', age: 49, language: 'Ruby', githubAdmin: 'no' },
+//   { firstName: 'Jing', lastName: 'X.', country: 'China', continent: 'Asia', age: 34, language: 'JavaScript', githubAdmin: 'yes' },
+//   { firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'JavaScript', githubAdmin: 'no' }
+// ];
+// write a function that when executed as findAdmin(list1, 'JavaScript') returns only the JavaScript developers who are GitHub admins:
+
+// [
+//   { firstName: 'Harry', lastName: 'K.', country: 'Brazil', continent: 'Americas', age: 22, language: 'JavaScript', githubAdmin: 'yes' },
+//   { firstName: 'Jing', lastName: 'X.', country: 'China', continent: 'Asia', age: 34, language: 'JavaScript', githubAdmin: 'yes' }
+// ]
+// Notes:
+
+// The original order should be preserved.
+// If there are no GitHub admin developers in a given language then return an empty array [].
+// The input array will always be valid and formatted as in the example above.
+// The strings representing whether someone is a GitHub admin will always be formatted as 'yes' and 'no' (all lower-case).
+
+function findAdmin(list, lang) {
+  let res = [];
+  list.forEach(dev => {
+    if(dev.language === lang && dev.githubAdmin === 'yes'){
+      res.push(dev);
+    }
+  });
+  
+      return res;
+}
+
+// Diff solution with filter
+function findAdmin(list, lang) {
+  return list.filter(function(dev){return dev.language == lang && dev.githubAdmin == 'yes'});
+}
+
+// ou have to create a method, that corrects a given time string.
+// There was a problem in addition, so many of the time strings are broken.
+// Time is formatted using the 24-hour clock, so from 00:00:00 to 23:59:59.
+// Examples
+// "09:10:01" -> "09:10:01"  
+// "11:70:10" -> "12:10:10"  
+// "19:99:99" -> "20:40:39"  
+// "24:01:01" -> "00:01:01"  
+
+function timeCorrect(str) {
+  const date = new Date(); 
+  if (str == '') return str;
+  if (!/^\d{2}\:\d{2}\:\d{2}$/g.test(str)) return null;
+  date.setUTCHours(...str.split(':'));
+  return date.toLocaleTimeString('en', {hour12: false});
+}
+
+// 01.05.2022
+
+// var list1 = [
+//   { firstName: 'Noah', lastName: 'M.', country: 'Switzerland', continent: 'Europe', age: 19, language: 'C', 
+//     meal: 'vegetarian' },
+//   { firstName: 'Anna', lastName: 'R.', country: 'Liechtenstein', continent: 'Europe', age: 52, language: 'JavaScript', 
+//     meal: 'standard' },
+//   { firstName: 'Ramona', lastName: 'R.', country: 'Paraguay', continent: 'Americas', age: 29, language: 'Ruby', 
+//     meal: 'vegan' },
+//   { firstName: 'George', lastName: 'B.', country: 'England', continent: 'Europe', age: 81, language: 'C', 
+//     meal: 'vegetarian' },
+// ];
+// your function should return the following object (the order of properties does not matter):
+
+// { vegetarian: 2, standard: 1, vegan: 1 }
+
+const orderFood = a => a.reduce( (acc,v) => ( acc[v.meal] = ( acc[v.meal] || 0 ) + 1, acc ), {} ) ;
+
+// Diff solution
+function orderFood(list) {
+  var orders = {};
+  list.forEach(d=>{
+    if(orders[d.meal]) orders[d.meal]++;
+    else orders[d.meal] = 1;
+  });
+  return orders;
+}
+
+// Beaches are filled with sand, water, fish, and sun. Given a string, calculate how many times the words "Sand", "Water", "Fish", and "Sun" appear without overlapping (regardless of the case).
+
+// Examples
+// sumOfABeach("WAtErSlIde")                    ==>  1
+// sumOfABeach("GolDeNSanDyWateRyBeaChSuNN")    ==>  3
+// sumOfABeach("gOfIshsunesunFiSh")             ==>  4 
+// sumOfABeach("cItYTowNcARShoW")               ==>  0
+
+function sumOfABeach(beach) {
+  let result = 0;
+  beach = beach.toLowerCase();
+  let elements = ["sand", "water", "fish", "sun"];
+  for (let i = 0; i < 4; i++) {
+      while (beach.includes(elements[i])) {
+          beach = beach.replace(elements[i], '');
+          result++;
+      }
+  }
+  return result;
+}
+
+// Your task is to complete the function which takes a string, and returns an array with all possible rotations of the given string, in uppercase.
+
+// Example
+// scrollingText("codewars") should return:
+
+// [ "CODEWARS",
+//   "ODEWARSC",
+//   "DEWARSCO",
+//   "EWARSCOD",
+//   "WARSCODE",
+//   "ARSCODEW"
+//   "RSCODEWA",
+//   "SCODEWAR" ]
+
+
+function scrollingText(text){
+  text = text.toUpperCase();
+  let res = [];
+  let concatText ='';
+  let i = 0;
+  
+  while( res.length < text.length) {
+      if (res.length < 1) {
+        res.push(text)
+      } else {
+        concatText = text.slice(i+1) + text.slice(i,i+1);
+        res.push(concatText);
+        text = concatText;
+      } 
+  }
+  return res;
+}
+
+// diff 
+function scrollingText(text){
+  text = text.toUpperCase();
+  let result = []
+  
+  for( var i = 0; i < text.length; i++){
+    result.push((text.slice(i) + text.slice(0,i))
+  }
+  
+  return result
+}
+// diff
+function scrollingText(text){
+  text = text.toUpperCase();
+
+  return [...text].map((_, i) => text.slice(i) + text.slice(0, i));
+}
+
+// Lot of museum allow you to be a member, for a certain amount amount_by_year you can have unlimitted acces to the museum.
+
+// In this kata you should complete a function in order to know after how many visit it will be better to take an annual pass. The function take 2 arguments annual_price and individual_price.
+
+function howManyTimes(annualPrice, individualPrice) {
+  return Math.ceil(annualPrice / individualPrice);
+}
+
+// Given a positive integer N, return the largest integer k such that 3^k < N.
+
+// For example,
+
+// largest_power(3) == 0
+// largest_power(4) == 1
+// You may assume that the input to your function is always a positive integer.
+
+function largestPower(n){
+  return Math.ceil(Math.log10(n)/Math.log10(3))-1
+}
+
+// class Animal {
+//   constructor(name, age, legs, species, status) {
+//     this.name = name;
+//     this.age = age;
+//     this.legs = legs;
+//     this.species = species;
+//     this.status = status;
+//   }
+//   introduce() {
+//     return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+//   }
+// }
+// Task
+// Define the following classes that inherit from Animal.
+
+// I. Shark
+// The constructor function for Shark should accept 3 arguments in total in the following order: name, age, status. All sharks should have a leg count of 0 (since they obviously do not have any legs) and should have a species of "shark".
+
+// II. Cat
+// The constructor function for Cat should accept the same 3 arguments as with Shark: name, age, status. Cats should always have a leg count of 4 and a species of "cat".
+
+// Furthermore, the introduce/Introduce method for Cat should be identical to the original except there should be exactly 2 spaces and the words "Meow meow!" after the phrase. For example:
+
+// var example = new Cat("Example", 10, "Happy");
+// example.introduce() === "Hello, my name is Example and I am 10 years old.  Meow meow!"; // Notice the TWO spaces - very important
+// III. Dog
+// The Dog constructor should accept 4 arguments in the specified order: name, age, status, master. master is the name of the dog's master which will be a string. Furthermore, dogs should have 4 legs and a species of "dog".
+
+// Dogs have an identical introduce/Introduce method as any other animal, but they have their own method called greetMaster/GreetMaster which accepts no arguments and returns "Hello (insert_master_name_here)" (of course not the literal string but replace the (insert_master_name_here) with the name of the dog's master).
+
+class Shark extends Animal {
+  constructor(name, age, status) {
+    super(name, age, 0, "shark", status);
+  }
+}
+
+class Cat extends Animal {
+  constructor(name, age, status) {
+    super(name, age, 4, "cat", status);
+  }
+  introduce() {
+    return `${super.introduce()}  Meow meow!`;
+  }
+}
+
+class Dog extends Animal {
+  constructor(name, age, status, master) {
+    super(name, age, 4, "dog", status);
+    this.master = master;
+  }
+  greetMaster() {
+    return `Hello ${this.master}`;
+  }
+}
