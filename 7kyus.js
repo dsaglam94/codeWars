@@ -3818,3 +3818,21 @@ function scrollingText(text){
   }
   return res;
 }
+
+// diff 
+function scrollingText(text){
+  text = text.toUpperCase();
+  let result = []
+  
+  for( var i = 0; i < text.length; i++){
+    result.push((text.slice(i) + text.slice(0,i))
+  }
+  
+  return result
+}
+// diff
+function scrollingText(text){
+  text = text.toUpperCase();
+
+  return [...text].map((_, i) => text.slice(i) + text.slice(0, i));
+}
