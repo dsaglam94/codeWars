@@ -3736,3 +3736,31 @@ function timeCorrect(str) {
   date.setUTCHours(...str.split(':'));
   return date.toLocaleTimeString('en', {hour12: false});
 }
+
+// 01.05.2022
+
+// var list1 = [
+//   { firstName: 'Noah', lastName: 'M.', country: 'Switzerland', continent: 'Europe', age: 19, language: 'C', 
+//     meal: 'vegetarian' },
+//   { firstName: 'Anna', lastName: 'R.', country: 'Liechtenstein', continent: 'Europe', age: 52, language: 'JavaScript', 
+//     meal: 'standard' },
+//   { firstName: 'Ramona', lastName: 'R.', country: 'Paraguay', continent: 'Americas', age: 29, language: 'Ruby', 
+//     meal: 'vegan' },
+//   { firstName: 'George', lastName: 'B.', country: 'England', continent: 'Europe', age: 81, language: 'C', 
+//     meal: 'vegetarian' },
+// ];
+// your function should return the following object (the order of properties does not matter):
+
+// { vegetarian: 2, standard: 1, vegan: 1 }
+
+const orderFood = a => a.reduce( (acc,v) => ( acc[v.meal] = ( acc[v.meal] || 0 ) + 1, acc ), {} ) ;
+
+// Diff solution
+function orderFood(list) {
+  var orders = {};
+  list.forEach(d=>{
+    if(orders[d.meal]) orders[d.meal]++;
+    else orders[d.meal] = 1;
+  });
+  return orders;
+}
