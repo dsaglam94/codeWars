@@ -3785,3 +3785,36 @@ function sumOfABeach(beach) {
   }
   return result;
 }
+
+// Your task is to complete the function which takes a string, and returns an array with all possible rotations of the given string, in uppercase.
+
+// Example
+// scrollingText("codewars") should return:
+
+// [ "CODEWARS",
+//   "ODEWARSC",
+//   "DEWARSCO",
+//   "EWARSCOD",
+//   "WARSCODE",
+//   "ARSCODEW"
+//   "RSCODEWA",
+//   "SCODEWAR" ]
+
+
+function scrollingText(text){
+  text = text.toUpperCase();
+  let res = [];
+  let concatText ='';
+  let i = 0;
+  
+  while( res.length < text.length) {
+      if (res.length < 1) {
+        res.push(text)
+      } else {
+        concatText = text.slice(i+1) + text.slice(i,i+1);
+        res.push(concatText);
+        text = concatText;
+      } 
+  }
+  return res;
+}
