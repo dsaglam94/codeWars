@@ -4069,6 +4069,12 @@ function splitTheBill(x) {
     return total;
   }
 
+  // diff 
+  function sum(...args) {
+    // return the sum of all arguments given.
+    return args.reduce((acc,cur)=>acc+cur);
+  }
+
 // Program a function sumAverage(arr) where arr is an array containing arrays full of numbers, for example:
 
 // sumAverage([[1, 2, 2, 1], [2, 2, 2, 1]]);
