@@ -3911,3 +3911,17 @@ class Dog extends Animal {
     return `Hello ${this.master}`;
   }
 }
+
+// 02.05.2022
+
+// Print all numbers up to 3rd parameter which are multiple of both 1st and 2nd parameter.
+
+function multiples(s1,s2,s3){
+  const arr = []
+  for (let i = s1; i < s3; i++){
+    if( i % s1 === 0 && i % s2 === 0 ){
+      arr.push(i)
+    }
+  }
+  return arr
+}
