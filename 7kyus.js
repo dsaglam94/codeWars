@@ -4015,3 +4015,29 @@ function splitTheBill(x) {
   function betweenExtremes(numbers) {
     return Math.max(...numbers) - Math.min(...numbers)
   }
+  
+// Should be easy, begin by looking at the code. Debug the code and the functions should work.
+
+// There are three functions: Multiplication (x) Addition (+) and Reverse (!esreveR)
+
+  function multi(arr) {
+    let res = 1;
+    arr.map(num => res = res*num);
+    return res;
+  
+  }
+  
+  function add(arr) {
+    let res = 0;
+    arr.map(num => res = res+num);
+    return res;
+    
+  }
+  
+  function reverse(str) {
+    let res = '';
+    for (let i = str.length-1; i >= 0; i--) {
+      res += str[i];
+    }
+    return res;
+  }
