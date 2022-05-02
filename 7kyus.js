@@ -3955,12 +3955,19 @@ function pattern(n){
   for(let i = 1; i < n; i++) {
     output += 1; 
     for (let j = 1; j <= i; j++) {
-//       if( output.length != 1 ) {
-//         output+= '*'
-//       }
       output += '*'
     }
       output+= (i+1) + '\n' 
   }
  return output.trim()
+}
+
+// diff one
+function pattern(n){
+  if (n < 1) return "";
+  var output = "1";
+  for (let i = 2; i <= n; ++i) {
+    output += "\n1" + Array(i).join("*") + i;
+  }
+  return output;
 }
