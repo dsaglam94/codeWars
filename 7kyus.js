@@ -4098,3 +4098,18 @@ function splitTheBill(x) {
     }
     return Math.floor(result.reduce((a,b) => a+b,0));
   }
+
+  // Diff solution
+  const sumAverage = arr => {
+    const result = arr.map(x => x.reduce((a, b) => a + b) / x.length).reduce((a, b) => a + b)
+    return Math.floor(result)
+  }
+
+  // Diff solution
+  function sumAverage(arr) {
+    return Math.floor(arr
+            .map(e => e.reduce(sum) / e.length)
+            .reduce(sum));
+  }
+  
+  const sum = (a, b) => a + b;
