@@ -4181,3 +4181,9 @@ function splitTheBill(x) {
 // In JavaScript / TypeScript / Coffeescript the input will be a number.
 
   const isNegativeZero = n => Object.is(n, -0);
+
+  // diff solution
+  const isNegativeZero = n =>
+  1 / Math.sign(n) === -Infinity;
+
+  
