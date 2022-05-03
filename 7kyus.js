@@ -4169,3 +4169,7 @@ function splitTheBill(x) {
     }
     return res;
   }
+
+  // diff solution
+  const counterEffect = hitCount =>
+  [...hitCount].map(val => [...Array(++val).keys()]);
