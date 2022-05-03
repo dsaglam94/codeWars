@@ -4306,3 +4306,16 @@ function splitTheBill(x) {
       return this.dict[key] || `Can\'t find entry for ${key}`;
     }
   }
+// diff solution
+  class Dictionary {
+    constructor() {
+      this.dict = new Map();
+    }
+    newEntry(key, value) {
+      this.dict.set(key,value);
+      return this;
+    }
+    look(key) {
+      return this.dict.get(key) || `Can't find entry for ${key}` ;
+    }
+  }
