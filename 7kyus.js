@@ -3911,3 +3911,372 @@ class Dog extends Animal {
     return `Hello ${this.master}`;
   }
 }
+
+// 02.05.2022
+
+// Print all numbers up to 3rd parameter which are multiple of both 1st and 2nd parameter.
+
+function multiples(s1,s2,s3){
+  const arr = []
+  for (let i = s1; i < s3; i++){
+    if( i % s1 === 0 && i % s2 === 0 ){
+      arr.push(i)
+    }
+  }
+  return arr
+}
+
+// Using n as a parameter in the function pattern, where n>0, complete the codes to get the pattern (take the help of examples):
+
+// Note: There is no newline in the end (after the pattern ends)
+
+// Examples
+// pattern(3) should return "1\n1*2\n1**3", e.g. the following:
+
+// 1
+// 1*2
+// 1**3
+// pattern(10): should return the following:
+
+// 1
+// 1*2
+// 1**3
+// 1***4
+// 1****5
+// 1*****6
+// 1******7
+// 1*******8
+// 1********9
+// 1*********10
+
+function pattern(n){
+  let output= '1\n';
+  
+  for(let i = 1; i < n; i++) {
+    output += 1; 
+    for (let j = 1; j <= i; j++) {
+      output += '*'
+    }
+      output+= (i+1) + '\n' 
+  }
+ return output.trim()
+}
+
+// diff one
+function pattern(n){
+  if (n < 1) return "";
+  var output = "1";
+  for (let i = 2; i <= n; ++i) {
+    output += "\n1" + Array(i).join("*") + i;
+  }
+  return output;
+}
+
+// It's tricky keeping track of who is owed what when spending money in a group. Write a function to balance the books.
+
+// The function should take one parameter: an object/dict with two or more name-value pairs which represent the members of the group and the amount spent by each.
+// The function should return an object/dict with the same names, showing how much money the members should pay or receive.
+// Further points:
+
+// The values should be positive numbers if the person should receive money from the group, negative numbers if they owe money to the group.
+// If value is a decimal, round to two decimal places.
+
+function splitTheBill(x) {
+  // What is the total amount ?
+      let total = 0;
+      for (let per in x) {
+        total+= x[per];
+      }
+  // What is the avarage for each person?
+    let size = Object.keys(x).length;
+    let average = total / size
+  // output 
+    for (let per in x) {
+     x[per] = Math.round((x[per] - average) * 100) / 100;
+    }  
+    return x;
+  }
+  
+  //  diff solution
+  const splitTheBill = x => {
+    let vals = Object.values(x),
+        avg  = vals.reduce((s, v) => s + v) / vals.length;
+    return Object.keys(x).reduce((y, v) => (y[v] = +(x[v] - avg).toFixed(2), y), {});
+  }
+
+// Given an array of numbers, return the difference between the largest and smallest values.
+
+// For example:
+
+// [23, 3, 19, 21, 16] should return 20 (i.e., 23 - 3).
+
+// [1, 434, 555, 34, 112] should return 554 (i.e., 555 - 1).
+
+  function betweenExtremes(numbers) {
+    return Math.max(...numbers) - Math.min(...numbers)
+  }
+  
+// Should be easy, begin by looking at the code. Debug the code and the functions should work.
+
+// There are three functions: Multiplication (x) Addition (+) and Reverse (!esreveR)
+
+  function multi(arr) {
+    let res = 1;
+    arr.map(num => res = res*num);
+    return res;
+  
+  }
+  
+  function add(arr) {
+    let res = 0;
+    arr.map(num => res = res+num);
+    return res;
+    
+  }
+  
+  function reverse(str) {
+    let res = '';
+    for (let i = str.length-1; i >= 0; i--) {
+      res += str[i];
+    }
+    return res;
+  }
+
+  // Diff solution 
+  function multi(arr) {
+    return arr.reduce((a, b) => a * b)
+  }
+  function add(arr) {
+    return arr.reduce((a, b) => a + b)
+  }
+  function reverse(str) {
+    return str.split('').reverse().join('')
+  }
+
+  // Write a function that finds the sum of all its arguments.
+
+  // eg:
+  
+  // sum(1, 2, 3) // => 6
+  // sum(8, 2) // => 10
+  // sum(1, 2, 3, 4, 5) // => 15
+
+  function sum() {
+    var total = 0;
+    for(var i in arguments){
+      total += arguments[i];
+    }
+    return total;
+  }
+
+  // diff 
+  function sum(...args) {
+    // return the sum of all arguments given.
+    return args.reduce((acc,cur)=>acc+cur);
+  }
+
+// Program a function sumAverage(arr) where arr is an array containing arrays full of numbers, for example:
+
+// sumAverage([[1, 2, 2, 1], [2, 2, 2, 1]]);
+// First, determine the average of each array. Then, return the sum of all the averages.
+
+// All numbers will be less than 100 and greater than -100.
+// arr will contain a maximum of 50 arrays.
+// After calculating all the averages, add them all together, then round down, as shown in the example below:
+// The example given: sumAverage([[3, 4, 1, 3, 5, 1, 4], [21, 54, 33, 21, 77]]), the answer being 44.
+
+// Calculate the average of each individual array:
+// [3, 4, 1, 3, 5, 1, 4] = (3 + 4 + 1 + 3 + 5 + 1 + 4) / 7 = 3
+// [21, 54, 33, 21, 77] = (21 + 54 + 33 + 21 + 77) / 5 = 41.2
+// Add the average of each array together:
+// 3 + 41.2 = 44.2
+// Round the final average down:
+// Math.floor(44.2) = 44
+
+  const sumAverage = (arr) => {
+    let result = [];
+    for (let i = 0; i < arr.length; i++) {
+      let total = 0;
+      for (let j = 0; j < arr[i].length; j++) {
+        total += arr[i][j]
+      }
+        result.push(total / arr[i].length);
+    }
+    return Math.floor(result.reduce((a,b) => a+b,0));
+  }
+
+  // Diff solution
+  const sumAverage = arr => {
+    const result = arr.map(x => x.reduce((a, b) => a + b) / x.length).reduce((a, b) => a + b)
+    return Math.floor(result)
+  }
+
+  // Diff solution
+  function sumAverage(arr) {
+    return Math.floor(arr
+            .map(e => e.reduce(sum) / e.length)
+            .reduce(sum));
+  }
+  
+  const sum = (a, b) => a + b;
+
+  // 03.05.2022
+
+//   Impliment the reverse function, which takes in input n and reverses it. For instance, reverse(123) should return 321. You should do this without converting the inputted number into a string.
+
+// // Please do not use
+// const forbidden = "
+//                   '
+//                   `
+//                   string
+//                   fixed
+//                   precision
+//                   .keys
+
+  function reverse(n){
+    let revNumber = 0;
+     while (n > 0) {
+       revNumber = (revNumber * 10) + (n % 10);
+       n = Math.floor(n / 10);
+     }
+     return revNumber;
+   }
+
+  //  diff solution
+  reverse=n=>+([]+n).split([]+[]).reverse().join([]+[])
+  // diff solution
+  let reverse = n => +Array.of(n).join().split([]).reverse().join([])
+
+// The function will take one argument which will be a four character string representing hit count
+// The function must return a multi-dimensional array containing four inner arrays
+// The final value in each inner array must be the actual value to be displayed
+// Values returned in the array must be of the type number
+// Examples
+
+// counterEffect("1250") // [[0,1],[0,1,2],[0,1,2,3,4,5],[0]] 
+// counterEffect("0050") // [[0],[0],[0,1,2,3,4,5],[0]] 
+// counterEffect("0000") // [[0],[0],[0],[0]]
+
+  function counterEffect(hitCount) {
+    let res = [];
+    
+    for (let i = 0; i < hitCount.length; i++) {
+      let holder = [];
+        for (let j = 0; j <= hitCount[i]; j++) {
+          holder.push(j);
+        }
+      res.push(holder);
+    }
+    return res;
+  }
+
+  // diff solution
+  const counterEffect = hitCount =>
+  [...hitCount].map(val => [...Array(++val).keys()]);
+
+//   There exist two zeroes: +0 (or just 0) and -0.
+
+// Write a function that returns true if the input number is -0 and false otherwise (True and False for Python).
+
+// In JavaScript / TypeScript / Coffeescript the input will be a number.
+
+  const isNegativeZero = n => Object.is(n, -0);
+
+  // diff solution
+  const isNegativeZero = n =>
+  1 / Math.sign(n) === -Infinity;
+
+// Array/list size is at least 3 .
+
+// In Even array size , The minimum element should be moved to (n-1)/2 index (considering that indexes start from 0)
+
+// Repetition of numbers in the array/list could occur , So (duplications are included when Arranging).
+
+// Input >> Output Examples:
+// pendulum ([6, 6, 8 ,5 ,10]) ==> [10, 6, 5, 6, 8]
+// Explanation:
+// Since , 5 is the The Smallest element of the list of integers , came in The center position of array/list
+
+// The Higher than smallest is 6 goes to the right of 5 .
+
+// The Next higher number goes to the left of minimum number and So on .
+
+// Remember , Duplications are included when Arranging , Don't Delete Them .
+
+  function pendulum(values) {
+
+    let sort = values.slice().sort((a, b) => a - b)
+    ,  parts = { left: [], right: [] };
+    
+    for (let i = 0; i < sort.length; i++) 
+      parts[i % 2 ? 'right' : 'left'].push(sort[i]);
+  
+    return parts.left.reverse().concat(parts.right);
+    
+  }
+
+//   Remember the triangle of balls in billiards? To build a classic triangle (5 levels) you need 15 balls. With 3 balls you can build a 2-level triangle, etc.
+
+// For more examples,
+
+// pyramid(1) == 1
+
+// pyramid(3) == 2
+
+// pyramid(6) == 3
+
+// pyramid(10) == 4
+
+// pyramid(15) == 5
+// Write a function that takes number of balls (≥ 1) and calculates how many levels you can build a triangle.
+
+  function pyramid(balls) {
+    let count = 0;
+   let ballsPerRow = 0;
+   
+   for(let x=0; x<balls; x++) {
+      // count per row    
+     count++;// count = 1
+     
+     // count balls per row
+     ballsPerRow = ballsPerRow + count;
+     
+     // is balls per row is equal to input
+     if(ballsPerRow == balls) {
+       // if true return count per row
+       return count;
+       //return 1
+     };
+     // is input less than balls per row
+     if(balls < ballsPerRow) {
+       // if true return count per row then minus one
+       return count - 1;
+       //return 0
+     }
+   }
+  }
+
+  // Diff solution from someone knows math
+  function pyramid(balls) {
+    return Math.floor((Math.sqrt(balls * 8 + 1) - 1) / 2);
+  }
+
+// A 6-sided die is rolled a number of times and the results are plotted as a character-based histogram.
+
+// 6|##### 5
+// 5|
+// 4|# 1
+// 3|########## 10
+// 2|### 3
+// 1|####### 7
+// Task
+// You will be passed the dice value frequencies, and your task is to write the code to return a string representing a histogram, so that when it is printed it has the same format as the example.
+
+  function histogram(results) {
+    var histogram = '';
+    
+    for (var i=5; i>=0; --i)
+      histogram += (i+1) + '|' + '#'.repeat(results[i]) + (results[i] > 0 ? ' ' + results[i] : '') + "\n";
+    
+    return histogram;
+  }
