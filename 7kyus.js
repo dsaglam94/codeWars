@@ -4186,4 +4186,31 @@ function splitTheBill(x) {
   const isNegativeZero = n =>
   1 / Math.sign(n) === -Infinity;
 
+// Array/list size is at least 3 .
+
+// In Even array size , The minimum element should be moved to (n-1)/2 index (considering that indexes start from 0)
+
+// Repetition of numbers in the array/list could occur , So (duplications are included when Arranging).
+
+// Input >> Output Examples:
+// pendulum ([6, 6, 8 ,5 ,10]) ==> [10, 6, 5, 6, 8]
+// Explanation:
+// Since , 5 is the The Smallest element of the list of integers , came in The center position of array/list
+
+// The Higher than smallest is 6 goes to the right of 5 .
+
+// The Next higher number goes to the left of minimum number and So on .
+
+// Remember , Duplications are included when Arranging , Don't Delete Them .
+
+  function pendulum(values) {
+
+    let sort = values.slice().sort((a, b) => a - b)
+    ,  parts = { left: [], right: [] };
+    
+    for (let i = 0; i < sort.length; i++) 
+      parts[i % 2 ? 'right' : 'left'].push(sort[i]);
   
+    return parts.left.reverse().concat(parts.right);
+    
+  }
