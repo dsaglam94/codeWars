@@ -4452,3 +4452,23 @@ class Song{
     return this.listener.size - oldSize;
   }
 }
+
+// Diff solution
+class Song{
+  constructor(title, artist){
+  this.title = title;
+  this.artist = artist;
+  this.ar = []
+  }
+    
+  howMany(arr){
+    let out = 0
+    for(let i of arr){
+      if(!this.ar.includes(i.toLowerCase())){
+        this.ar.push(i.toLowerCase())
+        out++
+      }
+    }
+    return out
+  }
+}
