@@ -4390,3 +4390,11 @@ function splitTheBill(x) {
     }
     return total;
   }
+
+  // diff one 
+
+// For people like me who were wondering what is happening with the double tilde: From Stackoverflow: That ~~ is a double NOT bitwise operator. It is used as a faster substitute for Math.floor().
+
+// Also, from the same thread: With optimisation of the JavaScript engine in browsers, the performance for operators and functions change. With current browsers, using ~~ instead of Math.floor is somewhat faster in some browsers, and not faster at all in some browsers. If you really need that extra bit of performance, you would need to write different optimised code for each browser.
+
+  const sum = (...args) => args.reduce((p, c) => c === ~~c ? p + c : p, 0);
