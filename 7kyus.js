@@ -4362,3 +4362,14 @@ function splitTheBill(x) {
     }
     return op in ops ? ops[op](a, b) : null;
   }
+  // diff solution with switch
+  const calculate = (a, op, b) => {
+    switch (op) {
+      case "+": return a + b
+      case "-": return a - b
+      case "*": return a * b
+      case "/": return b ? a / b : null
+    }
+  
+    return null
+  }
