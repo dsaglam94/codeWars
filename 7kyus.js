@@ -4482,3 +4482,12 @@ class Song{
 
 const golfScoreCalculator = (parList, scoreList) =>
   [...scoreList].reduce((result, score, index) => result += score - parList[index], 0)
+
+  // diff one with for loop
+  function golfScoreCalculator(parList, scoreList){
+    let result = 0;
+    for (let i = 0; i < parList.length; ++i) {
+       result += scoreList[i] - parList[i];
+    }
+    return result;
+}
