@@ -4351,3 +4351,14 @@ function splitTheBill(x) {
     
      return result;
    }
+
+  //  diff solution with obj
+  const calculate = (a, op, b) => {
+    const ops = {
+      '+' : (a, b) => a + b,
+      '-' : (a, b) => a - b,
+      '*' : (a, b) => a * b,
+      '/' : (a, b) => b ? a / b : null
+    }
+    return op in ops ? ops[op](a, b) : null;
+  }
