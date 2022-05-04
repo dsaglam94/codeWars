@@ -4398,3 +4398,14 @@ function splitTheBill(x) {
 // Also, from the same thread: With optimisation of the JavaScript engine in browsers, the performance for operators and functions change. With current browsers, using ~~ instead of Math.floor is somewhat faster in some browsers, and not faster at all in some browsers. If you really need that extra bit of performance, you would need to write different optimised code for each browser.
 
   const sum = (...args) => args.reduce((p, c) => c === ~~c ? p + c : p, 0);
+
+// Generate a chromosome with length of 4 generate(4) could return the chromosome 0010, 1110, 1111... or any of 2^4 possibilities.
+
+const generate = (length) => {
+  let bits = ''
+  for (let i = 0; i < length; i++) {
+    bits += Math.round(Math.random())
+  }
+  
+  return bits
+}
