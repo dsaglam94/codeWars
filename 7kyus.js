@@ -4572,8 +4572,12 @@ function pattern(n) {
 // // is the same as...
 // someFunction(1, true, "Foo", "bar")
 
-// This is a rest operator (...rest)
-
+// This is a rest operator (...rest) from ES6
 function spread(func, args) {
   return func(...args)
+}
+
+// And here is the ES5 version
+function spread(func, args) {
+  return func.apply(func, args)
 }
