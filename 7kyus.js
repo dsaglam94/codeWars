@@ -4608,3 +4608,20 @@ class Cube extends Cuboid {
     super(length, length, length);
   }
 }
+
+// Alice's band plays a Nirvana inspired grunge and has been rated 20 for Heaviness, 32 for Originality and only 18 for Outfits. Bob listens to Slayer and has gotten a good 48 for Heaviness, 25 for Originality and a rather honest 40 for Outfits.
+
+// The total score should be followed by a colon : and by one of the following quotes: if Alice's band wins: Alice made "Kurt" proud! if Bob's band wins: Bob made "Jeff" proud! if they end up with a draw: that looks like a "draw"! Rock on!
+
+// The solution to the example above should therefore appear like '1, 2: Bob made "Jeff" proud!'.
+
+function solve(a, b) {
+  let [x, y] = [0,0];
+  for (let i = 0; i < 3; i++) {
+    if (a[i] > b[i]) x++;
+    else if (a[i] < b[i]) y++;
+  }
+  if (x > y) return `${x}, ${y}: Alice made "Kurt" proud!`;
+  else if (x < y) return `${x}, ${y}: Bob made "Jeff" proud!`;
+  else return `${x}, ${y}: that looks like a "draw"! Rock on!`;
+}
