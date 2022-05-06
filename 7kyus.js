@@ -4668,3 +4668,30 @@ function bingo(a) {
 
   // diff solution with regex
   function zeroAndOne(s) { return s.replace(/(01|10)*/g, '').length }
+
+  function* baumSweet() {
+    yield 1;
+    let n =1;
+    while(true){
+      yield n.toString(2).split("00").join("").includes("0")?0:1;
+      n++;    
+    }
+  }
+
+//   Wikipedia: The Baum–Sweet sequence is an infinite automatic sequence of 0s and 1s defined by the rule:
+
+// bn = 1 if the binary representation of n contains no block of consecutive 0s of odd length;
+// bn = 0 otherwise;
+
+// for n ≥ 0.
+
+// Define a generator function baumSweet that sequentially generates the values of this sequence.
+
+function* baumSweet() {
+  yield 1;
+  let n =1;
+  while(true){
+    yield n.toString(2).split("00").join("").includes("0")?0:1;
+    n++;    
+  }
+}
