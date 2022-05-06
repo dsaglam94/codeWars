@@ -4665,3 +4665,6 @@ function bingo(a) {
     }
     return cnt;
   }
+
+  // diff solution with regex
+  function zeroAndOne(s) { return s.replace(/(01|10)*/g, '').length }
