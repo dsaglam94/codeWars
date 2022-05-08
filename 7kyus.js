@@ -4913,3 +4913,6 @@ function min(arr, toReturn) {
       return arr.indexOf(newArr[0])
   }
 }
+
+// Diff solution
+const min = (arr, toReturn) => toReturn === 'value' ? Math.min(...arr) : arr.indexOf(Math.min(...arr));
