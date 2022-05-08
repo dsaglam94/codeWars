@@ -4830,3 +4830,8 @@ function isAllPossibilities(x){
   x = x.slice().sort((a,b)=>a-b);
     return x.length > 0 ? x.every((a,i) => a===i) : false;
 }
+
+// diff solution but the performance is bad
+function isAllPossibilities(x){
+  return x.length > 0 ? x.every((a,i) => x.includes(i)) : false;
+}
