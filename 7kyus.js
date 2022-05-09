@@ -4954,7 +4954,7 @@ function loopArr(arr, direction, steps) {
 }
   return arr;
   }
-  
+
 //   In this Kata, you will be given an array of unique elements, and your task is to rearrange the values so that the first max value is followed by the first minimum, followed by second max value then second min value, etc.
 
 // For example:
@@ -4977,6 +4977,12 @@ function loopArr(arr, direction, steps) {
     } else if (minArr.length % 2 !== 0) {
        return res.slice(0,-1)
     }
-    
-    
   };
+
+  // Diff cleaner solution
+  
+  // I love how you do two things right at the start, by creating a new array with the length of the original array and also sort the original array.The index of the map functions is used simply to alternate between the beginning and the end of the array!
+
+  // This mutates the original array since sort is called on arr, and the sort method happens in place. Using Array.from(arr).sort() would make a new sorted array which is better as mutating the input should generally be avoided (although it isn't checked for in this kata).
+  const solve = arr =>
+  [...Array(arr.sort((a, b) => a - b).length)].map((_, idx) => idx % 2 ? arr.shift() : arr.pop());
