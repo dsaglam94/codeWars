@@ -156,3 +156,82 @@ function remove (string) {
   }
 }
 
+// 07.05.2022
+
+// Your friend invites you out to a cool floating pontoon around 1km off the beach. Among other things, the pontoon has a huge slide that drops you out right into the ocean, a small way from a set of stairs used to climb out.
+
+// As you plunge out of the slide into the water, you see a shark hovering in the darkness under the pontoon... Crap!
+
+// You need to work out if the shark will get to you before you can get to the pontoon. To make it easier... as you do the mental calculations in the water you either freeze when you realise you are dead, or swim when you realise you can make it!
+
+// You are given 5 variables;
+
+// sharkDistance = distance from the shark to the pontoon. The shark will eat you if it reaches you before you escape to the pontoon.
+
+// sharkSpeed = how fast it can move in metres/second.
+
+// pontoonDistance = how far you need to swim to safety in metres.
+
+// youSpeed = how fast you can swim in metres/second.
+
+// dolphin = a boolean, if true, you can half the swimming speed of the shark as the dolphin will attack it.
+
+// The pontoon, you, and the shark are all aligned in one dimension.
+
+// If you make it, return "Alive!", if not, return "Shark Bait!".
+
+function shark(pontoonDistance, sharkDistance, youSpeed, sharkSpeed, dolphin){
+  if(dolphin){
+    sharkSpeed /= 2;
+  }
+  return pontoonDistance/youSpeed < sharkDistance/sharkSpeed ? "Alive!" : "Shark Bait!";
+}
+
+// Write a method, that will get an integer array as parameter and will process every number from this array.
+
+// Return a new array with processing every number of the input-array like this:
+
+// If the number has an integer square root, take this, otherwise square the number.
+
+// Example
+// [4,3,9,7,2,1] -> [2,9,3,49,4,1]
+
+
+function squareOrSquareRoot(array) {
+  return array.map(x => {
+    const r = Math.sqrt(x);
+    return (r % 1 == 0) ? r : (x*x);
+  });  
+}
+
+// Write a function that will check if two given characters are the same case.
+
+// If either of the characters is not a letter, return -1
+// If both characters are the same case, return 1
+// If both characters are letters, but not the same case, return 0
+// Examples
+// 'a' and 'g' returns 1
+
+// 'A' and 'C' returns 1
+
+// 'b' and 'G' returns 0
+
+// 'B' and 'g' returns 0
+
+// '0' and '?' returns -1
+
+function sameCase(a, b){
+  // If a character is not a letter then the cases will match each other
+  if (a.toLowerCase() === a.toUpperCase() || b.toLowerCase() === b.toUpperCase()) {
+    return -1;
+  }
+  return (a.toLowerCase() === a) === (b.toLowerCase() === b) ? 1 : 0;
+}
+
+// Write a function that returns a string in which firstname is swapped with last name.
+
+// nameShuffler('john McClane'); => "McClane john"
+
+function nameShuffler(str){
+  return str.split(' ').reverse().join(' ');
+}

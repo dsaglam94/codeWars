@@ -4280,3 +4280,730 @@ function splitTheBill(x) {
     
     return histogram;
   }
+
+//   In this kata, your job is to create a class Dictionary which you can add words to and their entries. Example:
+
+// >>> let d = new Dictionary();
+
+// >>> d.newEntry("Apple", "A fruit that grows on trees");
+
+// >>> console.log(d.look("Apple"));
+// A fruit that grows on trees
+
+// >>> console.log(d.look("Banana"));
+// Can't find entry for Banana
+
+  class Dictionary {
+    constructor() {
+      this.dict = {};
+    }
+    
+    newEntry(key, value) {
+      this.dict[key] = value;
+    }
+    
+    look(key) {
+      return this.dict[key] || `Can\'t find entry for ${key}`;
+    }
+  }
+// diff solution
+  class Dictionary {
+    constructor() {
+      this.dict = new Map();
+    }
+    newEntry(key, value) {
+      this.dict.set(key,value);
+      return this;
+    }
+    look(key) {
+      return this.dict.get(key) || `Can't find entry for ${key}` ;
+    }
+  }
+
+  // 04.05.2022
+
+//   Debug a function called calculate that takes 3 values. The first and third values are numbers. The second value is a character. If the character is "+" , "-", "*", or "/", the function will return the result of the corresponding mathematical function on the two numbers. If the string is not one of the specified characters, the function should return null.
+
+// calculate(2,"+", 4); //Should return 6
+// calculate(6,"-", 1.5); //Should return 4.5
+// calculate(-4,"*", 8); //Should return -32
+// calculate(49,"/", -7); //Should return -7
+// calculate(8,"m", 2); //Should return null
+// calculate(4,"/",0) //should return null
+
+  var calculate = function calculate(a, o, b) {
+    var result = 0;
+    
+    if (o === "+") { 
+       return a + b; 
+    } else if(o === "-") {
+       return a - b; }
+     
+    if (o === "/" && b !== 0) { 
+       return a / b;  
+    } else if ( o === '/' && b === 0) {
+       return null;
+    } else if (o === '*') {
+       return a * b;
+    } else {
+       return null;
+    }
+    
+     return result;
+   }
+
+  //  diff solution with obj
+  const calculate = (a, op, b) => {
+    const ops = {
+      '+' : (a, b) => a + b,
+      '-' : (a, b) => a - b,
+      '*' : (a, b) => a * b,
+      '/' : (a, b) => b ? a / b : null
+    }
+    return op in ops ? ops[op](a, b) : null;
+  }
+  // diff solution with switch
+  const calculate = (a, op, b) => {
+    switch (op) {
+      case "+": return a + b
+      case "-": return a - b
+      case "*": return a * b
+      case "/": return b ? a / b : null
+    }
+  
+    return null
+  }
+
+//   Write a function sum that accepts an unlimited number of integer arguments, and adds all of them together.
+
+// The function should reject any arguments that are not integers, and sum the remaining integers.
+
+// sum(1, 2, 3)   // -> 6
+// sum(1, "2", 3) // -> 4
+
+  function sum(){
+    var total = 0;
+    for(var i=0; i<arguments.length; i++){
+      if(typeof arguments[i] === 'number' && arguments[i] %1 === 0){
+        total += arguments[i];
+      }
+    }
+    return total;
+  }
+
+  // diff one 
+
+// For people like me who were wondering what is happening with the double tilde: From Stackoverflow: That ~~ is a double NOT bitwise operator. It is used as a faster substitute for Math.floor().
+
+// Also, from the same thread: With optimisation of the JavaScript engine in browsers, the performance for operators and functions change. With current browsers, using ~~ instead of Math.floor is somewhat faster in some browsers, and not faster at all in some browsers. If you really need that extra bit of performance, you would need to write different optimised code for each browser.
+
+  const sum = (...args) => args.reduce((p, c) => c === ~~c ? p + c : p, 0);
+
+// Generate a chromosome with length of 4 generate(4) could return the chromosome 0010, 1110, 1111... or any of 2^4 possibilities.
+
+const generate = (length) => {
+  let bits = ''
+  for (let i = 0; i < length; i++) {
+    bits += Math.round(Math.random())
+  }
+  
+  return bits
+}
+
+// Your job is to create a class called Song.
+
+// A new Song will take two parameters, title and artist.
+
+// const mountMoose = new Song('Mount Moose', 'The Snazzy Moose');
+
+// mountMoose.title => 'Mount Moose'
+// mountMoose.artist => 'The Snazzy Moose'
+// You will also have to create an instance method named howMany() (or how_many()).
+
+// The method takes an array of people who have listened to the song that day. The output should be how many new listeners the song gained on that day out of all listeners. Names should be treated in a case-insensitive manner, i.e. "John" is the same as "john".
+
+// Example
+// const mountMoose = new Song('Mount Moose', 'The Snazzy Moose');
+
+// // day 1 (or test 1)
+// mountMoose.howMany(['John', 'Fred', 'BOb', 'carl', 'RyAn']); => 5
+// // These are all new since they are the first listeners.
+
+// // day 2
+// mountMoose.howMany(['JoHn', 'Luke', 'AmAndA']); => 2
+// // Luke and Amanda are new, john already listened to it the previous day
+// Also if the same person listened to it more than once a day it should only count them once.
+
+// Example
+// const mountMoose = new Song('Mount Moose', 'The Snazzy Moose');
+
+// // day 1
+// mountMoose.howMany(['John', 'joHN', 'carl']); => 2
+
+class Song{
+  constructor(title, artist){
+    this.title = title;
+    this.artist = artist;
+    this.listener = new Set()
+  };
+  howMany(people){
+    let oldSize = this.listener.size;
+    people.map(p => this.listener.add(p.toLowerCase()));
+    return this.listener.size - oldSize;
+  }
+}
+
+// Diff solution
+class Song{
+  constructor(title, artist){
+  this.title = title;
+  this.artist = artist;
+  this.ar = []
+  }
+    
+  howMany(arr){
+    let out = 0
+    for(let i of arr){
+      if(!this.ar.includes(i.toLowerCase())){
+        this.ar.push(i.toLowerCase())
+        out++
+      }
+    }
+    return out
+  }
+}
+
+// I have the par value for each hole on a golf course and my stroke score on each hole. I have them stored as strings, because I wrote them down on a sheet of paper. Right now, I'm using those strings to calculate my golf score by hand: take the difference between my actual score and the par of the hole, and add up the results for all 18 holes.
+
+// For example:
+
+// If I took 7 shots on a hole where the par was 5, my score would be: 7 - 5 = 2
+// If I got a hole-in-one where the par was 4, my score would be: 1 - 4 = -3.
+
+const golfScoreCalculator = (parList, scoreList) =>
+  [...scoreList].reduce((result, score, index) => result += score - parList[index], 0)
+
+  // diff one with for loop
+  function golfScoreCalculator(parList, scoreList){
+    let result = 0;
+    for (let i = 0; i < parList.length; ++i) {
+       result += scoreList[i] - parList[i];
+    }
+    return result;
+}
+
+// 05.05.2022
+
+// You have to write a function pattern which creates the following pattern upto n number of rows. If the Argument is 0 or a Negative Integer then it should return "" i.e. empty string.
+
+// Examples:
+// pattern(4):
+
+// 1234
+// 234
+// 34
+// 4
+// pattern(6):
+
+// 123456
+// 23456
+// 3456
+// 456
+// 56
+// 6
+
+function pattern(n){
+  if(n === 1) return '1';
+   let output="";
+     
+   for (let i = 1; i <= n; i++){
+     output += '\n'
+     for (let j = i; j <= n; j++) {
+       output += j
+     }
+   
+   }
+ return output.trim();
+ }
+
+//  Diff solution with while loop
+
+function pattern(n) {
+  var number = "", output = "";
+  while (n > 0) {
+    number = n + number;
+    output = number + (output ? "\n" : "") + output;
+    n--;
+  }
+  return output;
+ }
+
+//  Sort an array by value and index
+// Your task is to sort an array of integer numbers by the product of the value and the index of the positions.
+
+// For sorting the index starts at 1, NOT at 0!
+// The sorting has to be ascending.
+// The array will never be null and will always contain numbers.
+
+// Example:
+
+// Input: 23, 2, 3, 4, 5
+// Product of value and index:
+// 23 => 23 * 1 = 23  -> Output-Pos 4
+//  2 =>  2 * 2 = 4   -> Output-Pos 1
+//  3 =>  3 * 3 = 9   -> Output-Pos 2
+//  4 =>  4 * 4 = 16  -> Output-Pos 3
+//  5 =>  5 * 5 = 25  -> Output-Pos 5
+
+// Output: 2, 3, 4, 23, 5
+
+ function sortByValueAndIndex(array) {
+  return array
+    .map((x, i) => [x, x * i + x])
+    .sort((a, b) => a[1] - b[1])
+    .map((a) => a[0])
+}
+
+// You must create a function, spread, that takes a function and a list of arguments to be applied to that function. You must make this function return the result of calling the given function/lambda with the given arguments.
+
+// eg:
+
+// spread(someFunction, [1, true, "Foo", "bar"] ) 
+// // is the same as...
+// someFunction(1, true, "Foo", "bar")
+
+// This is a rest operator (...rest) from ES6
+function spread(func, args) {
+  return func(...args)
+}
+
+// And here is the ES5 version
+function spread(func, args) {
+  return func.apply(func, args)
+}
+
+// I. Cuboid
+// The object constructor for the class Cuboid should receive exactly three arguments in the following order: length, width, height and store these three values in this.length, this.width and this.height respectively.
+
+// The class Cuboid should then have a getter surfaceArea which returns the surface area of the cuboid and a getter volume which returns the volume of the cuboid.
+
+// II. Cube
+// class Cube is a subclass of class Cuboid. The constructor function of Cube should receive one argument only, its length, and use that value passed in to set this.length, this.width and this.height.
+
+class Cuboid {
+  constructor(length, width, height) {
+    this.length = length;
+    this.width = width;
+    this.height = height;
+  }
+  get volume() {
+    return this.length * this.width * this.height;
+  }
+  get surfaceArea() {
+    return 2 * (this.length * this.width + this.width * this.height + this.height * this.length);
+  }
+}
+class Cube extends Cuboid {
+  constructor(length) {
+    super(length, length, length);
+  }
+}
+
+// Alice's band plays a Nirvana inspired grunge and has been rated 20 for Heaviness, 32 for Originality and only 18 for Outfits. Bob listens to Slayer and has gotten a good 48 for Heaviness, 25 for Originality and a rather honest 40 for Outfits.
+
+// The total score should be followed by a colon : and by one of the following quotes: if Alice's band wins: Alice made "Kurt" proud! if Bob's band wins: Bob made "Jeff" proud! if they end up with a draw: that looks like a "draw"! Rock on!
+
+// The solution to the example above should therefore appear like '1, 2: Bob made "Jeff" proud!'.
+
+function solve(a, b) {
+  let [x, y] = [0,0];
+  for (let i = 0; i < 3; i++) {
+    if (a[i] > b[i]) x++;
+    else if (a[i] < b[i]) y++;
+  }
+  if (x > y) return `${x}, ${y}: Alice made "Kurt" proud!`;
+  else if (x < y) return `${x}, ${y}: Bob made "Jeff" proud!`;
+  else return `${x}, ${y}: that looks like a "draw"! Rock on!`;
+}
+
+// 06.05.2022
+
+// For this game of BINGO, you will receive a single array of 10 numbers from 1 to 26 as an input. Duplicate numbers within the array are possible.
+
+// Each number corresponds to their alphabetical order letter (e.g. 1 = A. 2 = B, etc). Write a function where you will win the game if your numbers can spell "BINGO". They do not need to be in the right order in the input array). Otherwise you will lose. Your outputs should be "WIN" or "LOSE" respectively.
+
+function bingo(a) {  
+  return ([...'bingo']
+           .map(x => x.charCodeAt(0)-96)
+           .every(o => a.includes(o))) ? "WIN" : "LOSE" ;
+  }
+
+  // diff solution but not a good practice.
+  // Upper one is more robust
+
+  const bingo = ar => [2,7,9,14,15].every(e => ar.includes(e)) ? 'WIN' : 'LOSE';
+
+// You have a string that consists of zeroes and ones. Now choose any two adjacent positions in the string: if one of them is 0, and the other one is 1, remove these two digits from the string.
+
+// Return the length of the resulting (smallest) string that you can get after applying this operation multiple times?
+
+// Note: after each operation, the remaining digits are separated by spaces and thus not adjacent anymore - see the examples below.
+
+// Examples
+// For "01010" the result should be 1:
+
+// "01010"  -->  "  010"  -->  "    0"
+// For "110100" the result should be 2:
+
+// "110100"  -->  "1  100"  -->  "1    0"
+
+  function zeroAndOne(s) {
+    let cnt = 0;
+    for (let i=0; i<s.length; i++){
+      if ( (s[i]=='0' && s[i+1]=='1') || (s[i]=='1' && s[i+1]=='0') ) i++; 
+      else cnt++;
+    }
+    return cnt;
+  }
+
+  // diff solution with regex
+  function zeroAndOne(s) { return s.replace(/(01|10)*/g, '').length }
+
+  function* baumSweet() {
+    yield 1;
+    let n =1;
+    while(true){
+      yield n.toString(2).split("00").join("").includes("0")?0:1;
+      n++;    
+    }
+  }
+
+//   Wikipedia: The Baum–Sweet sequence is an infinite automatic sequence of 0s and 1s defined by the rule:
+
+// bn = 1 if the binary representation of n contains no block of consecutive 0s of odd length;
+// bn = 0 otherwise;
+
+// for n ≥ 0.
+
+// Define a generator function baumSweet that sequentially generates the values of this sequence.
+
+function* baumSweet() {
+  yield 1;
+  let n =1;
+  while(true){
+    yield n.toString(2).split("00").join("").includes("0")?0:1;
+    n++;    
+  }
+}
+
+// 07.05.2022
+
+// Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array.
+
+function chunkArrayInGroups(arr, size) {
+  let temp = [];
+  let result = [];
+
+  for (let a = 0; a < arr.length; a++) {
+    if (a % size !== size - 1) temp.push(arr[a]);
+    else {
+      temp.push(arr[a]);
+      result.push(temp);
+      temp = [];
+    }
+  }
+
+  if (temp.length !== 0) result.push(temp);
+  return result;
+}
+chunkArrayInGroups(["a", "b", "c", "d"], 2);
+
+// Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array.
+
+// For example, ["hello", "Hello"], should return true because all of the letters in the second string are present in the first, ignoring case.
+
+// The arguments ["hello", "hey"] should return false because the string hello does not contain a y.
+
+// Lastly, ["Alien", "line"], should return true because all of the letters in line are present in Alien.
+
+function mutation(arr) {
+  let test = arr[1].toLowerCase();
+  let target = arr[0].toLowerCase();
+  for (let i = 0; i < test.length; i++) {
+    if (target.indexOf(test[i]) < 0) return false;
+  }
+  return true;
+}
+
+// Diff one
+function mutation(arr) {
+  return arr[1]
+    .toLowerCase()
+    .split("")
+    .every(function(letter) {
+      return arr[0].toLowerCase().indexOf(letter) !== -1;
+    });
+}
+
+// 08.05.2022
+
+// Write a generic function chainer
+// Write a generic function chainer that takes a starting value, and an array of functions to execute on it (array of symbols for Ruby).
+
+// The input for each function is the output of the previous function (except the first function, which takes the starting value as its input). Return the final value after execution is complete.
+
+// function add(num) {
+//   return num + 1;
+// }
+
+// function mult(num) {
+//   return num * 30;
+// }
+
+// chain(2, [add, mult]);
+// // returns 90;
+
+function chain(v, fns) {
+  return fns.reduce((v, fn) => { return fn(v) }, v);
+}
+
+// Therefore the n bits march from right to left along an 8 bits path. Once the most-significant bit reaches the left their march is done. Each step will be saved as an array of 8 integers.
+
+// Return an array of all the steps.
+
+// 1 <= n <= 8
+
+// NOTE: n != 0, because n represents the number of 1s.
+
+// Examples
+// This resembles a simple 8 LED chaser:
+
+// n = 3
+
+// 00000111
+// 00001110
+// 00011100
+// 00111000
+// 01110000
+// 11100000
+// n = 7
+
+// 01111111
+// 11111110
+
+function bitMarch (n) {
+  console.log("n",n);
+  let arr = [];
+  for(let i = 7; i >= n-1; i--){
+    let result =[0,0,0,0,0,0,0,0];
+    for(let j = 0 ; j<n; j++){
+      result[i-j] = 1;
+    }
+    arr.push(result);
+  }
+  return arr;
+}
+
+// You receive the direction you are facing (one of the 8 directions: N, NE, E, SE, S, SW, W, NW) and a certain degree to turn (a multiple of 45, between -1080 and 1080); positive means clockwise, and negative means counter-clockwise.
+
+// Return the direction you will face after the turn.
+
+// Examples
+// "S",  180  -->  "N"
+// "SE", -45  -->  "E"
+// "W",  495  -->  "NE"
+
+function direction(facing, turn){
+  const arr = "N NE E SE S SW W NW".split(" ");
+  return arr[(arr.indexOf(facing) + Math.floor(turn / 45) + 1080) % 8];
+}
+
+// A non-empty array a of length n is called an array of all possibilities if it contains all numbers between [0,a.length-1].Write a method named isAllPossibilities that accepts an integer array and returns true if the array is an array of all possibilities, else false.
+
+// Example:
+
+// a=[1,2,0,3]
+// a.length-1=3 
+// a includes [0,3] ,hence the function should return true
+
+function isAllPossibilities(x){
+  x = x.slice().sort((a,b)=>a-b);
+    return x.length > 0 ? x.every((a,i) => a===i) : false;
+}
+
+// diff solution but the performance is bad
+function isAllPossibilities(x){
+  return x.length > 0 ? x.every((a,i) => x.includes(i)) : false;
+}
+
+// Some really funny web dev gave you a sequence of numbers from his API response as an sequence of strings!
+
+// You need to cast the whole array to the correct type.
+
+// Create the function that takes as a parameter a sequence of numbers represented as strings and outputs a sequence of numbers.
+
+// ie:["1", "2", "3"] to [1, 2, 3]
+
+// Floats are possible
+
+function toNumberArray(arr){
+  return arr.map(parseFloat)
+}
+
+// Write a function that combines two arrays by alternatingly taking elements from each array in turn.
+
+// Examples:
+
+// [a, b, c, d, e], [1, 2, 3, 4, 5] becomes  [a, 1, b, 2, c, 3, d, 4, e, 5]
+
+// [1, 2, 3], [a, b, c, d, e, f] becomes [1, a, 2, b, 3, c, d, e, f]
+// Points:
+
+// The arrays may be of different lengths, with at least one character/digit.
+// One array will be of string characters (in lower case, a-z), a second of integers (all positive starting at 1).
+
+
+function mergeArrays(a, b) {
+  let res = [];
+  let longest = a.length > b.length ? a : b;
+  for (let i=0; i<longest.length; i++){
+    if (a[i]) res.push(a[i])
+    if (b[i]) res.push(b[i])
+  }
+  return res
+}
+
+// In this kata the function returns an array/list like the one passed to it but with its nth element removed (with 0 <= n <= array/list.length - 1). The function is already written for you and the basic tests pass, but random tests fail. Your task is to figure out why and fix it.
+
+function removeNthElement(arr, n) {
+  // Fix it
+  let arrCopy = arr.slice();
+  arrCopy.splice(n, 1); // removes the nth element
+  return arrCopy;
+}
+
+// Write a function that appends the items from sequence 2 onto sequence 1, returning the newly formed sequence. Your function should also be able to handle nested sequences.
+
+// All inputs will be arrays/nested arrays.
+
+// For example:
+
+// ['a','b','c'], [1,2,3]     --> ['a','b','c',1,2,3]
+// [['x','x'],'B'], ['c','D'] --> [['x','x'],'B','c','D']
+
+function appendArrays (arr1, arr2) {
+
+  return [...arr1, ...arr2]
+  
+}
+
+// Write a function that can return the smallest value of an array or the index of that value. The function's 2nd parameter will tell whether it should return the value or the index.
+
+// Assume the first parameter will always be an array filled with at least 1 number and no duplicates. Assume the second parameter will be a string holding one of two values: 'value' and 'index'.
+
+// min([1,2,3,4,5], 'value') // => 1
+// min([1,2,3,4,5], 'index') // => 0
+
+function min(arr, toReturn) {
+  let newArr = arr.slice().sort((a,b) => a-b);
+
+  if(toReturn === 'value') {
+      return newArr[0];
+  } else if (toReturn === 'index') {
+      return arr.indexOf(newArr[0])
+  }
+}
+
+// Diff solution
+const min = (arr, toReturn) => toReturn === 'value' ? Math.min(...arr) : arr.indexOf(Math.min(...arr));
+
+// 09.05.2022
+
+// Write a function loopArr that loops array in a specified direction by some number of steps.
+
+// By "looping array" it means removing elements from start and adding them to end of array one-by-one (if direction is "left") or removing from end and adding them to start one by-one (if direction is "right").
+
+// Function should accept three arguments:
+
+// array - non-empty array of elements of any type;
+// direction - 'left' or 'right' - tells how to loop array;
+// steps - number of steps to loop array (less or equal to array size);
+// Examples:
+
+// loopArr([1, 5, 87, 45, 8, 8], 'left', 2);
+// should produce result: [87, 45, 8, 8, 1, 5]
+
+// loopArr([1, 5, 87, 45, 8, 8], 'right', 2);
+should produce result: [8, 8, 1, 5, 87, 45]
+
+
+function loopArr(arr, direction, steps) {
+
+  
+  let res = []
+  if(direction === 'left') {
+    for (let i = 0; i < steps; i++) {
+        let temp = arr.shift()
+        arr.push(temp)
+    }
+  } else if (direction === 'right'){
+    for (let i = 0; i < steps; i++) {
+        let temp = arr.pop()
+        arr.unshift(temp)
+  }
+}
+  return arr;
+  }
+
+//   In this Kata, you will be given an array of unique elements, and your task is to rearrange the values so that the first max value is followed by the first minimum, followed by second max value then second min value, etc.
+
+// For example:
+
+// solve([15,11,10,7,12]) = [15,7,12,10,11]
+
+  function solve(arr){
+    let minArr = arr.slice().sort((a,b) => a - b);
+    let maxArr = arr.slice().sort((a,b) => b - a);
+    let res = [];
+    
+    for(let i = 0; i < arr.length; i++){
+        res.push(maxArr[i])
+        res.push(minArr[i])
+        arr.pop()
+      }
+    
+    if(minArr.length % 2 === 0) {
+      return res;
+    } else if (minArr.length % 2 !== 0) {
+       return res.slice(0,-1)
+    }
+  };
+
+  // Diff cleaner solution
+
+  // I love how you do two things right at the start, by creating a new array with the length of the original array and also sort the original array.The index of the map functions is used simply to alternate between the beginning and the end of the array!
+
+  // This mutates the original array since sort is called on arr, and the sort method happens in place. Using Array.from(arr).sort() would make a new sorted array which is better as mutating the input should generally be avoided (although it isn't checked for in this kata).
+  const solve = arr =>
+  [...Array(arr.sort((a, b) => a - b).length)].map((_, idx) => idx % 2 ? arr.shift() : arr.pop());
+
+// An element in an array is dominant if it is greater than all elements to its right. You will be given an array and your task will be to return a list of all dominant elements. For example:
+
+// solve([1,21,4,7,5]) = [21,7,5] because 21, 7 and 5 are greater than elments to their right. 
+// solve([5,4,3,2,1]) = [5,4,3,2,1]
+
+// Notice that the last element is always included. All numbers will be greater than 0.
+
+  function solve(arr){
+    let result=[]
+    for(let i=0;i<arr.length;i++){
+       if(arr[i]>Math.max(...arr.slice(i+1, arr.length)))
+           result.push(arr[i])
+    }
+    return result;
+};
+
+// diff solution
+function solve(arr){
+  return arr.filter((e,i)=> arr.slice(i+1).every(x => x < e));
+};
