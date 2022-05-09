@@ -4980,9 +4980,25 @@ function loopArr(arr, direction, steps) {
   };
 
   // Diff cleaner solution
-  
+
   // I love how you do two things right at the start, by creating a new array with the length of the original array and also sort the original array.The index of the map functions is used simply to alternate between the beginning and the end of the array!
 
   // This mutates the original array since sort is called on arr, and the sort method happens in place. Using Array.from(arr).sort() would make a new sorted array which is better as mutating the input should generally be avoided (although it isn't checked for in this kata).
   const solve = arr =>
   [...Array(arr.sort((a, b) => a - b).length)].map((_, idx) => idx % 2 ? arr.shift() : arr.pop());
+
+// An element in an array is dominant if it is greater than all elements to its right. You will be given an array and your task will be to return a list of all dominant elements. For example:
+
+// solve([1,21,4,7,5]) = [21,7,5] because 21, 7 and 5 are greater than elments to their right. 
+// solve([5,4,3,2,1]) = [5,4,3,2,1]
+
+// Notice that the last element is always included. All numbers will be greater than 0.
+
+  function solve(arr){
+    let result=[]
+    for(let i=0;i<arr.length;i++){
+       if(arr[i]>Math.max(...arr.slice(i+1, arr.length)))
+           result.push(arr[i])
+    }
+    return result;
+};
