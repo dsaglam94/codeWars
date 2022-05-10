@@ -5308,3 +5308,13 @@ function sortMe(arr){
     }
   })
 }
+// diff one
+function sortMe(arr){
+  return [...arr].sort((a,b) => {
+    const [x,y] = [a.toString().slice(-1), b.toString().slice(-1)];
+    if (x !== y) return x.localeCompare(y);
+    else {
+      return arr.indexOf(a) - arr.indexOf(b);
+    }
+  })
+}
