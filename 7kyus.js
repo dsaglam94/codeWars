@@ -5254,3 +5254,35 @@ const distributeEvenly = (array) => {
   }
   return result;
 };
+
+// diff solution
+const distributeEvenly = ( array ) => {
+  
+  const arr = [...new Set(array)].map( el => array.filter( e => el === e ) );
+
+  return array.map((_, i) => arr.map( el => el[i]) ).reduce((a, b) => a.concat(b)).filter( el => el );
+};
+// diff solution
+const distributeEvenly = (array) => {
+  const map = new Map();
+  const res = [];
+  
+  for(x of array) {
+    if(!map.has(x)) {
+      map.set(x, 0);
+    }
+    map.set(x, map.get(x) + 1)
+  }
+  
+  while(map.size > 0) {
+    for(let [k, v] of map) {
+      res.push(k);
+      map.set(k, v - 1);
+      if(v - 1 == 0){
+        map.delete(k);
+      }
+    }
+  }
+  
+  return res;
+};
