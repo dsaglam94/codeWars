@@ -267,3 +267,16 @@ function defineSuit(card) {
           return;
     }
 }
+
+// diff solution
+function defineSuit(card) {
+  const s = {
+    "♣": "clubs",
+    "♠": "spades",
+    "♦": "diamonds",
+    "♥": "hearts"
+  }
+  return s[card.charAt(card.length - 1)]
+  // return s[card.substr(-1)]
+  // return s[slice(-1)]
+}
