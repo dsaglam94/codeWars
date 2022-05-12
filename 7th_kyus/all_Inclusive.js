@@ -20,3 +20,8 @@ function containAllRots(str, arr) {
     }
     return true
   }
+
+//   better one with ES6 higher functions implemented
+function containAllRots(strng, arr) {
+    return [...strng].map((_,i) => strng.substr(i)+strng.slice(0,i)).every(x => arr.includes(x));
+}
