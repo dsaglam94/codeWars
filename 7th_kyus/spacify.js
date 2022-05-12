@@ -8,3 +8,8 @@ function spacify(str) {
     })
       return r;
 }
+
+// diff simpler solution
+function spacify(str) {
+    return str.split("").join(" ");
+  }
