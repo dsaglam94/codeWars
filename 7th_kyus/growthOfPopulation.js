@@ -12,9 +12,10 @@
 // It will need 3 entire years.
 
 function nbYear(p0, percent, aug, p) {
-    
-    for (let years = 0; p0 < p; years++) {
+    let years = 0;
+    for (let i = 0; p0 < p; i++) {
       p0 = Math.floor(p0 + p0 * percent / 100 + aug);
+      years++
     }
     return years
   }
