@@ -17,3 +17,8 @@ function findSum(){
       return vals.reduce((acc, curr) => acc + curr,0)
     }
   }
+
+// refactored one liner
+function findSum(...nums) {
+    return nums.reduce((a, b) => a < 0 || b < 0 ? - 1 : a + b, 0)
+  }
