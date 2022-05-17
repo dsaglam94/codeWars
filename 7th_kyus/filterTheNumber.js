@@ -12,3 +12,13 @@ var FilterString = function(value) {
     let r = value.match(myRegex)
     return Number(r.join(''))
 }
+
+// diff solution
+var FilterString = function(value) {
+    return parseInt(value.replace(/[^\d]/g, ""))
+}
+
+// another one with filter 
+var FilterString = function(value) {
+    return +value.split('').filter(n => !isNaN(n)).join('');
+  }
