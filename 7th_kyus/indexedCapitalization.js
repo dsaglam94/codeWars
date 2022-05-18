@@ -18,4 +18,9 @@ function capitalize(s,arr){
     
     capS = capS.join("");
     return capS
-    };
+};
+
+// refactored one
+function capitalize(s,arr){
+    return [...s].map((x,i)=>arr.includes(i)?x.toUpperCase():x).join('')
+  };
