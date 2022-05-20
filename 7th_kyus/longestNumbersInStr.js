@@ -10,3 +10,6 @@ function solve(str){
     
     return Number(myStr[0])
 };
+
+// or simply this?
+solve=s=>Math.max(...s.match(/\d+|$/g))
