@@ -14,3 +14,8 @@ function spam(number){
     }
     return str;
 }
+
+// refactored
+function spam(number){
+    return Array(++number).join("hue");
+  }
