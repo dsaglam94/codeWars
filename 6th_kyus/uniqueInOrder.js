@@ -15,3 +15,7 @@ const uniqueInOrder = (iterable) => {
     }
     return newArr
   }
+// refactored version with filter
+const uniqueInOrder2 = (iterable) => {
+    return [...iterable].filter((a, i) => a !== iterable[i-1])
+}
