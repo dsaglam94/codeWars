@@ -4,25 +4,25 @@
 
 // // Note: The function accepts an integer and returns an integer
 
-// function squareDigits(num){
+function squareDigits(num){
 
-//     let strNums = num.toString()
+    let strNums = num.toString()
     
-//     let squaredNums = "";
-//     for (let i = 0; i < strNums.length; i++) {
-//       squaredNums += Math.pow(strNums[i], 2)
-//     }
+    let squaredNums = "";
+    for (let i = 0; i < strNums.length; i++) {
+      squaredNums += Math.pow(strNums[i], 2)
+    }
     
-//     return Number(squaredNums);
+    return Number(squaredNums);
     
-//   }
+  }
 
 // //   another option for the same problem
 
-// function squareDigits(num){
-//     return Number(('' + num).split('').map(function (val) { return val * val;}).join(''));
+function squareDigits(num){
+    return Number(('' + num).split('').map(function (val) { return val * val;}).join(''));
     
-//   }
+  }
 
 // //   Trolls are attacking your comment section!
 
@@ -34,50 +34,50 @@
 
 // // Note: for this kata y isn't considered a vowel.
 
-// const disemvowel = (str) => {
-//     const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
-//     let newStr = '';
-//     for (let i = 0; i <= str.length; i++) {
-//       let char = str.charAt(i);
-//       if (vowels.indexOf(char) == -1) {
-//         newStr += char;
-//       }
-//     }
-//       return newStr;
-//   };
+const disemvowel = (str) => {
+    const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+    let newStr = '';
+    for (let i = 0; i <= str.length; i++) {
+      let char = str.charAt(i);
+      if (vowels.indexOf(char) == -1) {
+        newStr += char;
+      }
+    }
+      return newStr;
+  };
 
 // //   In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
 
 // //   Examples
 // //   highAndLow("1 2 3 4 5");  // return "5 1"
 
-//   function highAndLow(numbers){
-//     let numsArr = numbers.split(' ').sort((a,b) => a - b);
-//     let highestNum = numsArr[numsArr.length - 1];
-//     let lowestNum = numsArr[0];
-//     let finalValue = highestNum.concat(' ',lowestNum);
-//     return finalValue;
-//   }
+  function highAndLow(numbers){
+    let numsArr = numbers.split(' ').sort((a,b) => a - b);
+    let highestNum = numsArr[numsArr.length - 1];
+    let lowestNum = numsArr[0];
+    let finalValue = highestNum.concat(' ',lowestNum);
+    return finalValue;
+  }
 
 // //   diff solution
 
-// function highAndLow(numbers){
-//     numbers = numbers.split(' ');
-//     return `${Math.max(...numbers)} ${Math.min(...numbers)}`;
-//   }
+function highAndLow(numbers){
+    numbers = numbers.split(' ');
+    return `${Math.max(...numbers)} ${Math.min(...numbers)}`;
+  }
 
 // //   Your task is to make a function that can take any non-negative integer as an argument and return it with its digits in descending order. Essentially, rearrange the digits to create the highest possible number.
 
 // // Examples:
 // // Input: 42145 Output: 54421
 
-//   function descendingOrder(n){
+  function descendingOrder(n){
 
-//     let newArr = [...''+n].sort((a,b) => b - a).join('');
-//     console.log(newArr)
-//     return Number(newArr.toString());
+    let newArr = [...''+n].sort((a,b) => b - a).join('');
+    console.log(newArr)
+    return Number(newArr.toString());
  
-//   }
+  }
 
 // //   This time no story, no theory. The examples below show you how to write function accum:
 
@@ -85,9 +85,9 @@
 // // accum("abcd") -> "A-Bb-Ccc-Dddd"
 // // accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
 
-//   function accum(s) {
-//     return s.split('').map((c, i) => (c.toUpperCase() + c.toLowerCase().repeat(i))).join('-');
-//   }
+  function accum(s) {
+    return s.split('').map((c, i) => (c.toUpperCase() + c.toLowerCase().repeat(i))).join('-');
+  }
 
 // //   ou are going to be given a word. Your job is to return the middle character of the word. If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters.
 
@@ -102,19 +102,19 @@
 // // Kata.getMiddle("A") should return "A"
 
 
-//   function getMiddle(s)
-//   {
-//    let position;
-//    let length;
-//     if (s.length % 2 === 0) {
-//        position = s.length / 2 - 1 ;
-//        length = 2;
-//     } else {
-//        position = Math.floor(s.length / 2 );
-//        length = 1;
-//     }
-//     return s.substring(position, position + length)
-//   }
+  function getMiddle(s)
+  {
+   let position;
+   let length;
+    if (s.length % 2 === 0) {
+       position = s.length / 2 - 1 ;
+       length = 2;
+    } else {
+       position = Math.floor(s.length / 2 );
+       length = 1;
+    }
+    return s.substring(position, position + length)
+  }
 
 // console.log(  getMiddle('namesxnames'))
 
@@ -127,23 +127,23 @@
 // // "aba" --> false
 // // "moOse" --> false (ignore letter case)
 
-// function isIsogram(str){
-//     let newStrArr = [...str.toLowerCase()];
-//     let filteredNewStr = newStrArr.filter((item, index) => newStrArr.indexOf(item) == index);
+function isIsogram(str){
+    let newStrArr = [...str.toLowerCase()];
+    let filteredNewStr = newStrArr.filter((item, index) => newStrArr.indexOf(item) == index);
  
-//    if ( filteredNewStr.length === newStrArr.length) {
-//        return true;
-//    } else { return false ; }
-//  }
+   if ( filteredNewStr.length === newStrArr.length) {
+       return true;
+   } else { return false ; }
+ }
 
 // //  Simple, given a string of words, return the length of the shortest word(s).
 
 // //  String will never be empty and you do not need to account for different data types.
 
-//  function findShort(s){
-//     let newArr = s.split(' ').map(x => x.length).sort((a,b) => a - b);
-//     return newArr[0];
-//   }
+ function findShort(s){
+    let newArr = s.split(' ').map(x => x.length).sort((a,b) => a - b);
+    return newArr[0];
+  }
 
 
 // //   Your task is to convert strings to how they would be written by Jaden Smith. The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
@@ -153,9 +153,9 @@
 // //   Not Jaden-Cased: "How can mirrors be real if our eyes aren't real"
 // //   Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real"
 
-//   String.prototype.toJadenCase = function () {
-//     return this.split(' ').map(x => x[0].toUpperCase() + x.slice(1)).join(' ');
-//   };
+  String.prototype.toJadenCase = function () {
+    return this.split(' ').map(x => x[0].toUpperCase() + x.slice(1)).join(' ');
+  };
 
 // //   Example: (input --> output)
 
@@ -166,21 +166,21 @@
 // // dnaStrand [G,T,A,T] `shouldBe` [C,A,T,A]
 // // dnaStrand [A,A,A,A] `shouldBe` [T,T,T,T]
 
-//   function DNAStrand(dna){
-//     let newStr = dna.split('').map(letter => {
-//       if ( letter === "A") {
-//         return "T"
-//       } else if ( letter === "T") {
-//         return "A"
-//       } else if ( letter === "G") {
-//         return "C"
-//       } else if ( letter === "C") {
-//         return "G"
-//       }
-//     })
+  function DNAStrand(dna){
+    let newStr = dna.split('').map(letter => {
+      if ( letter === "A") {
+        return "T"
+      } else if ( letter === "T") {
+        return "A"
+      } else if ( letter === "G") {
+        return "C"
+      } else if ( letter === "C") {
+        return "G"
+      }
+    })
     
-//     return newStr.join('');
-//   }
+    return newStr.join('');
+  }
 
 
 //   // Your task is to write a function maskify, which changes all but the last four characters into '#'.
@@ -191,18 +191,18 @@
 //   // maskify(               "1") ==                "1"
 //   // maskify(                "") ==                 ""
 
-// function maskify(cc) {
-//   let len = cc.length - 4;
+function maskify(cc) {
+  let len = cc.length - 4;
   
-//   if ( cc.length < 4) {
-//     return cc;
-//   } else {
-//      let hashed = cc.split('').slice(0, len).fill('#').join('');
-//      let visiblePart = cc.slice(-4);
+  if ( cc.length < 4) {
+    return cc;
+  } else {
+     let hashed = cc.split('').slice(0, len).fill('#').join('');
+     let visiblePart = cc.slice(-4);
   
-//      return hashed + visiblePart
-//   } 
-// }
+     return hashed + visiblePart
+  } 
+}
 
 // // Given two integers a and b, which can be positive or negative, find the sum of all the integers between and including them and return it. If the two numbers are equal return a or b.
 
@@ -215,16 +215,16 @@
 // // (1, 1) --> 1 (1 since both are same)
 
 
-// function getSum( a,b )
-// {
-//   let numArr = [a, b].sort((x,y) => x - y);
-//   let allNums = [];
-//   for (let i = numArr[0]; i <= numArr[1]; i++){
-//     allNums.push(i);
-//   }
+function getSum( a,b )
+{
+  let numArr = [a, b].sort((x,y) => x - y);
+  let allNums = [];
+  for (let i = numArr[0]; i <= numArr[1]; i++){
+    allNums.push(i);
+  }
 
-//   return allNums.reduce((x,y) => x + y,0)
-// }
+  return allNums.reduce((x,y) => x + y,0)
+}
 
 // // Create a function that returns the sum of the two lowest positive numbers given an array of minimum 4 positive integers. No floats or non-positive integers will be passed.
 
@@ -232,16 +232,16 @@
 
 // // [10, 343445353, 3453445, 3453545353453] should return 3453455.
 
-// function sumTwoSmallestNumbers(numbers) {  
-//   let sortedArr = numbers.sort((a,b) => a - b)
-//   console.log(sortedArr)
-//   let newArr = [];
-//     for (let i = 0; i < 2; i++) {
-//     newArr.push(sortedArr[i])
-//     }
+function sumTwoSmallestNumbers(numbers) {  
+  let sortedArr = numbers.sort((a,b) => a - b)
+  console.log(sortedArr)
+  let newArr = [];
+    for (let i = 0; i < 2; i++) {
+    newArr.push(sortedArr[i])
+    }
     
-//    console.log(newArr.reduce((a,b) => a+b,0))
-//   }
+   console.log(newArr.reduce((a,b) => a+b,0))
+  }
 
 //   sumTwoSmallestNumbers([5, 8, 12, 19, 22])
 
@@ -255,28 +255,28 @@
 // // a = "abcdefghijklmnopqrstuvwxyz"
 // // longest(a, a) -> "abcdefghijklmnopqrstuvwxyz"
 
-//   function longest(s1, s2) {
-//     let computedArr = [...s1, ...s2]
-//     let filteredArr = computedArr.filter((item,index) => computedArr.indexOf(item) === index);
-//     return filteredArr.sort().join('')
-//     }
+  function longest(s1, s2) {
+    let computedArr = [...s1, ...s2]
+    let filteredArr = computedArr.filter((item,index) => computedArr.indexOf(item) === index);
+    return filteredArr.sort().join('')
+    }
 
 //     // diff solution to same problem
 
-//     function longest(s1, s2) {
-//       return Array.from(new Set(s1 + s2)).sort().join('');
-//     }
+    function longest(s1, s2) {
+      return Array.from(new Set(s1 + s2)).sort().join('');
+    }
 
 //     // diff solution
-//     const longest = (s1, s2) => [...new Set(s1+s2)].sort().join('')
+    const longest = (s1, s2) => [...new Set(s1+s2)].sort().join('')
 
 // // If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise, you can be sure he's not...
 
 // // Ex: Input = ["Ryan", "Kieran", "Jason", "Yous"], Output = ["Ryan", "Yous"]
 
-//     function friend(friends){
-//       return friends.filter(friend => friend.length === 4) 
-//     }
+    function friend(friends){
+      return friends.filter(friend => friend.length === 4) 
+    }
 
 // //     To be a senior, a member must be at least 55 years old and have a handicap greater than 7. In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap.
 
@@ -290,28 +290,28 @@
 // // input =  [[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]
 // // output = ["Open", "Open", "Senior", "Open", "Open", "Senior"]
 
-//     function openOrSenior(data){
-//       let result = [];
-//       for (let i = 0; i < data.length; i++) {
+    function openOrSenior(data){
+      let result = [];
+      for (let i = 0; i < data.length; i++) {
     
-//             if (data[i][0] >= 55 && data[i][1] > 7) {
-//             result.push('Senior') 
-//           } else {
-//             result.push('Open') 
-//           }
+            if (data[i][0] >= 55 && data[i][1] > 7) {
+            result.push('Senior') 
+          } else {
+            result.push('Open') 
+          }
     
-//       }
-//       return result;
-//     }
+      }
+      return result;
+    }
 
 // // diff solution
 
 // // Destructuring: [age, handicap] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 // // Arrow Functions: () => {} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
 
-// function openOrSenior(data){
-//   return data.map(([age, handicap]) => (age > 54 && handicap > 7) ? 'Senior' : 'Open');
-// }
+function openOrSenior(data){
+  return data.map(([age, handicap]) => (age > 54 && handicap > 7) ? 'Senior' : 'Open');
+}
 
 // // The colors used by the printer are recorded in a control string. For example a "good" control string would be aaabbbbhaijjjm meaning that the printer used three times color a, four times color b, one time color h then one time color a...
 
@@ -328,16 +328,16 @@
 // // s="aaaxbbbbyyhwawiwjjjwwm"
 // // printer_error(s) => "8/22"
 
-// function printerError(s) {
+function printerError(s) {
 
-//   let count = 0;
-//   for(let i = 0; i < s.length; i++) {
-//     if (s[i] > "m") {
-//       count++;
-//     }
-//   }
-//   return `${count}/${s.length}`;
-// }
+  let count = 0;
+  for(let i = 0; i < s.length; i++) {
+    if (s[i] > "m") {
+      count++;
+    }
+  }
+  return `${count}/${s.length}`;
+}
 
 // // 04.04.2022 
 
@@ -354,35 +354,35 @@
 // // 1 -->  1
 // // 2 --> 3 + 5 = 8
 
-// function rowSumOddNumbers(n) {
-//   return Math.pow(n, 3);
-// }
+function rowSumOddNumbers(n) {
+  return Math.pow(n, 3);
+}
 
 // // diff solution 
-// // return n*n*n
+// return n*n*n
 
 // // You are provided with a list (or array) of integer pairs. Elements of each pair represent number of people get into bus (The first item) and number of people get off the bus (The second item) in a bus stop.
 
 // // Your task is to return number of people who are still in the bus after the last bus station (after the last array). Even though it is the last bus stop, the bus is not empty and some people are still in the bus, and they are probably sleeping there :D
 
 
-// var number = function(busStops){
+var number = function(busStops){
 
-//   let peopleGetInto = 0;
-//   let peopleGetOff = 0;
+  let peopleGetInto = 0;
+  let peopleGetOff = 0;
   
-//   for (let i = 0; i < busStops.length; i++) {
-//     peopleGetInto += busStops[i][0];
-//     peopleGetOff += busStops[i][1];
-//   }
+  for (let i = 0; i < busStops.length; i++) {
+    peopleGetInto += busStops[i][0];
+    peopleGetOff += busStops[i][1];
+  }
   
-//   return peopleGetInto - peopleGetOff;
+  return peopleGetInto - peopleGetOff;
   
-// }
+}
 
 // // better solution?
 
-// const number = (busStops) => busStops.reduce((rem, [on, off]) => rem + on - off, 0);
+const number = (busStops) => busStops.reduce((rem, [on, off]) => rem + on - off, 0);
 
 // // Create a function named divisors/Divisors that takes an integer n > 1 and returns an array with all of the integer's divisors(except for 1 and the number itself), from smallest to largest. If the number is prime return the string '(integer) is prime' (null in C#) (use Either String a in Haskell and Result<Vec<u32>, String> in Rust).
 
@@ -391,29 +391,29 @@
 // // divisors(25); // should return [5]
 // // divisors(13); // should return "13 is prime"
 
-// function divisors(integer) {
+function divisors(integer) {
 
-//   let divisorNums = [];
+  let divisorNums = [];
   
-//   for ( let i = 2; i <= integer; i++) {
-//     if ( integer % i === 0) {
-//       divisorNums.push(i)
-//     }
-//   }
-//   if ( divisorNums.length === 1) {
-//     return `${integer} is prime`;
-//   } else if ( divisorNums.length > 1) {
-//     return divisorNums.slice(0, -1);
-//   }
+  for ( let i = 2; i <= integer; i++) {
+    if ( integer % i === 0) {
+      divisorNums.push(i)
+    }
+  }
+  if ( divisorNums.length === 1) {
+    return `${integer} is prime`;
+  } else if ( divisorNums.length > 1) {
+    return divisorNums.slice(0, -1);
+  }
   
-// };
+};
 
 // // another solution 
-// function divisors(integer) {
-//   var res = []
-//   for (var i = 2; i <= Math.floor(integer / 2); ++i) if (integer % i == 0) res.push(i);
-//   return res.length ? res : integer + ' is prime'
-// };
+function divisors(integer) {
+  var res = []
+  for (var i = 2; i <= Math.floor(integer / 2); ++i) if (integer % i == 0) res.push(i);
+  return res.length ? res : integer + ' is prime'
+};
 
 // // Task:
 // // Given a list of integers, determine whether the sum of its elements is odd or even.
@@ -433,23 +433,23 @@
 // // Output: "even"
 
 
-// function oddOrEven(array) {
-//   if ( array === [] || array == 0 ) { return 'even'}
+function oddOrEven(array) {
+  if ( array === [] || array == 0 ) { return 'even'}
   
-//   let sum = array.reduce((a,b) => a + b,0) 
+  let sum = array.reduce((a,b) => a + b,0) 
   
-//   if ( sum % 2 === 0) {
-//     return 'even';
-//   } else {
-//     return 'odd';
-//   }
-// }
+  if ( sum % 2 === 0) {
+    return 'even';
+  } else {
+    return 'odd';
+  }
+}
 
 // // even better ?
 
-// function oddOrEven(arr) {
-//   return arr.reduce((a,b)=>a+b,0) % 2 ? 'odd' : 'even';
-// }
+function oddOrEven(arr) {
+  return arr.reduce((a,b)=>a+b,0) % 2 ? 'odd' : 'even';
+}
 
 // // 05.04.2022
 
@@ -459,12 +459,12 @@
 // // "This is an example!" ==> "sihT si na !elpmaxe"
 // // "double  spaces"      ==> "elbuod  secaps"
 
-// function reverseWords(str) {
-//   return str.split(' ').map(word => word.split('')
-//                                         .reverse()
-//                                         .join(''))
-//                                         .join(' ');
-// }
+function reverseWords(str) {
+  return str.split(' ').map(word => word.split('')
+                                        .reverse()
+                                        .join(''))
+                                        .join(' ');
+}
 
 // // Task
 // // Given an array of integers, remove the smallest value. Do not mutate the original array/list. If there are multiple elements with the same value, remove the one with a lower index. If you get an empty array/list, return an empty array/list.
@@ -476,10 +476,10 @@
 // // * Input: [5,3,2,1,4], output = [5,3,2,4]
 // // * Input: [2,2,1,2,1], output = [2,2,2,1]
 
-// function removeSmallest(numbers) {
-//   let indexOfMin = numbers.indexOf(Math.min(...numbers));
-//   return [...numbers.slice(0, indexOfMin), ...numbers.slice(indexOfMin + 1)];
-// }
+function removeSmallest(numbers) {
+  let indexOfMin = numbers.indexOf(Math.min(...numbers));
+  return [...numbers.slice(0, indexOfMin), ...numbers.slice(indexOfMin + 1)];
+}
 
 // // 06.04.2022
 
@@ -490,9 +490,9 @@
 // // solution('abc', 'bc') // returns true
 // // solution('abc', 'd') // returns false
 
-// function solution(str, ending){
-//   return str.endsWith(ending);
-// }
+function solution(str, ending){
+  return str.endsWith(ending);
+}
 
 // // Task:
 // // Your task is to write a function which returns the sum of following series upto nth term(parameter).
@@ -510,13 +510,13 @@
 // // 2 --> 1 + 1/4 --> "1.25"
 // // 5 --> 1 + 1/4 + 1/7 + 1/10 + 1/13 --> "1.57"
 
-// function SeriesSum(n, s = 0) {
-//   for (let i = 0; i < n; i++) {
-//     s += 1 / (1 + i * 3)
-//   }
+function SeriesSum(n, s = 0) {
+  for (let i = 0; i < n; i++) {
+    s += 1 / (1 + i * 3)
+  }
   
-//   return s.toFixed(2)
-// }
+  return s.toFixed(2)
+}
 
 // // Task
 // // Write a function that returns both the minimum and maximum number of the given list/array.
@@ -526,18 +526,18 @@
 // // minMax([2334454,5])   == [5, 2334454]
 // // minMax([1])           == [1, 1]
 
-// function minMax(arr){
-//   let resultArr = [];
-//   resultArr.push(Math.min(...arr))
-//   resultArr.push(Math.max(...arr))
-//   return resultArr;
+function minMax(arr){
+  let resultArr = [];
+  resultArr.push(Math.min(...arr))
+  resultArr.push(Math.max(...arr))
+  return resultArr;
   
-// }
+}
 
 // // diff solution better?
-// function minMax(arr){
-//   return [Math.min(...arr), Math.max(...arr)];
-// }
+function minMax(arr){
+  return [Math.min(...arr), Math.max(...arr)];
+}
 
 // // Write a function which takes a list of strings and returns each line prepended by the correct number.
 
@@ -548,22 +548,22 @@
 // // number([]) // => []
 // // number(["a", "b", "c"]) // => ["1: a", "2: b", "3: c"]
 
-// const number = function(array){
+const number = function(array){
 
-//   let res = [];
+  let res = [];
   
-//   for (let i = 0; i < array.length; i++) {
-//     res.push(`${i+1}: ${array[i]}`)
-//   }
-//   return res;
-// }
+  for (let i = 0; i < array.length; i++) {
+    res.push(`${i+1}: ${array[i]}`)
+  }
+  return res;
+}
 
 // // diff solution with map
-// var number = function(array) {
-//   return array.map(function (line, index) {
-//     return (index + 1) + ": " + line;
-//   });
-// }
+var number = function(array) {
+  return array.map(function (line, index) {
+    return (index + 1) + ": " + line;
+  });
+}
 
 // // In this kata you get the start number and the end number of a region and should return the count of all numbers except numbers with a 5 in it. The start and the end number are both inclusive!
 
@@ -574,15 +574,15 @@
 // // The result may contain fives. ;-)
 // // The start number will always be smaller than the end number. Both numbers can be also negative!
 
-// function dontGiveMeFive(start, end) {
-//   let count = 0;
+function dontGiveMeFive(start, end) {
+  let count = 0;
 
-//   for (let i = start; i <= end; i++)
-//       if (!i.toString().includes("5"))
-//           count++;
+  for (let i = start; i <= end; i++)
+      if (!i.toString().includes("5"))
+          count++;
 
-//   return count;
-// }
+  return count;
+}
 
 // // You are given an odd-length array of integers, in which all of them are the same, except for one single number.
 
@@ -594,17 +594,17 @@
 // // [1, 1, 2] ==> 2
 // // [17, 17, 3, 17, 17, 17, 17] ==> 3
 
-// function stray(numbers) {
+function stray(numbers) {
 
-//   let sortedNums = numbers.sort((a,b) => a - b)
+  let sortedNums = numbers.sort((a,b) => a - b)
   
-//   if (sortedNums[0] !== sortedNums[1]) {
-//   return sortedNums[0]
-//   } else {
-//   return sortedNums[sortedNums.length - 1]
-//   }
+  if (sortedNums[0] !== sortedNums[1]) {
+  return sortedNums[0]
+  } else {
+  return sortedNums[sortedNums.length - 1]
+  }
 
-// }
+}
 
 // // or example if you are given a chocolate bar of size 2 x 1 you can split it to single squares in just one break, but for size 3 x 1 you must do two breaks.
 
@@ -629,15 +629,15 @@
 // // 12 --> 6 (1, 2, 3, 4, 6, 12)
 // // 30 --> 8 (1, 2, 3, 5, 6, 10, 15, 30)
 
-// function getDivisorsCnt(n){
-//   let res = [];
-//   for (let i = 1; i <= n; i++) {
-//     if (n % i === 0) {
-//       res.push(i)
-//     }
-//   }
-//   return res.length;
-// }
+function getDivisorsCnt(n){
+  let res = [];
+  for (let i = 1; i <= n; i++) {
+    if (n % i === 0) {
+      res.push(i)
+    }
+  }
+  return res.length;
+}
 
 // // As a part of this Kata, you need to create a function that when provided with a triplet, returns the index of the numerical element that lies between the other two elements.
 
@@ -653,13 +653,13 @@
 // // gimme([5, 10, 14]) => 1
 // // 10 is the number that fits between 5 and 14 and the index of 10 in the input array is 1.
 
-// function gimme (triplet) {
+function gimme (triplet) {
 
-//   let duplicateTriplet = [...triplet];
-//   let sortedTriplet = duplicateTriplet.sort((a,b) => a - b)
+  let duplicateTriplet = [...triplet];
+  let sortedTriplet = duplicateTriplet.sort((a,b) => a - b)
 
-//   return triplet.indexOf(sortedTriplet[1])
-// }
+  return triplet.indexOf(sortedTriplet[1])
+}
 
 // // 08.03.2022
 
@@ -674,30 +674,30 @@
 // // 5, 2, "multiply" --> 10
 // // 5, 2, "divide"   --> 2.5
 
-// function arithmetic(a, b, operator){
+function arithmetic(a, b, operator){
 
-//   switch(operator) {
+  switch(operator) {
    
-//       case 'add':
-//          return a + b;
-//          break;
-//       case 'subtract':
-//          return a - b;
-//          break;
-//       case 'multiply':
-//          return a * b;
-//          break;
-//       case 'divide':
-//          return a / b;
-//          break;
-//   }
-//  }
+      case 'add':
+         return a + b;
+         break;
+      case 'subtract':
+         return a - b;
+         break;
+      case 'multiply':
+         return a * b;
+         break;
+      case 'divide':
+         return a / b;
+         break;
+  }
+ }
 
 // //  diff solution
-// function arithmetic(a, b, operator){
-//   optable = { "add":"+", "subtract": "-", "multiply": "*" , "divide":"/"};
-//   return eval(a + optable[operator] + b); 
-// }
+function arithmetic(a, b, operator){
+  optable = { "add":"+", "subtract": "-", "multiply": "*" , "divide":"/"};
+  return eval(a + optable[operator] + b); 
+}
 
 // // Write a function that takes an array of strings as an argument and returns a sorted array containing the same strings, ordered from shortest to longest.
 
@@ -710,17 +710,17 @@
 // // ["Eyes", "Glasses", "Monocles", "Telescopes"]
 
 
-// function sortByLength (array) {
-//   return array.sort((a,b) => a.length - b.length);
-// };
+function sortByLength (array) {
+  return array.sort((a,b) => a.length - b.length);
+};
 
 // // The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age, oldest age].
 
-// function twoOldestAges(ages){
+function twoOldestAges(ages){
 
-//   return ages.sort((a,b) => a - b).slice(-2)
+  return ages.sort((a,b) => a - b).slice(-2)
   
-// }
+}
 
 // // Create a function that returns the name of the winner in a fight between two fighters.
 
@@ -730,24 +730,24 @@
 
 // // Both health and damagePerAttack (damage_per_attack for python) will be integers larger than 0. You can mutate the Fighter objects.
 
-// // function Fighter(name, health, damagePerAttack) {
-// //   this.name = name;
-// //   this.health = health;
-// //   this.damagePerAttack = damagePerAttack;
-// //   this.toString = function() { return this.name; }
-// // }
-
-// function declareWinner(fighter1, fighter2, firstAttacker) {
-//   let fac1 = Math.ceil( fighter1.health / fighter2.damagePerAttack );
-//   let fac2 = Math.ceil( fighter2.health / fighter1.damagePerAttack );
-//   if(fac1 < fac2) {
-//     return fighter2.name;
-//   } else if(fac2 < fac1) {
-//     return fighter1.name;
-//   } else {
-//     return firstAttacker;
-//   }
+// function Fighter(name, health, damagePerAttack) {
+//   this.name = name;
+//   this.health = health;
+//   this.damagePerAttack = damagePerAttack;
+//   this.toString = function() { return this.name; }
 // }
+
+function declareWinner(fighter1, fighter2, firstAttacker) {
+  let fac1 = Math.ceil( fighter1.health / fighter2.damagePerAttack );
+  let fac2 = Math.ceil( fighter2.health / fighter1.damagePerAttack );
+  if(fac1 < fac2) {
+    return fighter2.name;
+  } else if(fac2 < fac1) {
+    return fighter1.name;
+  } else {
+    return firstAttacker;
+  }
+}
 
 // // Upto and including n, this function will return the sum of all multiples of 3 and 5.
 
@@ -759,17 +759,17 @@
 
 
 
-// function findSum(n) {
+function findSum(n) {
 
-//   let sum = 0;
+  let sum = 0;
   
-//   for ( let i = 1; i <= n; i++ ) {
-//     if ( i % 3 === 0 || i % 5 === 0 ) {
-//     sum += i
-//     }
-//   }
-//   return sum;
-// }
+  for ( let i = 1; i <= n; i++ ) {
+    if ( i % 3 === 0 || i % 5 === 0 ) {
+    sum += i
+    }
+  }
+  return sum;
+}
 
 // // The parameters (divisor, bound) passed to the function are only positive values .
 // // It's guaranteed that a divisor is Found .
@@ -5007,3 +5007,314 @@ function loopArr(arr, direction, steps) {
 function solve(arr){
   return arr.filter((e,i)=> arr.slice(i+1).every(x => x < e));
 };
+
+// this one from freeCodeCamp 
+
+// You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. Remove all elements from the initial array that are of the same value as these arguments.
+
+// Note: You have to use the arguments object.
+
+function destroyer(arr, ...valsToRemove) {
+  return arr.filter(elem => !valsToRemove.includes(elem));
+}
+
+// Diff solution
+function destroyer(arr) {
+  var valsToRemove = Array.from(arguments).slice(1);
+  return arr.filter(function(val) {
+    return !valsToRemove.includes(val);
+  });
+}
+
+// another one
+function destroyer(arr) {
+  let valsToRemove = Object.values(arguments).slice(1);
+
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < valsToRemove.length; j++) {
+      if (arr[i] === valsToRemove[j]) {
+        delete arr[i];
+      }
+    }
+  }
+  return arr.filter(item => item !== null);
+}
+
+// Make a function that looks through an array of objects (first argument) and returns an array of all objects that have matching name and value pairs (second argument). Each name and value pair of the source object has to be present in the object from the collection if it is to be included in the returned array.
+
+// For example, if the first argument is [{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], and the second argument is { last: "Capulet" }, then you must return the third object from the array (the first argument), because it contains the name and its value, that was passed on as the second argument.
+
+function whatIsInAName(collection, source) {
+const sourceKeys = Object.keys(source);
+
+return collection.filter(obj => {
+    for (let i = 0; i < sourceKeys.length; i++) {
+      if (!obj.hasOwnProperty(sourceKeys[i]) ||
+          obj[sourceKeys[i]] !== source[sourceKeys[i]]) {
+        return false;
+      }
+    }
+    return true;
+  });
+}
+
+whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+
+// diff solution
+function whatIsInAName(collection, source) {
+  const sourceKeys = Object.keys(source);
+
+return collection
+                .filter(obj => sourceKeys
+                .every(key => obj.hasOwnProperty(key) &&
+                      obj[key] === source[key]));
+}
+
+// Pig Latin is a way of altering English Words. The rules are as follows:
+
+// - If a word begins with a consonant, take the first consonant or consonant cluster, move it to the end of the word, and add ay to it.
+
+// - If a word begins with a vowel, just add way at the end.
+
+// Translate the provided string to Pig Latin. Input strings are guaranteed to be English words in all lowercase.
+
+function translatePigLatin(str) {
+  let consonantRegex = /^[^aeiou]+/;
+  let myConsonants = str.match(consonantRegex);
+  return myConsonants !== null
+    ? str
+        .replace(consonantRegex, "")
+        .concat(myConsonants)
+        .concat("ay")
+    : str.concat("way");
+}
+
+translatePigLatin("consonant");
+
+// Perform a search and replace on the sentence using the arguments provided and return the new sentence.
+
+// First argument is the sentence to perform the search and replace on.
+
+// Second argument is the word that you will be replacing (before).
+
+// Third argument is what you will be replacing the second argument with (after).
+
+// Note: Preserve the case of the first character in the original word when you are replacing it. For example if you mean to replace the word Book with the word dog, it should be replaced as Dog
+
+function myReplace(str, before, after) {
+  // Find index where before is on string
+  var index = str.indexOf(before);
+  // Check to see if the first letter is uppercase or not
+  if (str[index] === str[index].toUpperCase()) {
+    // Change the after word to be capitalized before we use it.
+    after = after.charAt(0).toUpperCase() + after.slice(1);
+  } else {
+    // Change the after word to be uncapitalized before we use it.
+    after = after.charAt(0).toLowerCase() + after.slice(1);
+  }
+  // Now replace the original str with the edited one.
+  str = str.replace(before, after);
+
+  return str;
+}
+
+// The DNA strand is missing the pairing element. Take each character, get its pair, and return the results as a 2d array.
+
+// Base pairs are a pair of AT and CG. Match the missing element to the provided character.
+
+// Return the provided character as the first element in each array.
+
+// For example, for the input GCG, return [["G", "C"], ["C","G"], ["G", "C"]]
+
+// The character and its pair are paired up in an array, and all the arrays are grouped into one encapsulating array.
+
+function pairElement(str) {
+  //create object for pair lookup
+  var pairs = {
+    A: "T",
+    T: "A",
+    C: "G",
+    G: "C"
+  };
+  //split string into array of characters
+  var arr = str.split("");
+  //map character to array of character and matching pair
+  return arr.map(x => [x, pairs[x]]);
+}
+
+//test here
+pairElement("GCG");
+
+// diff solution with switch
+function pairElement(str) {
+  // Return each strand as an array of two elements, the original and the pair.
+  var paired = [];
+
+  // Function to check with strand to pair.
+  var search = function(char) {
+    switch (char) {
+      case "A":
+        paired.push(["A", "T"]);
+        break;
+      case "T":
+        paired.push(["T", "A"]);
+        break;
+      case "C":
+        paired.push(["C", "G"]);
+        break;
+      case "G":
+        paired.push(["G", "C"]);
+        break;
+    }
+  };
+
+  // Loops through the input and pair.
+  for (var i = 0; i < str.length; i++) {
+    search(str[i]);
+  }
+
+  return paired;
+}
+
+// Given a positive integer num, return the sum of all odd Fibonacci numbers that are less than or equal to num.
+
+// The first two numbers in the Fibonacci sequence are 1 and 1. Every additional number in the sequence is the sum of the two previous numbers. The first six numbers of the Fibonacci sequence are 1, 1, 2, 3, 5 and 8.
+
+// For example, sumFibs(10) should return 10 because all odd Fibonacci numbers less than or equal to 10 are 1, 1, 3, and 5.
+
+function sumFibs(num) {
+  let prevNumber = 0;
+  let currNumber = 1;
+  let result = 0;
+  while (currNumber <= num) {
+    if (currNumber % 2 !== 0) {
+      result += currNumber;
+    }
+    currNumber += prevNumber;
+    prevNumber = currNumber - prevNumber;
+  }
+
+  return result;
+}
+
+sumFibs(4);
+
+// 10.05.2022
+
+// In this Kata, you will be given a multi-dimensional array containing 2 or more sub-arrays of integers. Your task is to find the maximum product that can be formed by taking any one element from each sub-array.
+
+// Examples:
+// solve( [[1, 2],[3, 4]] ) = 8. The max product is given by 2 * 4
+// solve( [[10,-15],[-1,-3]] ) = 45, given by (-15) * (-3)
+// solve( [[1,-1],[2,3],[10,-100]] ) = 300, given by (-1) * 3 
+
+function solve(a) {
+  let min = 1, max = 1;
+  for (let x of a) {
+    let cur = [];
+    for (let y of x) cur.push(y * min), cur.push(y * max);
+    min = Math.min(...cur);
+    max = Math.max(...cur);
+  }
+  return max;
+}
+
+// Your task is to write a function, which takes two arguments and returns a sequence. First argument is a sequence of values, second is multiplier. The function should filter all non-numeric values and multiply the rest by given multiplier.
+
+const multiplyAndFilter = (array, multiplier) => array.filter(a => typeof(a) == "number").map(a => a * multiplier);
+
+// Your distributeEvenly function will take an array as an argument and needs to return a new array with the values distributed evenly.
+
+// Example:
+
+// Argument: ['one', 'one', 'two', 'two', 'three', 'three', 'four', 'four']
+
+// Result: ['one', 'two', 'three', 'four', 'one', 'two', 'three', 'four']
+
+// The underlying order will stay the same as in the original array. So in the case of our argument above, one comes before two so it stays this way in the returned array.
+
+// The aim is to have the longest possible chain of evenly distributed values (from the left to right), this means that an argument with many of the same elements might have many which are repeated at the end.
+
+// Example:
+
+// Argument: ['one', 'one', 'one', 'one', 'one', 'two', 'three']
+
+// Result: [ 'one', 'two', 'three', 'one', 'one', 'one', 'one' ]
+
+const distributeEvenly = (array) => {
+  const primer = new Set(array);
+  let result = [];
+  while (array.length>0) {
+      for (let i of primer) {
+          if (array.find((a) => a === i)) {
+              array.splice(array.indexOf(i), 1);
+              result.push(i);
+          }
+      }
+  }
+  return result;
+};
+
+// diff solution
+const distributeEvenly = ( array ) => {
+  
+  const arr = [...new Set(array)].map( el => array.filter( e => el === e ) );
+
+  return array.map((_, i) => arr.map( el => el[i]) ).reduce((a, b) => a.concat(b)).filter( el => el );
+};
+// diff solution
+const distributeEvenly = (array) => {
+  const map = new Map();
+  const res = [];
+  
+  for(x of array) {
+    if(!map.has(x)) {
+      map.set(x, 0);
+    }
+    map.set(x, map.get(x) + 1)
+  }
+  
+  while(map.size > 0) {
+    for(let [k, v] of map) {
+      res.push(k);
+      map.set(k, v - 1);
+      if(v - 1 == 0){
+        map.delete(k);
+      }
+    }
+  }
+  
+  return res;
+};
+
+// Sort array by last character
+
+// Complete the function to sort a given array or list by last character of elements.
+
+// Element can be an integer or a string.
+
+// Example:
+// ['acvd', 'bcc']  -->  ['bcc', 'acvd']
+// The last characters of the strings are d and c. As c comes before d, sorting by last character will give ['bcc', 'acvd'].
+
+// If two elements don't differ in the last character, then they should be sorted by the order they come in the array.
+
+function sortMe(arr){
+  return [...arr].sort((a,b) => {
+    const [x,y] = [a.toString().slice(-1), b.toString().slice(-1)];
+    if (x !== y) return x.localeCompare(y);
+    else {
+      return arr.indexOf(a) - arr.indexOf(b);
+    }
+  })
+}
+// diff one
+function sortMe(arr){
+  return [...arr].sort((a,b) => {
+    const [x,y] = [a.toString().slice(-1), b.toString().slice(-1)];
+    if (x !== y) return x.localeCompare(y);
+    else {
+      return arr.indexOf(a) - arr.indexOf(b);
+    }
+  })
+}
