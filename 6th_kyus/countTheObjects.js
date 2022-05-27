@@ -10,3 +10,12 @@ function count (string) {
           return stack[value] ? stack[value]++ : stack[value] = 1, stack;
         }, {});
 }
+
+// with forEach
+function count (string) {  
+    var count = {};
+    string.split('').forEach(s => {
+       count[s] ? count[s]++ : count[s] = 1;
+    });
+    return count;
+  }
