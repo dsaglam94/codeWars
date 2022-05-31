@@ -17,3 +17,7 @@ function switcher(x){
     }
     return res;
 }
+
+// diff approach
+const alpha = ' zyxwvutsrqponmlkjihgfedcba!? '
+const switcher = x => x.map(item => alpha[item]).join('')
