@@ -36,3 +36,23 @@ function countLanguages(list) {
     // return object
     return langCount;
 }
+
+// not to use forEach 
+function countLanguages(list) {
+    return list.reduce(function(s, c) {
+      
+      if(c.language in s)
+        s[c.language]++;
+      else
+        s[c.language] = 1;
+    
+      return s;
+    }, {});
+  }
+
+// diff
+function countLanguages(list) {
+    var count = {};
+    list.forEach(x => count[x.language] = (count[x.language] || 0) + 1);
+    return count;
+  }
