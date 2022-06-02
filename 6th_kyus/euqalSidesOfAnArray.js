@@ -37,3 +37,9 @@ function findEvenIndex(arr) {
   }
   return -1;
 }
+
+// different solution
+function findEvenIndex(arr){
+    const sum = arr => arr.reduce((acc,cur)=> (acc+cur) ,0)
+    return arr.findIndex((val,idx) => sum(arr.slice(0,idx)) === sum(arr.slice(idx+1)))
+}
