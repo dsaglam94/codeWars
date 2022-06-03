@@ -36,4 +36,9 @@ function meeting(s) {
                   .sort()
                   .join(')(')
     return '(' + string + ')'
-  }
+}
+
+// similar but
+function meeting(s) {
+    return s.split(';').map(i => i.toUpperCase().split(':').reverse().join(', ')).sort().map(i => '(' + i + ')').join('')
+}
