@@ -8,4 +8,6 @@
 // Notes
 // String str will never be null.
 
+// added the \ to escape special characters
+// added the g so that replace is run for all occurences in the string
 const replaceDots = str => str.replace(/\./g, '-');
