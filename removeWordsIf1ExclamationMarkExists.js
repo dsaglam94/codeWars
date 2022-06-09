@@ -27,3 +27,8 @@ function remove (string) {
     
     return r.join(' ')
 }
+
+// refactored version
+function remove(s){
+    return s.split(' ').filter(i => i.split('!').length != 2).join(' ');
+}
