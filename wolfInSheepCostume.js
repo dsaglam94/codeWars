@@ -16,14 +16,20 @@
 // Output: "Pls go away and stop eating my sheep"
 
 function warnTheSheep(queue) {
-    queue = queue.reverse();
-    let len = queue.length - 1
+    let queueCopy = [...queue].reverse();
+    let len = queueCopy.length - 1
     for (let i = len; i >= 0; i--) {
       
-      if(queue[0] === 'wolf') {
+      if(queueCopy[0] === 'wolf') {
         return 'Pls go away and stop eating my sheep'
-      } else if(queue[i] === 'wolf') {
+      } else if(queueCopy[i] === 'wolf') {
         return `Oi! Sheep number ${i}! You are about to be eaten by a wolf!`
       }
     }
+}
+
+// diff solution
+function warnTheSheep(queue) {
+    const position = queue.slice().reverse().indexOf('wolf');
+    return position === 0 ? 'Pls go away and stop eating my sheep' : `Oi! Sheep number ${ position }! You are about to be eaten by a wolf!`;
 }
