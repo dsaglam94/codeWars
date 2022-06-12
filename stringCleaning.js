@@ -10,3 +10,8 @@ function stringClean(s) {
   let myRegex = /[^0-9]/g;
   return s.match(myRegex) ? s.match(myRegex).join("") : "";
 }
+
+// refactored
+function stringClean(s) {
+  return s.replace(/\d/g, "");
+}
