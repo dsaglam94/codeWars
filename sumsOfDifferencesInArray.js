@@ -16,3 +16,8 @@ function sumOfDifferences(arr) {
   }
   return res.reduce((curr, acc) => curr + acc, 0);
 }
+
+// math approach less complex O(n)
+function sumOfDifferences(arr) {
+  return arr.length > 1 ? Math.max(...arr) - Math.min(...arr) : 0;
+}
