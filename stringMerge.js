@@ -12,3 +12,6 @@ function stringMerge(string1, string2, letter) {
 
   return string1.slice(0, firstIndex) + string2.slice(secondIndex);
 }
+
+// refactored version
+stringMerge = (a, b, l) => a.slice(0, a.indexOf(l)) + b.slice(b.indexOf(l));
