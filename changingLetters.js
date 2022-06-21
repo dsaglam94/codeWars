@@ -20,3 +20,8 @@ function swap(string) {
   }
   return res;
 }
+
+// with regex
+function swap(st) {
+  return st.replace(/[aeiou]/g, (v) => v.toUpperCase());
+}
