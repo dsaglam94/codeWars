@@ -43,3 +43,38 @@ const encryptThis = (text) => {
   }
   return encrypted.trim();
 };
+
+// Cleaner and smarter solution
+const encryptWord = (w) => {
+  const first = w.charCodeAt(0);
+  let res;
+  switch (w.length) {
+    case 0:
+      return "";
+    case 1:
+      return first;
+    case 2:
+      res = [first, w[1]];
+      break;
+    case 3:
+      res = [first, w[2], w[1]];
+      break;
+    default:
+      res = [first, w.slice(-1), w.slice(2, -1), w[1]];
+      break;
+  }
+  return res.join("");
+};
+
+const encryptThis1 = (text) => text.split(" ").map(encryptWord).join(" ");
+
+// with RegEX
+const encryptThis2 = (text) =>
+  text
+    .split(" ")
+    .map((word) =>
+      word
+        .replace(/(^\w)(\w)(\w*)(\w$)/, `$1$4$3$2`)
+        .replace(/^\w/, word.charCodeAt(0))
+    )
+    .join(" ");
