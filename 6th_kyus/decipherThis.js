@@ -21,3 +21,9 @@ function decipherThis(str) {
     )
     .join(" ");
 }
+
+// even crazier ?
+decipherThis = (str) =>
+  str
+    .replace(/(\d+)([a-z])([a-z]*)([a-z])/g, "$1$4$3$2")
+    .replace(/\d+/g, (_) => String.fromCharCode(_));
