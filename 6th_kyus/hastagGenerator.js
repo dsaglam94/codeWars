@@ -26,3 +26,15 @@ function generateHashtag(str) {
   //   console.log(generated)
   return generated.length > 140 ? false : generated;
 }
+
+// diff approach
+function generateHashtag(str) {
+  if (!str.trim()) return false;
+
+  let newGenerated = "#" + str.split(" ").map(capitalize).join("");
+  return newGenerated.length > 140 ? false : newGenerated;
+}
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
