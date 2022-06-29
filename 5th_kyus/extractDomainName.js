@@ -10,3 +10,8 @@ function domainName(url) {
   url = url.replace("www.", "");
   return url.split(".")[0];
 }
+
+// and ofc with regex
+function domainName(url) {
+  return url.match(/(?:http(?:s)?:\/\/)?(?:w{3}\.)?([^\.]+)/i)[1];
+}
