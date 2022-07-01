@@ -16,3 +16,8 @@ function multipleOfIndex(array) {
   }
   return res;
 }
+
+// ES6
+function multipleOfIndex(array) {
+  return array.filter((num, i) => num % i === 0);
+}
