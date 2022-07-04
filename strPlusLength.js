@@ -17,3 +17,8 @@ function addLength(str) {
   }
   return res;
 }
+
+// refactored with es6 syntax
+
+const addLength = (str) =>
+  str.split(" ").map((letter) => `${letter} ${letter.length}`);
