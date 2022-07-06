@@ -27,3 +27,10 @@ find_the_ball = function (start, swaps) {
   }
   return last;
 };
+
+// ES6 version
+find_the_ball = function (start, swaps) {
+  return swaps.reduce((s, v) => {
+    return s == v[0] ? v[1] : s == v[1] ? v[0] : s;
+  }, start);
+};
