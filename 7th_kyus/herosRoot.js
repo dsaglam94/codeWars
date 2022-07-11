@@ -29,3 +29,16 @@ const intRac = (n, guess, count = 1) => {
   let temp = Math.floor((guess + n / guess) / 2);
   return Math.abs(guess - temp) < 1 ? count : intRac(n, temp, ++count);
 };
+
+// diff approach
+function intRac(n, guess) {
+  var x,
+    newx = guess,
+    i = 0;
+  do {
+    i++;
+    x = newx;
+    newx = Math.floor((x + n / x) / 2);
+  } while (Math.abs(x - newx) > 0);
+  return i;
+}
