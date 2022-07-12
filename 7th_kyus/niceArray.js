@@ -26,3 +26,12 @@ function isNice(arr) {
     arr.every((x) => arr.some((y) => y === x - 1 || y === x + 1))
   );
 }
+// performance wise
+function isNice(arr) {
+  let counter = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr.includes(arr[i] - 1) || arr.includes(arr[i] + 1)) counter++;
+  }
+  if (counter == arr.length && arr.length != 0) return true;
+  return false;
+}
