@@ -21,3 +21,6 @@ function countWins(winnerList, country) {
   }
   return count;
 }
+
+// ES6 solution
+const countWins = (w, c) => w.filter((a) => a.country === c).length;
